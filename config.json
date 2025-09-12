@@ -1,0 +1,110 @@
+{
+  "site": {
+    "title": {
+      "zh": "李彬宇 - 个人作品集",
+      "en": "Li Bin Yu - Personal Portfolio"
+    },
+    "description": {
+      "zh": "软件工程师李彬宇的个人作品集网站，展示项目经验和技能",
+      "en": "Personal portfolio website of software engineer Li Bin Yu, showcasing project experience and skills"
+    },
+    "keywords": {
+      "zh": "李彬宇,软件工程师,个人作品集,项目展示,前端开发,后端开发",
+      "en": "Li Bin Yu,software engineer,personal portfolio,project showcase,frontend development,backend development"
+    },
+    "author": "Li Bin Yu",
+    "url": "https://libinzyu.github.io",
+    "language": "zh-CN",
+    "charset": "UTF-8"
+  },
+  "theme": {
+    "default": "light",
+    "colors": {
+      "primary": "#193FB9",
+      "secondary": "#3879D3",
+      "accent": "#60A5FA",
+      "background": "#F7FAFC",
+      "surface": "#FFFFFF",
+      "text": "#11142D",
+      "textSecondary": "#616B7E"
+    },
+    "fonts": {
+      "chinese": "Noto Sans SC",
+      "english": "Bitter"
+    }
+  },
+  "features": {
+    "darkMode": true,
+    "languageSwitch": true,
+    "animations": true,
+    "lazyLoading": true,
+    "analytics": false,
+    "contactForm": true,
+    "projectStars": true
+  },
+  "social": {
+    "github": "https://github.com/LiBinZyu",
+    "linkedin": "https://linkedin.com/in/libinzyu",
+    "email": "libinzyu@example.com",
+    "wechat": "libinzyu_wechat"
+  },
+  "analytics": {
+    "googleAnalytics": {
+      "enabled": false,
+      "trackingId": "GA_MEASUREMENT_ID"
+    },
+    "googleTagManager": {
+      "enabled": false,
+      "containerId": "GTM-XXXXXXX"
+    }
+  },
+  "api": {
+    "baseUrl": "/api",
+    "endpoints": {
+      "contact": "/contact",
+      "stars": "/stars",
+      "analytics": "/analytics"
+    }
+  },
+  "performance": {
+    "imageOptimization": true,
+    "cssMinification": true,
+    "jsMinification": true,
+    "gzipCompression": true,
+    "browserCaching": true
+  },
+  "seo": {
+    "robots": "index, follow",
+    "canonical": "https://libinzyu.github.io",
+    "openGraph": {
+      "enabled": true,
+      "image": "https://libinzyu.github.io/assets/images/og-image.jpg",
+      "type": "website"
+    },
+    "twitter": {
+      "enabled": true,
+      "card": "summary_large_image",
+      "site": "@libinzyu"
+    }
+  },
+  "contact": {
+    "formEnabled": true,
+    "emailNotifications": true,
+    "requiredFields": ["message"],
+    "maxMessageLength": 1000,
+    "spamProtection": true
+  },
+  "projects": {
+    "starsEnabled": true,
+    "sortBy": "date",
+    "sortOrder": "desc",
+    "itemsPerPage": 6,
+    "showFeatured": true
+  },
+  "experiences": {
+    "sortBy": "date",
+    "sortOrder": "desc",
+    "showTimeline": true,
+    "showTags": true
+  }
+}

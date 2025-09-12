@@ -1,0 +1,55 @@
+{
+  "name": "libinzyu-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website with modern design and bilingual support",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8080 -o",
+    "dev": "npx live-server --port=8080 --open=/",
+    "build": "npm run minify-css && npm run minify-js",
+    "minify-css": "npx cleancss -o styles/main.min.css styles/main.css && npx cleancss -o styles/components.min.css styles/components.css",
+    "minify-js": "npx terser js/main.js -o js/main.min.js && npx terser js/components.js -o js/components.min.js",
+    "lint": "npx eslint js/*.js",
+    "format": "npx prettier --write .",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "responsive",
+    "bilingual",
+    "dark-mode",
+    "modern-design"
+  ],
+  "author": "Li Bin Yu <libinzyu@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LiBinZyu/LiBinZyu.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LiBinZyu/LiBinZyu.github.io/issues"
+  },
+  "homepage": "https://libinzyu.github.io",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.57.0",
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2",
+    "prettier": "^3.2.5",
+    "terser": "^5.24.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
