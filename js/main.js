@@ -68,10 +68,7 @@ class PortfolioApp {
     });
 
     // Contact form
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.handleContactForm(e);
-    });
+    // 由 js/components.js 负责表单提交逻辑，这里不再监听
 
     // Contact items copy functionality
     document.querySelectorAll('.contact-item').forEach(item => {
@@ -370,56 +367,6 @@ class PortfolioApp {
       case 'contact':
         // Contact form is already loaded
         break;
-    }
-  }
-
-  // Handle contact form submission
-  async handleContactForm(event) {
-    const form = event.target;
-    const formData = new FormData(form);
-    const data = {
-      name: formData.get('name') || 'Anonymous',
-      message: formData.get('message'),
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      referrer: document.referrer
-    };
-
-    // Show loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
-    submitBtn.disabled = true;
-
-    try {
-      // Send to backend
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
-
-      if (response.ok) {
-        this.showNotification(
-          this.currentLanguage === 'zh' ? '消息发送成功！' : 'Message sent successfully!',
-          'success'
-        );
-        form.reset();
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      this.showNotification(
-        this.currentLanguage === 'zh' ? '发送失败，请稍后重试。' : 'Failed to send message. Please try again later.',
-        'error'
-      );
-    } finally {
-      // Reset button
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
     }
   }
 

@@ -17,7 +17,7 @@ const portfolioData = {
       en: "Based in Suzhou, China"
     },
     image: "assets/images/profile.png",
-    cvUrl: "https://example.com/cv.pdf"
+    cvUrl: "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/fyuRAQ7RyNlLx1BwQB1iusLlTTdkUfWP/%E6%9D%8E%E7%82%B3%E5%84%92-%E8%A5%BF%E4%BA%A4%E5%88%A9%E7%89%A9%E6%B5%A6%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E7%A1%95%E5%A3%AB-%E4%B8%AD%E6%96%87.pdf"
   },
 
   // Experiences Data
@@ -25,7 +25,7 @@ const portfolioData = {
     {
       id: "exp-1",
       title: {
-        zh: "人机交互，全日制硕士研究生在读",
+        zh: "人机交互，全日制硕士研究生",
         en: "Human-Computer Interaction, Full-time Master's Student"
       },
       company: {
@@ -138,9 +138,8 @@ const portfolioData = {
         en: "VAI is a Unity plugin for implementing voice control in Unity projects. It integrates wake word detection, automatic speech recognition (ASR) and large language model (LLM) driven tool calling, converting users' natural language speech into executable functions. The project optimizes local NLU modules to reduce LLM call frequency."
       },
       images: [
-        "https://i.imgur.com/XFF6u5E.gif",
-        "https://i.imgur.com/pCXHGG9.png",
-        "https://i.imgur.com/ndrYQ2M.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/H8KY6ylU4MIliAU6pVNeYmn8WB5aEzec/VAIcover.png",
+        "https://i.imgur.com/XFF6u5E.gif"
       ],
       tech: ["Unity", "C#", "AI", "ASR", "LLM", "Voice Control"],
       links: {
@@ -161,7 +160,7 @@ const portfolioData = {
         en: "CameraArrayTools aims to transform tedious, repetitive camera array creation and batch rendering workflows into a fast, precise and automated process. Say goodbye to inefficient manual camera placement and errors, generate, manage and render complex camera arrays through a unified control panel, with Movie Render Queue pipeline rendering and path tracing time monitoring support."
       },
       images: [
-        "https://i.imgur.com/HXi2SUR.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/CMK8b3uP17z594GD2OFrOexlo6NiVQti/CameraArrayTools.png"
       ],
       tech: ["Unreal Engine 5", "C++", "Python", "Movie Render Queue", "Path Tracing"],
       links: {
@@ -182,8 +181,8 @@ const portfolioData = {
         en: "A system developed using Unity and Quest3 headset that allows users to explore various human structures through gesture interaction (Meta XR SDK), including 50 models and 8 types of structures such as muscles, organs, and bones. Experimental and data analysis results prove that MR approach helps users remember deep internal human structures better than traditional computer games or books, with significantly better user experience, lower frustration, and better performance."
       },
       images: [
-        "https://i.imgur.com/G1HgQZo.png",
-        "https://i.imgur.com/ALdbTnu.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/3jcD6AT6IJNbvI95cI9YpLnJApXRu6ld/ISMAR2.png",
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/x0PM1Dpon9Igfxdu4OHCQqdIi8keTHgN/ISMAR1.png"
       ],
       tech: ["Unity", "Quest3", "Meta XR SDK", "Mixed Reality", "Medical Visualization"],
       links: {
@@ -203,7 +202,8 @@ const portfolioData = {
         en: "RescueReality app developed using Unity and Quest3 headset guides untrained ordinary people to perform immediate CPR on others. Results demonstrate system effectiveness, good user experience, moderate task load, thereby increasing rescue implementation rate in emergency situations."
       },
       images: [
-        "https://i.imgur.com/cpr-mr-1.jpg"
+        "https://i.imgur.com/z9O37VM.png",
+        "https://i.imgur.com/oxxzYvX.png"
       ],
       videos: [],
       tech: ["Unity", "Quest3", "Mixed Reality", "Medical Training", "Emergency Response"],
@@ -229,7 +229,6 @@ const portfolioData = {
       videos: [],
       tech: ["Mixed Reality", "AR", "VPS", "SLAM", "Cross-platform", "No-code"],
       links: {
-        demo: "https://example.com/mr-creator"
       },
       stars: 0,
       featured: true,
@@ -246,7 +245,7 @@ const portfolioData = {
         en: "Developed for BYD's new car model's central control, co-pilot, and dashboard screens using proprietary engine. Proposed optimization solutions based on high-definition film-level design drafts, designed weather, lighting, atmosphere effects and transition effects, troubleshooted and solved model wiring issues. Established model production standards and art workflows for car systems."
       },
       images: [
-        "https://i.imgur.com/ESjQnI4.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/UD84qk68yfRcPYtX4LzJwuuri4BP63qI/BYDbao8.png"
       ],
       videos: [],
       tech: ["Proprietary Engine", "3D Effects", "Car System", "Optimization", "Workflow"],
@@ -267,7 +266,7 @@ const portfolioData = {
         en: "Hospital deployed interactive screens in lobby for AI digital human voice services for patients and visitors, also deployed on ward round robots in hospital rooms. Project delivered 3 realistic digital human models, each providing two different precision levels (6 model files total), 5 actions, 52 standard expressions and 1 background image. Helped hospital improve patient experience and work efficiency."
       },
       images: [
-        "https://i.imgur.com/6nTiNZD.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/gnGKHtIw2o1Uvh1Br0AF9SdHUqn0hxk4/hospitaldoctor.png"
       ],
       videos: [],
       tech: ["AI Digital Human", "3D Modeling", "Medical Technology", "Voice Service", "Hospital"],
@@ -288,7 +287,7 @@ const portfolioData = {
         en: "Responsible for product feature design and frontend development, including member permission management, AI dialogue, report generation, SSO, application switching, model switching, frontend interface orchestration."
       },
       images: [
-        "https://i.imgur.com/qXjwJDO.jpeg"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/e1Lzk4jJfbxFdW47BqbOqCugcsOyhh9B/img_v3_02pg_bc46a73a-37ad-45b0-a1c8-9d7d1fe514ag.jpg"
       ],
       videos: [],
       tech: ["Frontend Development", "AI Platform", "Permission Management", "SSO", "UI Orchestration"],
@@ -329,7 +328,7 @@ const portfolioData = {
         en: "Long-term cooperation research with Mercedes-Benz, providing a complete G-Box selection hardware + interface interaction solution."
       },
       images: [
-        "https://i.imgur.com/IMuM0ST.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/ivWzLYYQjDUzpVz0DwIwnGnI6XVomtqe/UEmercedes.png"
       ],
       videos: [],
       tech: ["Unreal Engine", "Car Interaction", "Mercedes-Benz", "Hardware Integration"],
@@ -350,7 +349,7 @@ const portfolioData = {
         en: "Digital Twin Interaction Rendering Reel"
       },
       images: [
-        "https://i.imgur.com/cOI9rC6.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/AOXKiEaWbzLjg815yJEOfJV6h6nLS05D/raydata.png"
       ],
       videos: ["https://portfoliogithubio.oss-cn-shanghai.aliyuncs.com/%E6%9D%8E%E7%82%B3%E5%84%92_%E5%BC%95%E6%93%8E%E4%BA%A4%E4%BA%92%E5%BC%80%E5%8F%91%E6%B7%B7%E5%89%AA.mp4"],
       tech: ["Tencent Cloud", "Raydata", "Digital Twin", "Technical Artist", "Realtime"],
@@ -371,8 +370,8 @@ const portfolioData = {
         en: "Developed a project time management system for project data preview, time reporting, time approval, etc. Independently wrote project management platform requirements specification, developed task scheduling, priority management, and related party needs communication and implementation. Independently wrote project management platform user manual."
       },
       images: [
-        "https://i.imgur.com/1Kwnv6e.png",
-        "https://i.imgur.com/KzFSOZA.png"
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/SpympvUnHIQxdeNbWzEQazwMaw0zvfbq/ResourceManageTool1.png",
+        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/d7JHhWlClXcABfOg05I5TtRgCohBTKpK/ResourceManageTool.png"
       ],
       videos: [],
       tech: ["GritWorld", "Product Management", "Product Design"],

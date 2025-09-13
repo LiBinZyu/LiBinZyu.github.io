@@ -19,8 +19,16 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Three.js and Vanta.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+  <script src="js/av-min.js"></script>
 </head>
 <body class="theme-light">
+    <!-- Vanta.js Birds Effect - Full Screen Background -->
+    <div id="vanta-birds" class="vanta-container"></div>
+    
     <!-- Header with Profile -->
     <header class="header">
         <div class="container">
@@ -69,64 +77,71 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Main Content - Waterfall Layout -->
     <main class="main-content">
-        <div class="container">
+        <!-- Waterfall Container -->
+        <div class="waterfall-container">
             <!-- Experiences Section -->
-            <section id="experiences" class="content-section active">
+            <section id="experiences" class="full-width-section">
                 <div class="experiences-timeline" id="experiences-content">
                     <!-- Content will be loaded from data file -->
                 </div>
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="content-section">
+            <section id="projects" class="full-width-section">
                 <div class="projects-grid" id="projects-content">
                     <!-- Content will be loaded from data file -->
                 </div>
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="content-section">
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item" data-copy="bingru.li24@student.xjtlu.edu.cn" data-type="email">
-                            <span class="material-icons">email</span>
-                            <span>bingru.li24@student.xjtlu.edu.cn</span>
+            <section id="contact" class="full-width-section">
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <div class="contact-item" data-copy="bingru.li24@student.xjtlu.edu.cn" data-type="email">
+                                <span class="material-icons">email</span>
+                                <span>bingru.li24@student.xjtlu.edu.cn</span>
+                            </div>
+                            <div class="contact-item" data-copy="+86 18080637660" data-type="phone">
+                                <span class="material-icons">phone</span>
+                                <span>+86 18080637660</span>
+                            </div>
+                            <div class="contact-item" data-copy="LiBinZyu" data-type="wechat">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/wechat.svg" alt="WeChat" class="contact-icon">
+                                <span>WeChat</span>
+                            </div>
+                            <div class="contact-item" data-copy="https://github.com/LiBinZyu" data-type="github">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="contact-icon">
+                                <span>GitHub</span>
+                            </div>
+                            <div class="contact-item" data-copy="https://www.linkedin.com/in/robbingruli" data-type="linkedin">
+                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
+                                <span>LinkedIn</span>
+                            </div>
                         </div>
-                        <div class="contact-item" data-copy="+86 18080637660" data-type="phone">
-                            <span class="material-icons">phone</span>
-                            <span>+86 18080637660</span>
-                        </div>
-                        <div class="contact-item" data-copy="LiBinZyu" data-type="wechat">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/wechat.svg" alt="WeChat" class="contact-icon">
-                            <span>WeChat</span>
-                        </div>
-                        <div class="contact-item" data-copy="https://github.com/LiBinZyu" data-type="github">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="contact-icon">
-                            <span>GitHub</span>
-                        </div>
-                        <div class="contact-item" data-copy="https://www.linkedin.com/in/robbingruli" data-type="linkedin">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
-                            <span>LinkedIn</span>
-                        </div>
+                        
+                        <form class="contact-form" id="contact-form">
+                            <h4 data-en="Drop me a message" data-zh="想要留言吗？">Drop me a message</h3>
+                            <div class="wave-group">
+                              <span data-en="Name -optional" data-zh="姓名 -optional">姓名 optional</span>
+                              <input type="text" id="contact-name" name="name" class="input" maxlength="50" autocomplete="off">
+                              <span class="bar"></span>
+                            </div>
+                            <div class="wave-group">
+                              <span data-en="Contact -optional" data-zh="联系方式 -optional">联系方式 optional</span>
+                              <input type="text" id="contact-contact" name="contact" class="input" maxlength="100" autocomplete="off">
+                              <span class="bar"></span>
+                            </div>
+                            <div class="form-group">
+                              <textarea id="contact-message" name="message" class="message-textarea" rows="4" maxlength="300" required style="resize:vertical; min-height:80px; max-height:180px;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="material-icons">send</span>
+                                <span data-en="Send" data-zh="发送">发送</span>
+                            </button>
+                        </form>
                     </div>
-                    
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <label for="contact-name" data-en="Your Name (Optional)" data-zh="您的姓名（可选）">您的姓名（可选）</label>
-                            <input type="text" id="contact-name" name="name" placeholder="Enter your name">
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-message" data-en="Message" data-zh="留言">留言</label>
-                            <textarea id="contact-message" name="message" rows="5" placeholder="Enter your message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <span class="material-icons">send</span>
-                            <span data-en="Send Message" data-zh="发送消息">发送消息</span>
-                        </button>
-                    </form>
-                </div>
             </section>
         </div>
     </main>
@@ -190,5 +205,126 @@
     <script src="data/data.js"></script>
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Vanta.js Birds Effect -->
+    <script>
+        // Vanta.js birds effect instance
+        let vantaEffect = null;
+        
+        // Color schemes for different themes
+        const lightThemeColors = {
+            color1: 0x8d9aeb,
+            color2: 0x465bff,
+            speedLimit: 5.00
+        };
+        
+        const darkThemeColors = {
+            color1: 0x372b6e,
+            color2: 0x142455,
+            speedLimit: 4.00
+        };
+        
+        // Function to initialize Vanta effect
+        function initVantaEffect() {
+            // Check current theme
+            const isDarkTheme = document.body.classList.contains('theme-dark');
+            const colors = isDarkTheme ? darkThemeColors : lightThemeColors;
+            
+            // Destroy existing effect if it exists
+            if (vantaEffect) {
+                vantaEffect.destroy();
+            }
+            
+            // Initialize new effect
+            vantaEffect = VANTA.BIRDS({
+                el: "#vanta-birds",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                backgroundAlpha: 0.00,
+                ...colors
+            });
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initVantaEffect();
+        });
+        
+        // Listen for theme changes
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                // Wait for theme class to be applied
+                setTimeout(() => {
+                    initVantaEffect();
+                }, 100);
+            });
+        }
+        
+        // Scroll Spy and Smooth Scroll functionality
+        function initScrollSpy() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.waterfall-section');
+            
+            // Smooth scroll function
+            function smoothScrollTo(targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 100; // Account for sticky nav
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            // Update active nav item based on scroll position
+            function updateActiveNav() {
+                const scrollPos = window.scrollY + 150; // Offset for better detection
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        // Remove active class from all nav items
+                        navItems.forEach(item => item.classList.remove('active'));
+                        
+                        // Add active class to corresponding nav item
+                        const activeNavItem = document.querySelector(`[data-section="${sectionId}"]`);
+                        if (activeNavItem) {
+                            activeNavItem.classList.add('active');
+                        }
+                    }
+                });
+            }
+            
+            // Add click event listeners to nav items
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetSection = this.getAttribute('data-section');
+                    smoothScrollTo(targetSection);
+                });
+            });
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', updateActiveNav);
+            
+            // Initial call to set correct active state
+            updateActiveNav();
+        }
+        
+        // Initialize scroll spy when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollSpy();
+        });
+    </script>
 </body>
 </html>

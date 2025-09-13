@@ -45,8 +45,8 @@
   "social": {
     "github": "https://github.com/LiBinZyu",
     "linkedin": "https://linkedin.com/in/libinzyu",
-    "email": "libinzyu@example.com",
-    "wechat": "libinzyu_wechat"
+    "email": "rob.bingru.li@outlook.com",
+    "wechat": ""
   },
   "analytics": {
     "googleAnalytics": {
@@ -93,6 +93,13 @@
     "requiredFields": ["message"],
     "maxMessageLength": 1000,
     "spamProtection": true
+  },
+  "leancloud": {
+    "enabled": true,
+    "appId": "LEVCRoHoJUbL4W82Q0396WfC-MdYXbMMI",
+    "appKey": "pnowJ9cbwzZieBbFjqSUr2ll",
+    "serverURL": "https://levcroho.api.lncldglobal.com",
+    "className": "ContactMessage"
   },
   "projects": {
     "starsEnabled": true,

@@ -243,9 +243,9 @@ class ProjectCard {
     
     const mediaItems = allMedia.map((media, index) => {
       // Check if it's a video by looking for video extensions or video-specific URLs
-      const isVideo = media.includes('.mp4') || media.includes('.webm') || media.includes('.mov') || 
+      const isVideo = media.match(/\.(mp4|webm|mov)(\?.*)?$/i) ||
                      media.includes('youtube.com') || media.includes('youtu.be') || 
-                     media.includes('vimeo.com') || media.includes('aliyuncs.com');
+                     media.includes('vimeo.com');
       
       if (isVideo) {
         return `
@@ -493,9 +493,9 @@ class ProjectCard {
     
     allMedia.forEach((media, index) => {
       // Check if it's a video by looking for video extensions or video-specific URLs
-      const isVideo = media.includes('.mp4') || media.includes('.webm') || media.includes('.mov') || 
+      const isVideo = media.match(/\.(mp4|webm|mov)(\?.*)?$/i) ||
                      media.includes('youtube.com') || media.includes('youtu.be') || 
-                     media.includes('vimeo.com') || media.includes('aliyuncs.com');
+                     media.includes('vimeo.com');
       
       const mediaItem = document.createElement('div');
       mediaItem.className = `media-item ${index === 0 ? 'active' : ''}`;
@@ -725,26 +725,24 @@ class ContactForm {
     let isValid = true;
     let errorMessage = '';
 
+    // 只做长度校验
     switch (fieldName) {
-      case 'message':
-        if (!value) {
+      case 'name':
+        if (value && value.length > 50) {
           isValid = false;
-          errorMessage = window.portfolioApp?.currentLanguage === 'zh' 
-            ? '请输入留言内容' 
-            : 'Please enter your message';
-        } else if (value.length < 10) {
-          isValid = false;
-          errorMessage = window.portfolioApp?.currentLanguage === 'zh' 
-            ? '留言内容至少需要10个字符' 
-            : 'Message must be at least 10 characters';
+          errorMessage = '姓名不能超过50字符';
         }
         break;
-      case 'name':
-        if (value && value.length < 2) {
+      case 'contact':
+        if (value && value.length > 100) {
           isValid = false;
-          errorMessage = window.portfolioApp?.currentLanguage === 'zh' 
-            ? '姓名至少需要2个字符' 
-            : 'Name must be at least 2 characters';
+          errorMessage = '联系方式不能超过100字符';
+        }
+        break;
+      case 'message':
+        if (value && value.length > 1000) {
+          isValid = false;
+          errorMessage = '留言内容不能超过1000字符';
         }
         break;
     }
@@ -786,27 +784,31 @@ class ContactForm {
 
   async handleSubmit(event) {
     const formData = new FormData(this.form);
-    const data = {
-      name: formData.get('name') || 'Anonymous',
-      message: formData.get('message'),
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      referrer: document.referrer
-    };
+    const name = formData.get('name')?.trim() || '';
+    const contactValue = formData.get('contact')?.trim() || '';
+    const message = formData.get('message')?.trim() || '';
+    console.log('contact value:', contactValue);
 
-    // Validate all fields
-    const inputs = this.form.querySelectorAll('input, textarea');
+    // 最大长度限制
+    const MAX_NAME = 50;
+    const MAX_CONTACT = 100;
+    const MAX_MESSAGE = 1000;
+
+    // 只做长度校验
     let isFormValid = true;
-    
-    inputs.forEach(input => {
-      if (!this.validateField(input)) {
-        isFormValid = false;
-      }
-    });
-
-    if (!isFormValid) {
-      return;
+    if (name && name.length > MAX_NAME) {
+      this.showFieldError(this.form.querySelector('[name="name"]'), `姓名不能超过${MAX_NAME}字符`);
+      isFormValid = false;
     }
+    if (contactValue && contactValue.length > MAX_CONTACT) {
+      this.showFieldError(this.form.querySelector('[name="contact"]'), `联系方式不能超过${MAX_CONTACT}字符`);
+      isFormValid = false;
+    }
+    if (message && message.length > MAX_MESSAGE) {
+      this.showFieldError(this.form.querySelector('[name="message"]'), `留言内容不能超过${MAX_MESSAGE}字符`);
+      isFormValid = false;
+    }
+    if (!isFormValid) return;
 
     // Show loading state
     const submitBtn = this.form.querySelector('button[type="submit"]');
@@ -814,25 +816,38 @@ class ContactForm {
     submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
     submitBtn.disabled = true;
 
+    // LeanCloud 直连写入
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
+      if (!window.AV) throw new Error('LeanCloud SDK 未加载');
+      if (!window._leancloud_inited) {
+        window.AV.init({
+          appId: "LEVCRoHoJUbL4W82Q0396WfC-MdYXbMMI",
+          appKey: "pnowJ9cbwzZieBbFjqSUr2ll",
+          serverURL: "https://levcroho.api.lncldglobal.com"
+        });
+        window._leancloud_inited = true;
+      }
+      const ContactMessage = window.AV.Object.extend("ContactMessage");
+      const contactObj = new ContactMessage();
+      contactObj.set('name', name);
+      contactObj.set('contact', contactValue);
+      contactObj.set('message', message);
+      contactObj.set('ip', 'browser');
+      contactObj.set('userAgent', navigator.userAgent);
 
-      if (response.ok) {
+      contactObj.save().then(() => {
         this.showSuccessMessage();
         this.form.reset();
-      } else {
-        throw new Error('Failed to send message');
-      }
+      }).catch((error) => {
+        console.error('LeanCloud 保存失败', error);
+        this.showErrorMessage();
+      }).finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      });
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('LeanCloud 保存失败', error);
       this.showErrorMessage();
-    } finally {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
     }
