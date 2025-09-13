@@ -213,9 +213,6 @@ class ProjectCard {
   constructor(projectData, container) {
     this.projectData = projectData;
     this.container = container;
-    this.isStarred = false;
-    this.starCount = projectData.stars || 0;
-    
     this.render();
     this.setupEventListeners();
   }
@@ -290,10 +287,6 @@ class ProjectCard {
         <div class="project-header">
           <h3 class="project-title">${title[currentLang]}</h3>
           <div class="project-stats">
-            <div class="project-stars ${this.isStarred ? 'starred' : ''}" data-project-id="${this.projectData.id}">
-              <span class="material-icons star-icon">star</span>
-              <span class="star-count">${this.starCount}</span>
-            </div>
           </div>
         </div>
         <p class="project-description">${description[currentLang]}</p>
@@ -318,14 +311,6 @@ class ProjectCard {
   }
 
   setupEventListeners() {
-    const starButton = this.cardElement.querySelector('.project-stars');
-    if (starButton) {
-      starButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.toggleStar();
-      });
-    }
-
     // Add hover effects
     this.cardElement.addEventListener('mouseenter', () => {
       this.cardElement.style.transform = 'translateY(-8px)';
@@ -431,8 +416,8 @@ class ProjectCard {
 
   setupModal() {
     this.cardElement.addEventListener('click', (e) => {
-      // Don't open modal if clicking on links or stars
-      if (e.target.closest('.project-links') || e.target.closest('.project-stars')) {
+      // Don't open modal if clicking on links
+      if (e.target.closest('.project-links')) {
         return;
       }
       
@@ -530,45 +515,6 @@ class ProjectCard {
     });
   }
 
-  toggleStar() {
-    this.isStarred = !this.isStarred;
-    this.starCount += this.isStarred ? 1 : -1;
-    
-    const starButton = this.cardElement.querySelector('.project-stars');
-    const starCount = this.cardElement.querySelector('.star-count');
-    
-    starButton.classList.toggle('starred', this.isStarred);
-    starCount.textContent = this.starCount;
-
-    // Track the action
-    this.trackStarAction();
-  }
-
-  trackStarAction() {
-    // Send analytics data
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'project_star', {
-        'project_id': this.projectData.id,
-        'action': this.isStarred ? 'star' : 'unstar',
-        'timestamp': new Date().toISOString()
-      });
-    }
-
-    // Send to backend
-    fetch('/api/stars', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        projectId: this.projectData.id,
-        action: this.isStarred ? 'star' : 'unstar',
-        timestamp: new Date().toISOString()
-      })
-    }).catch(error => {
-      console.warn('Failed to track star action:', error);
-    });
-  }
 
   formatDate(dateString) {
     const date = new Date(dateString);

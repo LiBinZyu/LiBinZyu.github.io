@@ -259,7 +259,7 @@
             function smoothScrollTo(targetId) {
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
-                    const offsetTop = targetElement.offsetTop - 100; // Account for sticky nav
+                    const offsetTop = targetElement.offsetTop+200; // Account for sticky nav
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
