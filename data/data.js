@@ -17,7 +17,7 @@ const portfolioData = {
       en: "Based in Suzhou, China"
     },
     image: "assets/images/profile.png",
-    cvUrl: "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/fyuRAQ7RyNlLx1BwQB1iusLlTTdkUfWP/%E6%9D%8E%E7%82%B3%E5%84%92-%E8%A5%BF%E4%BA%A4%E5%88%A9%E7%89%A9%E6%B5%A6%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E7%A1%95%E5%A3%AB-%E4%B8%AD%E6%96%87.pdf"
+    cvUrl: "http://lc-KPCSue6i.cn-n1.lcfile.com/oop124OJ2kQWJWpozB2LHHHh4C1oay8m/%E6%9D%8E%E7%82%B3%E5%84%92-%E8%A5%BF%E4%BA%A4%E5%88%A9%E7%89%A9%E6%B5%A6%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E7%A1%95%E5%A3%AB-%E4%B8%AD%E6%96%87.pdf"
   },
 
   // Experiences Data
@@ -138,7 +138,7 @@ const portfolioData = {
         en: "VAI is a Unity plugin for implementing voice control in Unity projects. It integrates wake word detection, automatic speech recognition (ASR) and large language model (LLM) driven tool calling, converting users' natural language speech into executable functions. The project optimizes local NLU modules to reduce LLM call frequency."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/H8KY6ylU4MIliAU6pVNeYmn8WB5aEzec/VAIcover.png",
+        "assets/images/VAIcover.jpg",
         "https://i.imgur.com/XFF6u5E.gif"
       ],
       tech: ["Unity", "C#", "AI", "ASR", "LLM", "Voice Control"],
@@ -160,7 +160,7 @@ const portfolioData = {
         en: "CameraArrayTools aims to transform tedious, repetitive camera array creation and batch rendering workflows into a fast, precise and automated process. Say goodbye to inefficient manual camera placement and errors, generate, manage and render complex camera arrays through a unified control panel, with Movie Render Queue pipeline rendering and path tracing time monitoring support."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/CMK8b3uP17z594GD2OFrOexlo6NiVQti/CameraArrayTools.png"
+        "assets/images/CameraArrayTools.jpg"
       ],
       tech: ["Unreal Engine 5", "C++", "Python", "Movie Render Queue", "Path Tracing"],
       links: {
@@ -181,8 +181,8 @@ const portfolioData = {
         en: "A system developed using Unity and Quest3 headset that allows users to explore various human structures through gesture interaction (Meta XR SDK), including 50 models and 8 types of structures such as muscles, organs, and bones. Experimental and data analysis results prove that MR approach helps users remember deep internal human structures better than traditional computer games or books, with significantly better user experience, lower frustration, and better performance."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/3jcD6AT6IJNbvI95cI9YpLnJApXRu6ld/ISMAR2.png",
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/x0PM1Dpon9Igfxdu4OHCQqdIi8keTHgN/ISMAR1.png"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/WMyoPm1lHcMBLYbvbEKLUt2CQ5IHT25r/ISMAR2.jpg",
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/CzfhpNDLaHa2t8NchSSPILv8jCCdj8so/ISMAR1.jpg"
       ],
       tech: ["Unity", "Quest3", "Meta XR SDK", "Mixed Reality", "Medical Visualization"],
       links: {
