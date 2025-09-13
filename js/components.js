@@ -250,11 +250,11 @@ class ProjectCard {
       if (isVideo) {
         return `
           <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="video">
-            <video preload="metadata" muted playsinline>
+            <video preload="metadata" muted playsinline autoplay loop>
               <source src="${media}" type="video/mp4">
               <p>您的浏览器不支持视频播放</p>
             </video>
-            <div class="project-video-overlay">
+            <div class="project-video-overlay" style="display: none;">
               <svg viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
@@ -502,7 +502,7 @@ class ProjectCard {
       
       if (isVideo) {
         mediaItem.innerHTML = `
-          <video controls>
+          <video controls muted playsinline autoplay loop>
             <source src="${media}" type="video/mp4">
           </video>
         `;

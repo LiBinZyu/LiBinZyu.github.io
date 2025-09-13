@@ -154,7 +154,7 @@ class PortfolioApp {
     });
 
     // Update page title
-    document.title = this.currentLanguage === 'zh' ? '李彬宇 - 个人作品集' : 'Li Bin Yu - Personal Portfolio';
+    document.title = this.currentLanguage === 'zh' ? '李炳儒 - 个人作品集' : 'Bingru Li - Personal Portfolio';
     
     // 重新加载动态内容
     this.loadExperiences();

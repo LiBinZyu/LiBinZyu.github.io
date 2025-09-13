@@ -1,18 +1,18 @@
 {
   "site": {
     "title": {
-      "zh": "李彬宇 - 个人作品集",
-      "en": "Li Bin Yu - Personal Portfolio"
+      "zh": "李炳儒 - 个人作品集",
+      "en": "Bingru Li - Personal Portfolio"
     },
     "description": {
-      "zh": "软件工程师李彬宇的个人作品集网站，展示项目经验和技能",
-      "en": "Personal portfolio website of software engineer Li Bin Yu, showcasing project experience and skills"
+      "zh": "李炳儒的个人作品集网站，展示项目经验和技能",
+      "en": "Personal portfolio website of software engineer Bingru Li, showcasing project experience and skills"
     },
     "keywords": {
-      "zh": "李彬宇,软件工程师,个人作品集,项目展示,前端开发,后端开发",
-      "en": "Li Bin Yu,software engineer,personal portfolio,project showcase,frontend development,backend development"
+      "zh": "李炳儒,软件工程师,个人作品集,项目展示,前端开发,后端开发",
+      "en": "Bingru Li,software engineer,personal portfolio,project showcase,frontend development,backend development"
     },
-    "author": "Li Bin Yu",
+    "author": "Bingru Li",
     "url": "https://libinzyu.github.io",
     "language": "zh-CN",
     "charset": "UTF-8"

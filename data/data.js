@@ -308,11 +308,8 @@ const portfolioData = {
         zh: "基于Unreal Engine 5开发的校园数字孪生平台，提供沉浸式的校园体验和交互功能。",
         en: "Campus digital twin platform developed based on Unreal Engine 5, providing immersive campus experience and interactive features."
       },
-      images: [
-        "https://i.imgur.com/campus-twin-1.jpg"
-      ],
       videos: [
-        "https://portfoliogithubio.oss-cn-shanghai.aliyuncs.com/%E6%9D%8E%E7%82%B3%E5%84%92_%E5%BC%95%E6%93%8E%E4%BA%A4%E4%BA%92%E5%BC%80%E5%8F%91%E6%B7%B7%E5%89%AA.mp4?Expires=1757709363&OSSAccessKeyId=TMP.3Kmb2aGs6KWQG4HLCiVdm3EVifmhLCgUSAbuzdBKZGVE82FaMEvcDNgGuabaFfvn6zzDzZJSy7rtbbAthGmW83UTdVA8YB&Signature=Y1fnRPXNOBGfd84GyN82qCI4o%2BI%3D"
+        "https://portfoliogithubio.oss-cn-shanghai.aliyuncs.com/schoolunreal.mp4"
       ],
       tech: ["Unreal Engine 5", "Digital Twin", "Campus", "Immersive Experience"],
       links: {
@@ -355,12 +352,12 @@ const portfolioData = {
       images: [
         "https://i.imgur.com/cOI9rC6.png"
       ],
-      videos: [],
+      videos: ["https://portfoliogithubio.oss-cn-shanghai.aliyuncs.com/%E6%9D%8E%E7%82%B3%E5%84%92_%E5%BC%95%E6%93%8E%E4%BA%A4%E4%BA%92%E5%BC%80%E5%8F%91%E6%B7%B7%E5%89%AA.mp4"],
       tech: ["Tencent Cloud", "Raydata", "Digital Twin", "Technical Artist", "Realtime"],
       links: {
       },
       stars: 0,
-      featured: false,
+      featured: true,
       date: "2024-06-01"
     },
     {

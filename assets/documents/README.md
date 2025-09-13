@@ -7,7 +7,7 @@
 ### 简历 / CV
 - **格式**: PDF (推荐), DOCX
 - **文件大小**: 建议小于 2MB
-- **文件名**: `CV_李彬宇.pdf` 或 `Resume_LiBinYu.pdf`
+- **文件名**: `CV_李炳儒.pdf` 或 `Resume_LiBinYu.pdf`
 
 ### 证书 / Certificates
 - **格式**: PDF, JPG, PNG
