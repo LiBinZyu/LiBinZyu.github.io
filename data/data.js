@@ -139,6 +139,9 @@ const portfolioData = {
       },
       images: [
         "assets/images/VAIcover.jpg",
+        "assets/images/VAIchar.jpg",
+        "assets/images/VAIfigure.jpg",
+        "assets/images/VAIworkflow.png",
         "https://i.imgur.com/XFF6u5E.gif"
       ],
       tech: ["Unity", "C#", "AI", "ASR", "LLM", "Voice Control"],
@@ -181,8 +184,8 @@ const portfolioData = {
         en: "A system developed using Unity and Quest3 headset that allows users to explore various human structures through gesture interaction (Meta XR SDK), including 50 models and 8 types of structures such as muscles, organs, and bones. Experimental and data analysis results prove that MR approach helps users remember deep internal human structures better than traditional computer games or books, with significantly better user experience, lower frustration, and better performance."
       },
       images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/WMyoPm1lHcMBLYbvbEKLUt2CQ5IHT25r/ISMAR2.jpg",
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/CzfhpNDLaHa2t8NchSSPILv8jCCdj8so/ISMAR1.jpg"
+        "assets/images/ISMAR2.jpg",
+        "assets/images/ISMAR1.jpg"
       ],
       tech: ["Unity", "Quest3", "Meta XR SDK", "Mixed Reality", "Medical Visualization"],
       links: {
@@ -202,8 +205,8 @@ const portfolioData = {
         en: "RescueReality app developed using Unity and Quest3 headset guides untrained ordinary people to perform immediate CPR on others. Results demonstrate system effectiveness, good user experience, moderate task load, thereby increasing rescue implementation rate in emergency situations."
       },
       images: [
-        "https://i.imgur.com/z9O37VM.png",
-        "https://i.imgur.com/oxxzYvX.png"
+        "assets/images/CPR1.jpg",
+        "assets/images/CPR2.jpg"
       ],
       videos: [],
       tech: ["Unity", "Quest3", "Mixed Reality", "Medical Training", "Emergency Response"],
@@ -224,7 +227,7 @@ const portfolioData = {
         en: "A mixed reality content creation software for rapid AR project implementation, targeting third-party users and developers. Enriched MR application scenarios: experience games, AI dialogue and other interactions in the same space. The product is applied on multiple platforms including smartphones, tablets, etc. Strengthened MR core technical capabilities: VPS technology easily handles large-area maps, achieving full coverage in larger ranges while ensuring precise positioning of key points."
       },
       images: [
-        "https://i.imgur.com/ZoZCzdS.png"
+        "assets/images/MRcreator.jpg"
       ],
       videos: [],
       tech: ["Mixed Reality", "AR", "VPS", "SLAM", "Cross-platform", "No-code"],
@@ -245,7 +248,7 @@ const portfolioData = {
         en: "Developed for BYD's new car model's central control, co-pilot, and dashboard screens using proprietary engine. Proposed optimization solutions based on high-definition film-level design drafts, designed weather, lighting, atmosphere effects and transition effects, troubleshooted and solved model wiring issues. Established model production standards and art workflows for car systems."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/UD84qk68yfRcPYtX4LzJwuuri4BP63qI/BYDbao8.png"
+        "assets/images/BYDbao8.jpg"
       ],
       videos: [],
       tech: ["Proprietary Engine", "3D Effects", "Car System", "Optimization", "Workflow"],
@@ -266,7 +269,7 @@ const portfolioData = {
         en: "Hospital deployed interactive screens in lobby for AI digital human voice services for patients and visitors, also deployed on ward round robots in hospital rooms. Project delivered 3 realistic digital human models, each providing two different precision levels (6 model files total), 5 actions, 52 standard expressions and 1 background image. Helped hospital improve patient experience and work efficiency."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/gnGKHtIw2o1Uvh1Br0AF9SdHUqn0hxk4/hospitaldoctor.png"
+        "assets/images/hospitaldoctor.jpg"
       ],
       videos: [],
       tech: ["AI Digital Human", "3D Modeling", "Medical Technology", "Voice Service", "Hospital"],
@@ -287,7 +290,9 @@ const portfolioData = {
         en: "Responsible for product feature design and frontend development, including member permission management, AI dialogue, report generation, SSO, application switching, model switching, frontend interface orchestration."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/e1Lzk4jJfbxFdW47BqbOqCugcsOyhh9B/img_v3_02pg_bc46a73a-37ad-45b0-a1c8-9d7d1fe514ag.jpg"
+        "assets/images/avamarket-2.jpg",
+        "assets/images/avaca11.png",
+        "assets/images/avaca22.png"
       ],
       videos: [],
       tech: ["Frontend Development", "AI Platform", "Permission Management", "SSO", "UI Orchestration"],
@@ -308,7 +313,14 @@ const portfolioData = {
         en: "Campus digital twin platform developed based on Unreal Engine 5, providing immersive campus experience and interactive features."
       },
       videos: [
-        "https://portfoliogithubio.oss-cn-shanghai.aliyuncs.com/schoolunreal.mp4"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/FunUsk12T78FNmiyw32u4xmKM2mTOYv6/schoolunreal.mp4"
+      ],
+      images: [
+        "assets/images/smartschool1.jpg",
+        "assets/images/smartschool2.jpg",
+        "assets/images/smartschool3.jpg",
+        "assets/images/smartschool4.jpg",
+        "assets/images/smartschool5.jpg"
       ],
       tech: ["Unreal Engine 5", "Digital Twin", "Campus", "Immersive Experience"],
       links: {
@@ -328,7 +340,7 @@ const portfolioData = {
         en: "Long-term cooperation research with Mercedes-Benz, providing a complete G-Box selection hardware + interface interaction solution."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/ivWzLYYQjDUzpVz0DwIwnGnI6XVomtqe/UEmercedes.png"
+        "assets/images/UEmercedes.jpg"
       ],
       videos: [],
       tech: ["Unreal Engine", "Car Interaction", "Mercedes-Benz", "Hardware Integration"],
@@ -349,9 +361,9 @@ const portfolioData = {
         en: "Digital Twin Interaction Rendering Reel"
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/AOXKiEaWbzLjg815yJEOfJV6h6nLS05D/raydata.png"
+        "assets/images/raydata.jpg"
       ],
-      videos: ["https://portfoliogithubio.oss-cn-shanghai.aliyuncs.com/%E6%9D%8E%E7%82%B3%E5%84%92_%E5%BC%95%E6%93%8E%E4%BA%A4%E4%BA%92%E5%BC%80%E5%8F%91%E6%B7%B7%E5%89%AA.mp4"],
+      videos: [],
       tech: ["Tencent Cloud", "Raydata", "Digital Twin", "Technical Artist", "Realtime"],
       links: {
       },
@@ -370,8 +382,8 @@ const portfolioData = {
         en: "Developed a project time management system for project data preview, time reporting, time approval, etc. Independently wrote project management platform requirements specification, developed task scheduling, priority management, and related party needs communication and implementation. Independently wrote project management platform user manual."
       },
       images: [
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/SpympvUnHIQxdeNbWzEQazwMaw0zvfbq/ResourceManageTool1.png",
-        "https://lc-gluttony.s3.amazonaws.com/LEVCRoHoJUbL/d7JHhWlClXcABfOg05I5TtRgCohBTKpK/ResourceManageTool.png"
+        "assets/images/ResourceManageTool1.jpg",
+        "assets/images/ResourceManageTool.jpg"
       ],
       videos: [],
       tech: ["GritWorld", "Product Management", "Product Design"],
@@ -380,6 +392,27 @@ const portfolioData = {
       stars: 0,
       featured: false,
       date: "2024-06-01"
+    },
+    {
+      id: "proj-13",
+      title: {
+        zh: "鬼刀手机游戏",
+        en: "Ghost Blade Mobile Game"
+      },
+      description: {
+        zh: "在引擎中搭建场景，将所有影视级资产处理成手游级别资产，并适配游戏中的换装、地图切换、天气系统功能。",
+        en: "Built scenes in engine, processed all film-level assets into mobile game assets, and adapted the dressing, map switching, weather system functions in the game."
+      },
+      images: [
+        "assets/images/ghostblade.jpg",
+      ],
+      videos: [],
+      tech: ["GritWorld", "Game Development", "Mobile Game", "ARPG"],
+      links: {
+      },
+      stars: 0,
+      featured: false,
+      date: "2023-03-01"
     }
   ],
 

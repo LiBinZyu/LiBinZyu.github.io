@@ -446,11 +446,9 @@ class ProjectCard {
     const modalDescription = document.getElementById('modal-description');
     const modalTech = document.getElementById('modal-tech');
     const modalLinks = document.getElementById('modal-links');
-    const modalMediaContainer = document.getElementById('modal-media-container');
-    const mediaIndicators = document.getElementById('media-indicators');
     
     const currentLang = window.portfolioApp?.currentLanguage || 'zh';
-    const { title, description, images, videos, tech, links } = this.projectData;
+    const { title, description, tech, links } = this.projectData;
     
     // Set modal content
     modalTitle.textContent = title[currentLang];
@@ -485,46 +483,9 @@ class ProjectCard {
       `;
       modalLinks.appendChild(demoLink);
     }
-    
-    // Set media
-    const allMedia = [...(images || []), ...(videos || [])];
-    modalMediaContainer.innerHTML = '';
-    mediaIndicators.innerHTML = '';
-    
-    allMedia.forEach((media, index) => {
-      // Check if it's a video by looking for video extensions or video-specific URLs
-      const isVideo = media.match(/\.(mp4|webm|mov)(\?.*)?$/i) ||
-                     media.includes('youtube.com') || media.includes('youtu.be') || 
-                     media.includes('vimeo.com');
-      
-      const mediaItem = document.createElement('div');
-      mediaItem.className = `media-item ${index === 0 ? 'active' : ''}`;
-      
-      if (isVideo) {
-        mediaItem.innerHTML = `
-          <video controls muted playsinline autoplay loop>
-            <source src="${media}" type="video/mp4">
-          </video>
-        `;
-      } else {
-        mediaItem.innerHTML = `<img src="${media}" alt="${title[currentLang]}">`;
-      }
-      
-      modalMediaContainer.appendChild(mediaItem);
-      
-      // Create indicator
-      const indicator = document.createElement('div');
-      indicator.className = `media-indicator ${index === 0 ? 'active' : ''}`;
-      indicator.dataset.index = index;
-      mediaIndicators.appendChild(indicator);
-    });
-    
-    // Show modal
+
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-    
-    // Setup modal carousel
-    this.setupModalCarousel();
   }
 
   setupModalCarousel() {

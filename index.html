@@ -153,27 +153,11 @@
             <button class="modal-close" id="modal-close">
                 <span class="material-icons">close</span>
             </button>
-            <div class="modal-media">
-                <div class="media-container" id="modal-media-container">
-                    <!-- Images and videos will be dynamically loaded here -->
-                </div>
-                <div class="media-controls">
-                    <button class="media-prev" id="media-prev">
-                        <span class="material-icons">chevron_left</span>
-                    </button>
-                    <button class="media-next" id="media-next">
-                        <span class="material-icons">chevron_right</span>
-                    </button>
-                </div>
-                <div class="media-indicators" id="media-indicators">
-                    <!-- Indicators will be dynamically generated -->
-                </div>
-            </div>
-            <div class="modal-info">
+            <div class="modal-info modal-info-textonly">
                 <h2 class="modal-title" id="modal-title"></h2>
                 <p class="modal-description" id="modal-description"></p>
-                <div class="modal-tech" id="modal-tech"></div>
-                <div class="modal-links" id="modal-links"></div>
+                <div class="tech-tags" id="modal-tech"></div>
+                <div class="project-links" id="modal-links"></div>
             </div>
         </div>
     </div>
@@ -269,7 +253,7 @@
         // Scroll Spy and Smooth Scroll functionality
         function initScrollSpy() {
             const navItems = document.querySelectorAll('.nav-item');
-            const sections = document.querySelectorAll('.waterfall-section');
+            const sections = document.querySelectorAll('.full-width-section');
             
             // Smooth scroll function
             function smoothScrollTo(targetId) {
