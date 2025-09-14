@@ -245,16 +245,14 @@ class ProjectCard {
                      media.includes('vimeo.com');
       
       if (isVideo) {
+        // 最笨最稳妥：直接写 src，不用懒加载
         return `
           <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="video">
-            <video preload="metadata" muted playsinline autoplay loop>
-              <source src="${media}" type="video/mp4">
+            <video src="${media}" muted playsinline loop preload="auto" style="background:#222;">
               <p>您的浏览器不支持视频播放</p>
             </video>
             <div class="project-video-overlay" style="display: none;">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
+              <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/play.svg" alt="Play" class="icon" style="width:24px;height:24px;vertical-align:middle;">
             </div>
             <div class="video-loading" style="display: none;">
               <div class="loading-spinner">
@@ -264,9 +262,10 @@ class ProjectCard {
           </div>
         `;
       } else {
+        // 懒加载图片：用data-src，初始src为占位图
         return `
           <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="image">
-            <img src="${media}" alt="${title[currentLang]}" loading="lazy">
+            <img data-src="${media}" src="https://via.placeholder.com/10x10?text=..." alt="${title[currentLang]}" class="lazy" loading="lazy">
           </div>
         `;
       }
@@ -295,7 +294,7 @@ class ProjectCard {
         </div>
         <div class="project-links">
           ${links.github ? `<a href="${links.github}" target="_blank" rel="noopener" class="project-link">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="project-link-icon">
+            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/github.svg" alt="GitHub" class="project-link-icon icon">
             <span data-en="GitHub" data-zh="GitHub">GitHub</span>
           </a>` : ''}
           ${links.demo ? `<a href="${links.demo}" target="_blank" rel="noopener" class="project-link">
@@ -310,6 +309,30 @@ class ProjectCard {
     `;
   }
 
+  // 最笨最稳妥：不做任何懒加载，视频直接写 src，图片仍然懒加载
+  setupMediaLazyLoading() {
+    // 只处理图片懒加载
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            }
+          }
+        });
+      }, { rootMargin: '100px' });
+
+      this.cardElement.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+  }
+
   setupEventListeners() {
     // Add hover effects
     this.cardElement.addEventListener('mouseenter', () => {
@@ -322,6 +345,9 @@ class ProjectCard {
 
     // Setup image carousel
     this.setupImageCarousel();
+
+    // 只处理图片懒加载，视频不需要任何懒加载
+    this.setupMediaLazyLoading();
     
     // Setup modal functionality
     this.setupModal();
@@ -451,7 +477,7 @@ class ProjectCard {
       githubLink.rel = 'noopener';
       githubLink.className = 'modal-link';
       githubLink.innerHTML = `
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="modal-link-icon">
+        <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/github.svg" alt="GitHub" class="modal-link-icon icon">
         <span data-en="GitHub" data-zh="GitHub">GitHub</span>
       `;
       modalLinks.appendChild(githubLink);
@@ -463,7 +489,7 @@ class ProjectCard {
       demoLink.rel = 'noopener';
       demoLink.className = 'modal-link';
       demoLink.innerHTML = `
-        <span class="material-icons">open_in_new</span>
+        <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/open-new-window.svg" alt="Demo" class="btn-icon icon" style="vertical-align: middle;">
         <span data-en="Demo" data-zh="演示">演示</span>
       `;
       modalLinks.appendChild(demoLink);
@@ -780,6 +806,8 @@ class ContactForm {
     }
   }
 }
+
+// 不再需要页面可见性事件，浏览器会自动恢复视频
 
 // Initialize components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

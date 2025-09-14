@@ -10,20 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
     
-    <!-- Material Design Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
     <!-- CSS Files -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico"> -->
     
     <!-- Three.js and Vanta.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-  <script src="js/av-min.js"></script>
+    <script src="js/av-min.js"></script>
 </head>
 <body class="theme-light">
     <!-- Vanta.js Birds Effect - Full Screen Background -->
@@ -50,28 +47,28 @@
         <div class="container">
             <div class="nav-items">
                 <button class="nav-item active" data-section="experiences">
-                    <span class="material-icons">domain</span>
-                    <span data-en="Experiences" data-zh="经历">经历</span>
+                    <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/handbag.svg" alt="Experiences" class="icon" width="20" height="20">
+                    <span data-en="Exp" data-zh="经历">经历</span>
                 </button>
                 <button class="nav-item" data-section="projects">
-                    <span class="material-icons">grid_view</span>
-                    <span data-en="Projects" data-zh="项目">项目</span>
+                    <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/arcade.svg" alt="Projects" class="icon" width="20" height="20">
+                    <span data-en="Proj" data-zh="项目">项目</span>
                 </button>
                 <button class="nav-item" data-section="contact">
-                    <span class="material-icons">alternate_email</span>
+                    <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/send-mail.svg" alt="Contact" class="icon" width="20" height="20">
                     <span data-en="Contact" data-zh="联系">联系</span>
                 </button>
             </div>
             <div class="nav-controls">
                 <button class="btn btn-primary" id="download-cv" title="Download CV">
-                    <span class="material-icons">download</span>
+                    <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/cloud-download.svg" class="icon" width="16" height="16"  style="filter: brightness(0) invert(1);">
                     <span data-en="CV" data-zh="简历">简历</span>
                 </button>
                 <button class="btn btn-secondary" id="theme-toggle" title="Toggle Theme">
-                    <span class="material-icons">dark_mode</span>
+                    <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/half-moon.svg" class="icon" width="16" height="16">
                 </button>
                 <button class="btn btn-secondary" id="language-toggle" title="Toggle Language">
-                    <span class="material-icons">language</span>
+                    <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/translate.svg" alt="Toggle Language" class="icon" width="16" height="16">
                 </button>
             </div>
         </div>
@@ -97,51 +94,51 @@
 
             <!-- Contact Section -->
             <section id="contact" class="full-width-section">
-                    <div class="contact-content">
-                        <div class="contact-info">
-                            <div class="contact-item" data-copy="bingru.li24@student.xjtlu.edu.cn" data-type="email">
-                                <span class="material-icons">email</span>
-                                <span>bingru.li24@student.xjtlu.edu.cn</span>
-                            </div>
-                            <div class="contact-item" data-copy="+86 18080637660" data-type="phone">
-                                <span class="material-icons">phone</span>
-                                <span>+86 18080637660</span>
-                            </div>
-                            <div class="contact-item" data-copy="LiBinZyu" data-type="wechat">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/wechat.svg" alt="WeChat" class="contact-icon">
-                                <span>WeChat</span>
-                            </div>
-                            <div class="contact-item" data-copy="https://github.com/LiBinZyu" data-type="github">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="contact-icon">
-                                <span>GitHub</span>
-                            </div>
-                            <div class="contact-item" data-copy="https://www.linkedin.com/in/robbingruli" data-type="linkedin">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
-                                <span>LinkedIn</span>
-                            </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item" data-copy="bingru.li24@student.xjtlu.edu.cn" data-type="email">
+                            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/mail.svg" alt="Email" class="contact-icon icon" width="20" height="20">
+                            <span>bingru.li24@student.xjtlu.edu.cn</span>
                         </div>
-                        
-                        <form class="contact-form" id="contact-form">
-                            <h4 data-en="Drop me a message" data-zh="想要留言吗？">Drop me a message</h3>
-                            <div class="wave-group">
-                              <span data-en="Name -optional" data-zh="姓名 -optional">姓名 optional</span>
-                              <input type="text" id="contact-name" name="name" class="input" maxlength="50" autocomplete="off">
-                              <span class="bar"></span>
-                            </div>
-                            <div class="wave-group">
-                              <span data-en="Contact -optional" data-zh="联系方式 -optional">联系方式 optional</span>
-                              <input type="text" id="contact-contact" name="contact" class="input" maxlength="100" autocomplete="off">
-                              <span class="bar"></span>
-                            </div>
-                            <div class="form-group">
-                              <textarea id="contact-message" name="message" class="message-textarea" rows="4" maxlength="300" required style="resize:vertical; min-height:80px; max-height:180px;"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                <span class="material-icons">send</span>
-                                <span data-en="Send" data-zh="发送">发送</span>
-                            </button>
-                        </form>
+                        <div class="contact-item" data-copy="+86 18080637660" data-type="phone">
+                            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/phone.svg" alt="Phone" class="contact-icon icon" width="20" height="20">
+                            <span>+86 18080637660</span>
+                        </div>
+                        <div class="contact-item" data-copy="LiBinZyu" data-type="wechat">
+                            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/chat-bubble-empty.svg" alt="WeChat" class="contact-icon icon" width="20" height="20">
+                            <span>WeChat</span>
+                        </div>
+                        <div class="contact-item" data-copy="https://github.com/LiBinZyu" data-type="github">
+                            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/github.svg" alt="GitHub" class="contact-icon icon" width="20" height="20">
+                            <span>GitHub</span>
+                        </div>
+                        <div class="contact-item" data-copy="https://www.linkedin.com/in/robbingruli" data-type="linkedin">
+                            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/linkedin.svg" alt="LinkedIn" class="contact-icon icon" width="20" height="20">
+                            <span>LinkedIn</span>
+                        </div>
                     </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <h4 data-en="Drop me a message" data-zh="想要留言吗？">Drop me a message</h4>
+                        <div class="wave-group">
+                          <span data-en="Name -optional" data-zh="姓名 -optional">姓名 optional</span>
+                          <input type="text" id="contact-name" name="name" class="input" maxlength="50" autocomplete="off">
+                          <span class="bar"></span>
+                        </div>
+                        <div class="wave-group">
+                          <span data-en="Contact -optional" data-zh="联系方式 -optional">联系方式 optional</span>
+                          <input type="text" id="contact-contact" name="contact" class="input" maxlength="100" autocomplete="off">
+                          <span class="bar"></span>
+                        </div>
+                        <div class="form-group">
+                          <textarea id="contact-message" name="message" class="message-textarea" rows="4" maxlength="300" required style="resize:vertical; min-height:80px; max-height:180px;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/send.svg" alt="Send" class="icon" width="20" height="20" style="filter: brightness(0) invert(1);">
+                            <span data-en="Send" data-zh="发送">发送</span>
+                        </button>
+                    </form>
+                </div>
             </section>
         </div>
     </main>
@@ -151,7 +148,7 @@
         <div class="modal-backdrop" id="modal-backdrop"></div>
         <div class="modal-content">
             <button class="modal-close" id="modal-close">
-                <span class="material-icons">close</span>
+                <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/cancel.svg" alt="Close" class="icon" width="20" height="20">
             </button>
             <div class="modal-info modal-info-textonly">
                 <h2 class="modal-title" id="modal-title"></h2>

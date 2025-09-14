@@ -183,10 +183,7 @@ const portfolioData = {
         zh: "使用Unity和Quest3头显开发的系统通过手势交互（Meta XR SDK）来让用户探索人体的各个结构，包括了肌肉、内脏、骨骼等50个模型和8类结构。通过实验和数据分析证明，MR的方式比起传统的电脑游戏或者图书更能让用户记住人体内部深层结构，用户体验显著更好，更低的沮丧，更好的performance。",
         en: "A system developed using Unity and Quest3 headset that allows users to explore various human structures through gesture interaction (Meta XR SDK), including 50 models and 8 types of structures such as muscles, organs, and bones. Experimental and data analysis results prove that MR approach helps users remember deep internal human structures better than traditional computer games or books, with significantly better user experience, lower frustration, and better performance."
       },
-      images: [
-        "assets/images/ISMAR2.jpg",
-        "assets/images/ISMAR1.jpg"
-      ],
+      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/hOLx49wBEe8wb15vcSVDrDeoqnVqyC1b/Anatomy_ISMAR2025.mp4"],
       tech: ["Unity", "Quest3", "Meta XR SDK", "Mixed Reality", "Medical Visualization"],
       links: {
       },
@@ -290,11 +287,10 @@ const portfolioData = {
         en: "Responsible for product feature design and frontend development, including member permission management, AI dialogue, report generation, SSO, application switching, model switching, frontend interface orchestration."
       },
       images: [
-        "assets/images/avamarket-2.jpg",
-        "assets/images/avaca11.png",
-        "assets/images/avaca22.png"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/Slu1LJj5qxhDQ6YUTmqs2afK4r0dGAoM/avamarket-2.jpg",
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/7keBhYx7mh8rsyflO4p2Chyby67CeSl7/avaca11.png",
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/NzwqwqRXiGXtsEvwj9PRjHI4dHB6Pk5z/avaca22.png"
       ],
-      videos: [],
       tech: ["Frontend Development", "AI Platform", "Permission Management", "SSO", "UI Orchestration"],
       links: {
       },
@@ -315,13 +311,6 @@ const portfolioData = {
       videos: [
         "http://lc-KPCSue6i.cn-n1.lcfile.com/FunUsk12T78FNmiyw32u4xmKM2mTOYv6/schoolunreal.mp4"
       ],
-      images: [
-        "assets/images/smartschool1.jpg",
-        "assets/images/smartschool2.jpg",
-        "assets/images/smartschool3.jpg",
-        "assets/images/smartschool4.jpg",
-        "assets/images/smartschool5.jpg"
-      ],
       tech: ["Unreal Engine 5", "Digital Twin", "Campus", "Immersive Experience"],
       links: {
       },
@@ -339,7 +328,7 @@ const portfolioData = {
         zh: "与梅赛德斯公司长期合作调研，提供一整套G-Box选购的硬件+界面交互解决方案。",
         en: "Long-term cooperation research with Mercedes-Benz, providing a complete G-Box selection hardware + interface interaction solution."
       },
-      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/k575Wu3dKpqCzGXwfemeEIMlE436OYbX/MercedesUEVideo.mp4"],
+      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/olCaaEQCbRzRApDqFOwb88foKO9sVGqY/MercedesUEVideo.mp4"],
       tech: ["Unreal Engine", "Car Interaction", "Mercedes-Benz", "Hardware Integration"],
       links: {
       },

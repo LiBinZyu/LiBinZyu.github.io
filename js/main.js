@@ -125,8 +125,11 @@ class PortfolioApp {
 
   // Update theme toggle icon
   updateThemeIcon() {
-    const icon = document.querySelector('#theme-toggle .material-icons');
-    icon.textContent = this.currentTheme === 'light' ? 'dark_mode' : 'light_mode';
+    const icon = document.querySelector('#theme-toggle .theme-icon');
+    icon.src = this.currentTheme === 'light'
+      ? 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/sun-light.svg'
+      : 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/half-moon.svg';
+    icon.style.filter = 'invert(var(--icon-invert, 0))';
   }
 
   // Toggle between Chinese and English
@@ -263,7 +266,7 @@ class PortfolioApp {
           <h3 class="project-title">${title}</h3>
           <div class="project-stats">
             <div class="project-stars ${isStarred ? 'starred' : ''}" data-project-id="${project.id}">
-              <span class="material-icons star-icon">star</span>
+              <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/star.svg" alt="star" class="star-icon icon" style="vertical-align: middle;">
               <span class="star-count">${project.stars}</span>
             </div>
           </div>
@@ -274,11 +277,11 @@ class PortfolioApp {
         </div>
         <div class="project-links">
           ${project.links.github ? `<a href="${project.links.github}" target="_blank" rel="noopener" class="project-link">
-            <span class="material-icons">code</span>
+            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/code.svg" alt="Code" class="btn-icon icon" style="vertical-align: middle;">
             <span data-en="Code" data-zh="代码">代码</span>
           </a>` : ''}
           ${project.links.demo ? `<a href="${project.links.demo}" target="_blank" rel="noopener" class="project-link">
-            <span class="material-icons">open_in_new</span>
+            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/open-new-window.svg" alt="Demo" class="btn-icon icon" style="vertical-align: middle;">
             <span data-en="Demo" data-zh="演示">演示</span>
           </a>` : ''}
         </div>

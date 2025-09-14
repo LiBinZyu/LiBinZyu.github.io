@@ -348,10 +348,15 @@
   text-decoration: none;
 }
 
-.project-link-icon {
+.project-link-icon,
+.btn-icon,
+.star-icon,
+.contact-icon,
+.icon {
   width: 16px;
   height: 16px;
-  fill: currentColor;
+  vertical-align: middle;
+  filter: var(--icon-filter, none);
   flex-shrink: 0;
 }
 
