@@ -138,11 +138,8 @@ const portfolioData = {
         en: "VAI is a Unity plugin for implementing voice control in Unity projects. It integrates wake word detection, automatic speech recognition (ASR) and large language model (LLM) driven tool calling, converting users' natural language speech into executable functions. The project optimizes local NLU modules to reduce LLM call frequency."
       },
       images: [
-        "assets/images/VAIcover.jpg",
-        "assets/images/VAIchar.jpg",
-        "assets/images/VAIfigure.jpg",
-        "assets/images/VAIworkflow.png",
-        "https://i.imgur.com/XFF6u5E.gif"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/J77fopRpqIPtn28wXWmSUW6n39sclkFu/VAIchar.jpg",
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/tKCXyGr32YD2VXj7LBvRxl2estD7mRru/VAIworkflow.png"
       ],
       tech: ["Unity", "C#", "AI", "ASR", "LLM", "Voice Control"],
       links: {
@@ -163,7 +160,7 @@ const portfolioData = {
         en: "CameraArrayTools aims to transform tedious, repetitive camera array creation and batch rendering workflows into a fast, precise and automated process. Say goodbye to inefficient manual camera placement and errors, generate, manage and render complex camera arrays through a unified control panel, with Movie Render Queue pipeline rendering and path tracing time monitoring support."
       },
       images: [
-        "assets/images/CameraArrayTools.jpg"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/fvPxHfO3isBLqwD8Vo1Ik93aE9Ec9WT4/CameraArrayTools.jpg"
       ],
       tech: ["Unreal Engine 5", "C++", "Python", "Movie Render Queue", "Path Tracing"],
       links: {
@@ -224,7 +221,7 @@ const portfolioData = {
         en: "A mixed reality content creation software for rapid AR project implementation, targeting third-party users and developers. Enriched MR application scenarios: experience games, AI dialogue and other interactions in the same space. The product is applied on multiple platforms including smartphones, tablets, etc. Strengthened MR core technical capabilities: VPS technology easily handles large-area maps, achieving full coverage in larger ranges while ensuring precise positioning of key points."
       },
       images: [
-        "assets/images/MRcreator.jpg"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/oG3VWf5C7GNs9YoXe4eV8eNjeorGJhwv/MRcreator.jpg"
       ],
       videos: [],
       tech: ["Mixed Reality", "AR", "VPS", "SLAM", "Cross-platform", "No-code"],
@@ -245,7 +242,7 @@ const portfolioData = {
         en: "Developed for BYD's new car model's central control, co-pilot, and dashboard screens using proprietary engine. Proposed optimization solutions based on high-definition film-level design drafts, designed weather, lighting, atmosphere effects and transition effects, troubleshooted and solved model wiring issues. Established model production standards and art workflows for car systems."
       },
       images: [
-        "assets/images/BYDbao8.jpg"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/4E6MJUzwTOCpwebhNyQiaiheH4O8Mgw6/BYDbao8.jpg"
       ],
       videos: [],
       tech: ["Proprietary Engine", "3D Effects", "Car System", "Optimization", "Workflow"],
@@ -266,7 +263,7 @@ const portfolioData = {
         en: "Hospital deployed interactive screens in lobby for AI digital human voice services for patients and visitors, also deployed on ward round robots in hospital rooms. Project delivered 3 realistic digital human models, each providing two different precision levels (6 model files total), 5 actions, 52 standard expressions and 1 background image. Helped hospital improve patient experience and work efficiency."
       },
       images: [
-        "assets/images/hospitaldoctor.jpg"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/bdKKUF3gs2ikpnSGUWkAVBDQ3rfYKzCb/hospitaldoctor.jpg"
       ],
       videos: [],
       tech: ["AI Digital Human", "3D Modeling", "Medical Technology", "Voice Service", "Hospital"],
@@ -365,8 +362,8 @@ const portfolioData = {
         en: "Developed a project time management system for project data preview, time reporting, time approval, etc. Independently wrote project management platform requirements specification, developed task scheduling, priority management, and related party needs communication and implementation. Independently wrote project management platform user manual."
       },
       images: [
-        "assets/images/ResourceManageTool1.jpg",
-        "assets/images/ResourceManageTool.jpg"
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/QnACYHqJDEFLbJHQse9jsHHJYWKisw7b/ResourceManageTool.jpg",
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/gK4I6FKTEPs7Swgb50WpLJfkspImSiVr/ResourceManageTool1.jpg"
       ],
       videos: [],
       tech: ["GritWorld", "Product Management", "Product Design"],
@@ -386,12 +383,12 @@ const portfolioData = {
         zh: "在引擎中搭建场景，将所有影视级资产处理成手游级别资产，并适配游戏中的换装、地图切换、天气系统功能。",
         en: "Built scenes in engine, processed all film-level assets into mobile game assets, and adapted the dressing, map switching, weather system functions in the game."
       },
-      images: [
-        "assets/images/ghostblade.jpg",
-      ],
       videos: [
         "http://lc-KPCSue6i.cn-n1.lcfile.com/GInIHlabBLPJxaz9yxaqqu6rNJRjytuG/ghostbladeVideo.mp4",
         "http://lc-KPCSue6i.cn-n1.lcfile.com/lfd9trtjlHn12Up8dvU8Yflj87EVas3y/fireDragonLowlolyVideo.mp4"
+      ],
+      images: [
+        "assets/images/ghostblade.jpg",
       ],
       tech: ["GritWorld", "Game Development", "Mobile Game", "ARPG"],
       links: {

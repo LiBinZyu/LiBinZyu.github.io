@@ -248,7 +248,7 @@ class ProjectCard {
         // 最笨最稳妥：直接写 src，不用懒加载
         return `
           <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="video">
-            <video src="${media}" muted playsinline loop preload="auto" style="background:#222;">
+            <video src="${media}" muted playsinline loop preload="auto" autoplay style="background:#222;">
               <p>您的浏览器不支持视频播放</p>
             </video>
             <div class="project-video-overlay" style="display: none;">
@@ -348,6 +348,19 @@ class ProjectCard {
 
     // 只处理图片懒加载，视频不需要任何懒加载
     this.setupMediaLazyLoading();
+
+    // 自动播放第一个视频（如果有）
+    const firstVideo = this.cardElement.querySelector('.project-image-item.active[data-type="video"] video');
+    if (firstVideo) {
+      console.log('[ProjectCard] Found first active video, attempting to play:', firstVideo.src);
+      firstVideo.play().then(() => {
+        console.log('[ProjectCard] Video autoplay success:', firstVideo.src);
+      }).catch((err) => {
+        console.error('[ProjectCard] Video autoplay failed:', err, firstVideo.src);
+      });
+    } else {
+      console.log('[ProjectCard] No active video found for autoplay.');
+    }
     
     // Setup modal functionality
     this.setupModal();
