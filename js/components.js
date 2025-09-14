@@ -247,12 +247,15 @@ class ProjectCard {
       if (isVideo) {
         // 最笨最稳妥：直接写 src，不用懒加载
         return `
-          <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="video">
+          <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="video" style="position:relative;">
             <video src="${media}" muted playsinline loop preload="auto" autoplay style="background:#222;">
               <p>您的浏览器不支持视频播放</p>
             </video>
+            <div class="video-corner-tag">
+              <img src="https://cdn.jsdelivr.net/npm/iconoir@7.11.0/icons/solid/youtube.svg" alt="Video" style="width:24px;height:24px;display:block; filter: invert(1);">
+            </div>
             <div class="project-video-overlay" style="display: none;">
-              <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/play.svg" alt="Play" class="icon" style="width:24px;height:24px;vertical-align:middle;">
+              <img src="https://cdn.jsdelivr.net/npm/iconoir@7.11.0/icons/solid/youtube.svg" alt="Play" class="icon" style="width:24px;height:24px;vertical-align:middle;">
             </div>
             <div class="video-loading" style="display: none;">
               <div class="loading-spinner">

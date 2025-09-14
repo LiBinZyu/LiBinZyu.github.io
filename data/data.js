@@ -388,7 +388,7 @@ const portfolioData = {
         "http://lc-KPCSue6i.cn-n1.lcfile.com/lfd9trtjlHn12Up8dvU8Yflj87EVas3y/fireDragonLowlolyVideo.mp4"
       ],
       images: [
-        "assets/images/ghostblade.jpg",
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/gfFXfgR6T7t5dRwKeopXIXbDaIHYqLKQ/ghostblade.jpg",
       ],
       tech: ["GritWorld", "Game Development", "Mobile Game", "ARPG"],
       links: {

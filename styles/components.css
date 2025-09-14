@@ -157,7 +157,7 @@
 }
 
 .experience-period {
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   color: var(--text-secondary);
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--radius-md);
@@ -179,7 +179,7 @@
 }
 
 .tech-tag {
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   color: var(--text-muted);
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--radius-md);
@@ -190,7 +190,6 @@
 }
 
 .tech-tag:hover {
-  background: var(--bg-secondary);
   color: var(--text-primary);
   border-color: var(--accent-blue-light);
 }
@@ -374,7 +373,7 @@
 }
 
 .project-period {
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   color: var(--text-muted);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
@@ -486,7 +485,7 @@
   padding: var(--spacing-md);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   color: var(--text-primary);
   font-family: var(--font-chinese);
   font-size: 0.95rem;
@@ -912,7 +911,7 @@
   gap: var(--spacing-xs);
 }
 .modal-info-textonly .tech-tag {
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   color: var(--text-muted);
   border-radius: var(--radius-md);
   padding: 4px 12px;
@@ -947,7 +946,7 @@
 .modal-info-textonly .modal-link:hover {
   border-color: var(--accent-blue);
   color: var(--accent-blue);
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   text-decoration: none;
 }
 
@@ -1197,7 +1196,7 @@
 
 .theme-dark .form-group input,
 .theme-dark .form-group textarea {
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   border-color: var(--border-color);
   color: var(--text-primary);
 }
@@ -1234,4 +1233,25 @@
   .control-btn {
     border-width: 2px;
   }
+}
+
+/* Video corner tag for videos */
+.video-corner-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 2;
+  animation: video-flicker 0.8s infinite alternate;
+}
+@keyframes video-flicker {
+  from { opacity: 0.8; }
+  to { opacity: 0.4; }
 }
