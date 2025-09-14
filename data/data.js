@@ -339,10 +339,7 @@ const portfolioData = {
         zh: "与梅赛德斯公司长期合作调研，提供一整套G-Box选购的硬件+界面交互解决方案。",
         en: "Long-term cooperation research with Mercedes-Benz, providing a complete G-Box selection hardware + interface interaction solution."
       },
-      images: [
-        "assets/images/UEmercedes.jpg"
-      ],
-      videos: [],
+      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/k575Wu3dKpqCzGXwfemeEIMlE436OYbX/MercedesUEVideo.mp4"],
       tech: ["Unreal Engine", "Car Interaction", "Mercedes-Benz", "Hardware Integration"],
       links: {
       },
@@ -360,10 +357,7 @@ const portfolioData = {
         zh: "数字孪生交互渲染混剪",
         en: "Digital Twin Interaction Rendering Reel"
       },
-      images: [
-        "assets/images/raydata.jpg"
-      ],
-      videos: [],
+      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/e7uM7Ln43tuNLoqwh5d4I09rjlEohYy7/raydata_smartcityPortfolio.mp4"],
       tech: ["Tencent Cloud", "Raydata", "Digital Twin", "Technical Artist", "Realtime"],
       links: {
       },
@@ -406,7 +400,10 @@ const portfolioData = {
       images: [
         "assets/images/ghostblade.jpg",
       ],
-      videos: [],
+      videos: [
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/GInIHlabBLPJxaz9yxaqqu6rNJRjytuG/ghostbladeVideo.mp4",
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/lfd9trtjlHn12Up8dvU8Yflj87EVas3y/fireDragonLowlolyVideo.mp4"
+      ],
       tech: ["GritWorld", "Game Development", "Mobile Game", "ARPG"],
       links: {
       },
