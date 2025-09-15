@@ -6,7 +6,7 @@ const portfolioData = {
   profile: {
     name: {
       zh: "李炳儒",
-      en: "Li Bing Ru"
+      en: "Bingru Li"
     },
     title: {
       zh: "技术美术 & 人机交互研究生",
