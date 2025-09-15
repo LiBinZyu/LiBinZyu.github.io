@@ -137,9 +137,8 @@ const portfolioData = {
         zh: "VAI 是一个 Unity 插件，用于在 Unity 项目中实现语音控制。它集成了唤醒词检测、自动语音识别 (ASR) 和由大语言模型 (LLM) 驱动的工具调用，可将用户的自然语言语音转化为可执行的函数。项目通过本地 NLU 模块的优化来减少 LLM 的调用频率。",
         en: "VAI is a Unity plugin for implementing voice control in Unity projects. It integrates wake word detection, automatic speech recognition (ASR) and large language model (LLM) driven tool calling, converting users' natural language speech into executable functions. The project optimizes local NLU modules to reduce LLM call frequency."
       },
-      images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/J77fopRpqIPtn28wXWmSUW6n39sclkFu/VAIchar.jpg",
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/tKCXyGr32YD2VXj7LBvRxl2estD7mRru/VAIworkflow.png"
+      videos: [
+        "http://lc-KPCSue6i.cn-n1.lcfile.com/w9rDSJix5avKAy7YvmPMxqKHF4Q8fRrr/VAIdemos.mp4"
       ],
       tech: ["Unity", "C#", "AI", "ASR", "LLM", "Voice Control"],
       links: {
@@ -159,6 +158,7 @@ const portfolioData = {
         zh: "CameraArrayTools 旨在将繁琐、重复的相机阵列创建与批量渲染工作流转变为一种快速、精确且自动化的流程。告别手动放置相机的低效与误差，通过一个统一的控制面板，即可生成、管理并渲染复杂的相机阵列，通过 Movie Render Queue 管线渲染，支持 path tracing 时间监控。",
         en: "CameraArrayTools aims to transform tedious, repetitive camera array creation and batch rendering workflows into a fast, precise and automated process. Say goodbye to inefficient manual camera placement and errors, generate, manage and render complex camera arrays through a unified control panel, with Movie Render Queue pipeline rendering and path tracing time monitoring support."
       },
+      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/QhTwmxJWrJV5EnRTNLKTVTpQYmC4lARl/CameraArrayToolsVideo480.mp4"],
       images: [
         "http://lc-KPCSue6i.cn-n1.lcfile.com/fvPxHfO3isBLqwD8Vo1Ik93aE9Ec9WT4/CameraArrayTools.jpg"
       ],
