@@ -229,6 +229,7 @@ class ProjectCard {
   getCardHTML() {
     const { title, description, images, videos, tech, links, date } = this.projectData;
     const currentLang = window.portfolioApp?.currentLanguage || 'zh';
+    console.log('[ProjectCard.getCardHTML] currentLang:', currentLang, 'title:', title, 'title[currentLang]:', title[currentLang]);
     
     // Create media carousel
     const allMedia = [...(images || []), ...(videos || [])];
@@ -765,41 +766,13 @@ class ContactForm {
     submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
     submitBtn.disabled = true;
 
-    // LeanCloud 直连写入
-    try {
-      if (!window.AV) throw new Error('LeanCloud SDK 未加载');
-      if (!window._leancloud_inited) {
-        window.AV.init({
-          appId: "LEVCRoHoJUbL4W82Q0396WfC-MdYXbMMI",
-          appKey: "pnowJ9cbwzZieBbFjqSUr2ll",
-          serverURL: "https://levcroho.api.lncldglobal.com"
-        });
-        window._leancloud_inited = true;
-      }
-      const ContactMessage = window.AV.Object.extend("ContactMessage");
-      const contactObj = new ContactMessage();
-      contactObj.set('name', name);
-      contactObj.set('contact', contactValue);
-      contactObj.set('message', message);
-      contactObj.set('ip', 'browser');
-      contactObj.set('userAgent', navigator.userAgent);
-
-      contactObj.save().then(() => {
-        this.showSuccessMessage();
-        this.form.reset();
-      }).catch((error) => {
-        console.error('LeanCloud 保存失败', error);
-        this.showErrorMessage();
-      }).finally(() => {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      });
-    } catch (error) {
-      console.error('LeanCloud 保存失败', error);
-      this.showErrorMessage();
+    // Simulate successful submission (no LeanCloud)
+    setTimeout(() => {
+      this.showSuccessMessage();
+      this.form.reset();
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
-    }
+    }, 800);
   }
 
   showSuccessMessage() {

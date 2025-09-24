@@ -16,8 +16,8 @@ const portfolioData = {
       zh: "现居中国苏州",
       en: "Based in Suzhou, China"
     },
-    image: "assets/images/profile.png",
-    cvUrl: "http://lc-KPCSue6i.cn-n1.lcfile.com/oop124OJ2kQWJWpozB2LHHHh4C1oay8m/%E6%9D%8E%E7%82%B3%E5%84%92-%E8%A5%BF%E4%BA%A4%E5%88%A9%E7%89%A9%E6%B5%A6%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E7%A1%95%E5%A3%AB-%E4%B8%AD%E6%96%87.pdf"
+    image: "assets/images/profile_life.png",
+    cvUrl: "assets/李炳儒-西交利物浦大学人机交互硕士-中文.pdf"
   },
 
   // Experiences Data
@@ -80,7 +80,7 @@ const portfolioData = {
         zh: "作为技术美术开发XR、移动端游戏优化、BYD方程豹8车机，个人编写4个专利，联合申请6个软著。基于自研引擎开发AR、车机等解决方案。",
         en: "As Technical Artist developed XR, mobile game optimization, BYD Fangchengbao 8 car system. Personally wrote 4 patents and jointly applied for 6 software copyrights. Developed AR and car system solutions based on proprietary engine."
       },
-      tags: ["XR", "AR", "Game Optimization", "Car System", "Patents", "Proprietary Engine"]
+      tags: ["XR", "AR", "Optimization", "Car", "Patents", "OpenGL"]
     },
     {
       id: "exp-4",
@@ -100,7 +100,7 @@ const portfolioData = {
         zh: "3D特效和模型开发，使用自研引擎、Unity、Unreal Engine以及DCC工具进行项目开发。设计公司内部资产库规范，维护美术工作流程，保证资产质量。主导了上海地铁后台大屏、宝龙地产大屏、北京大兴机场等智慧城市项目，使用自研引擎进行特效渲染，开发地理信息蓝图工具，成功完成1600W项目开发。",
         en: "3D effects and model development using proprietary engine, Unity, Unreal Engine and DCC tools. Designed internal asset library standards, maintained art workflows, ensured asset quality. Led smart city projects including Shanghai Metro backend screen, Powerlong Real Estate screen, Beijing Daxing Airport, using proprietary engine for effect rendering and developing geographic information blueprint tools, successfully completed 16M project development."
       },
-      tags: ["3D Effects", "Unity", "Unreal Engine", "Smart City", "Asset Pipeline", "Project Management"]
+      tags: ["Effects", "Unity", "Unreal Engine", "Smart City", "Asset Pipeline", "Project Management"]
     },
     
     {
@@ -138,7 +138,7 @@ const portfolioData = {
         en: "VAI is a Unity plugin for implementing voice control in Unity projects. It integrates wake word detection, automatic speech recognition (ASR) and large language model (LLM) driven tool calling, converting users' natural language speech into executable functions. The project optimizes local NLU modules to reduce LLM call frequency."
       },
       videos: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/w9rDSJix5avKAy7YvmPMxqKHF4Q8fRrr/VAIdemos.mp4"
+        "assets/videos/VAIdemoVideo.mp4"
       ],
       tech: ["Unity", "C#", "AI", "ASR", "LLM", "Voice Control"],
       links: {
@@ -158,10 +158,7 @@ const portfolioData = {
         zh: "CameraArrayTools 旨在将繁琐、重复的相机阵列创建与批量渲染工作流转变为一种快速、精确且自动化的流程。告别手动放置相机的低效与误差，通过一个统一的控制面板，即可生成、管理并渲染复杂的相机阵列，通过 Movie Render Queue 管线渲染，支持 path tracing 时间监控。",
         en: "CameraArrayTools aims to transform tedious, repetitive camera array creation and batch rendering workflows into a fast, precise and automated process. Say goodbye to inefficient manual camera placement and errors, generate, manage and render complex camera arrays through a unified control panel, with Movie Render Queue pipeline rendering and path tracing time monitoring support."
       },
-      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/QhTwmxJWrJV5EnRTNLKTVTpQYmC4lARl/CameraArrayToolsVideo480.mp4"],
-      images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/fvPxHfO3isBLqwD8Vo1Ik93aE9Ec9WT4/CameraArrayTools.jpg"
-      ],
+      videos: ["assets/videos/CameraArrayToolsVideo.mp4"],
       tech: ["Unreal Engine 5", "C++", "Python", "Movie Render Queue", "Path Tracing"],
       links: {
         github: "https://github.com/LiBinZyu/CameraArrayTools"
@@ -180,7 +177,7 @@ const portfolioData = {
         zh: "使用Unity和Quest3头显开发的系统通过手势交互（Meta XR SDK）来让用户探索人体的各个结构，包括了肌肉、内脏、骨骼等50个模型和8类结构。通过实验和数据分析证明，MR的方式比起传统的电脑游戏或者图书更能让用户记住人体内部深层结构，用户体验显著更好，更低的沮丧，更好的performance。",
         en: "A system developed using Unity and Quest3 headset that allows users to explore various human structures through gesture interaction (Meta XR SDK), including 50 models and 8 types of structures such as muscles, organs, and bones. Experimental and data analysis results prove that MR approach helps users remember deep internal human structures better than traditional computer games or books, with significantly better user experience, lower frustration, and better performance."
       },
-      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/hOLx49wBEe8wb15vcSVDrDeoqnVqyC1b/Anatomy_ISMAR2025.mp4"],
+      videos: ["assets/videos/Anatomy_ISMAR2025.mp4"],
       tech: ["Unity", "Quest3", "Meta XR SDK", "Mixed Reality", "Medical Visualization"],
       links: {
       },
@@ -221,10 +218,10 @@ const portfolioData = {
         en: "A mixed reality content creation software for rapid AR project implementation, targeting third-party users and developers. Enriched MR application scenarios: experience games, AI dialogue and other interactions in the same space. The product is applied on multiple platforms including smartphones, tablets, etc. Strengthened MR core technical capabilities: VPS technology easily handles large-area maps, achieving full coverage in larger ranges while ensuring precise positioning of key points."
       },
       images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/oG3VWf5C7GNs9YoXe4eV8eNjeorGJhwv/MRcreator.jpg"
+        "assets/images/MRcreator.jpg"
       ],
       videos: [],
-      tech: ["Mixed Reality", "AR", "VPS", "SLAM", "Cross-platform", "No-code"],
+      tech: ["Mixed Reality", "AR", "VPS", "SLAM", "UGC", "low-code"],
       links: {
       },
       stars: 0,
@@ -242,10 +239,10 @@ const portfolioData = {
         en: "Developed for BYD's new car model's central control, co-pilot, and dashboard screens using proprietary engine. Proposed optimization solutions based on high-definition film-level design drafts, designed weather, lighting, atmosphere effects and transition effects, troubleshooted and solved model wiring issues. Established model production standards and art workflows for car systems."
       },
       images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/4E6MJUzwTOCpwebhNyQiaiheH4O8Mgw6/BYDbao8.jpg"
+        "assets/images/BYDbao8.jpg"
       ],
       videos: [],
-      tech: ["Proprietary Engine", "3D Effects", "Car System", "Optimization", "Workflow"],
+      tech: ["BYD", "3D Effects", "Car System", "Optimization", "Workflow"],
       links: {
       },
       stars: 0,
@@ -263,10 +260,10 @@ const portfolioData = {
         en: "Hospital deployed interactive screens in lobby for AI digital human voice services for patients and visitors, also deployed on ward round robots in hospital rooms. Project delivered 3 realistic digital human models, each providing two different precision levels (6 model files total), 5 actions, 52 standard expressions and 1 background image. Helped hospital improve patient experience and work efficiency."
       },
       images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/bdKKUF3gs2ikpnSGUWkAVBDQ3rfYKzCb/hospitaldoctor.jpg"
+        "assets/images/hospitaldoctor.jpg"
       ],
       videos: [],
-      tech: ["AI Digital Human", "3D Modeling", "Medical Technology", "Voice Service", "Hospital"],
+      tech: ["Hospital", "3D Modeling", "Medical Technology", "Voice Service"],
       links: {
       },
       stars: 0,
@@ -284,11 +281,11 @@ const portfolioData = {
         en: "Responsible for product feature design and frontend development, including member permission management, AI dialogue, report generation, SSO, application switching, model switching, frontend interface orchestration."
       },
       images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/Slu1LJj5qxhDQ6YUTmqs2afK4r0dGAoM/avamarket-2.jpg",
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/7keBhYx7mh8rsyflO4p2Chyby67CeSl7/avaca11.png",
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/NzwqwqRXiGXtsEvwj9PRjHI4dHB6Pk5z/avaca22.png"
+        "assets/images/avamarket-2.jpg",
+        "assets/images/avaca11.png",
+        "assets/images/avaca22.png"
       ],
-      tech: ["Frontend Development", "AI Platform", "Permission Management", "SSO", "UI Orchestration"],
+      tech: ["Frontend Dev", "AI Platform", "Permission Management", "SSO", "UIUX"],
       links: {
       },
       stars: 0,
@@ -306,7 +303,7 @@ const portfolioData = {
         en: "Campus digital twin platform developed based on Unreal Engine 5, providing immersive campus experience and interactive features."
       },
       videos: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/FunUsk12T78FNmiyw32u4xmKM2mTOYv6/schoolunreal.mp4"
+        "assets/videos/SmartSchoolUE5.mp4"
       ],
       tech: ["Unreal Engine 5", "Digital Twin", "Campus", "Immersive Experience"],
       links: {
@@ -325,7 +322,7 @@ const portfolioData = {
         zh: "与梅赛德斯公司长期合作调研，提供一整套G-Box选购的硬件+界面交互解决方案。",
         en: "Long-term cooperation research with Mercedes-Benz, providing a complete G-Box selection hardware + interface interaction solution."
       },
-      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/olCaaEQCbRzRApDqFOwb88foKO9sVGqY/MercedesUEVideo.mp4"],
+      videos: ["assets/videos/MercedesUEVideo.mp4"],
       tech: ["Unreal Engine", "Car Interaction", "Mercedes-Benz", "Hardware Integration"],
       links: {
       },
@@ -343,7 +340,7 @@ const portfolioData = {
         zh: "数字孪生交互渲染混剪",
         en: "Digital Twin Interaction Rendering Reel"
       },
-      videos: ["http://lc-KPCSue6i.cn-n1.lcfile.com/e7uM7Ln43tuNLoqwh5d4I09rjlEohYy7/raydata_smartcityPortfolio.mp4"],
+      videos: ["assets/videos/Raydata.mp4"],
       tech: ["Tencent Cloud", "Raydata", "Digital Twin", "Technical Artist", "Realtime"],
       links: {
       },
@@ -362,8 +359,8 @@ const portfolioData = {
         en: "Developed a project time management system for project data preview, time reporting, time approval, etc. Independently wrote project management platform requirements specification, developed task scheduling, priority management, and related party needs communication and implementation. Independently wrote project management platform user manual."
       },
       images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/QnACYHqJDEFLbJHQse9jsHHJYWKisw7b/ResourceManageTool.jpg",
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/gK4I6FKTEPs7Swgb50WpLJfkspImSiVr/ResourceManageTool1.jpg"
+        "assets/images/ResourceManageTool.jpg",
+        "assets/images/ResourceManageTool1.jpg"
       ],
       videos: [],
       tech: ["GritWorld", "Product Management", "Product Design"],
@@ -384,11 +381,10 @@ const portfolioData = {
         en: "Built scenes in engine, processed all film-level assets into mobile game assets, and adapted the dressing, map switching, weather system functions in the game."
       },
       videos: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/GInIHlabBLPJxaz9yxaqqu6rNJRjytuG/ghostbladeVideo.mp4",
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/lfd9trtjlHn12Up8dvU8Yflj87EVas3y/fireDragonLowlolyVideo.mp4"
+        "assets/videos/ghostbladeVideo.mp4"
       ],
       images: [
-        "http://lc-KPCSue6i.cn-n1.lcfile.com/gfFXfgR6T7t5dRwKeopXIXbDaIHYqLKQ/ghostblade.jpg",
+        "assets/images/ghostblade.jpg",
       ],
       tech: ["GritWorld", "Game Development", "Mobile Game", "ARPG"],
       links: {

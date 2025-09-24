@@ -10,8 +10,7 @@ class PortfolioApp {
     this.currentTheme = 'light';
     this.currentSection = 'experiences';
     this.starredProjects = new Set();
-    
-    this.init();
+    // 不在构造函数里自动调用 this.init()
   }
 
   init() {
@@ -141,6 +140,7 @@ class PortfolioApp {
 
   // Update all text content based on current language
   updateLanguage() {
+    console.log('[PortfolioApp] updateLanguage called, currentLanguage:', this.currentLanguage);
     // 更新HTML的lang属性
     document.documentElement.lang = this.currentLanguage === 'zh' ? 'zh-CN' : 'en-US';
     document.documentElement.setAttribute('data-lang', this.currentLanguage);
@@ -165,7 +165,6 @@ class PortfolioApp {
   loadContent() {
     this.loadExperiences();
     this.loadProjects();
-    this.updateLanguage();
     this.updateThemeIcon();
   }
 
@@ -215,6 +214,7 @@ class PortfolioApp {
 
   // Load projects content
   loadProjects() {
+    console.log('[PortfolioApp] loadProjects called, currentLanguage:', this.currentLanguage);
     const container = document.getElementById('projects-content');
     if (!container) {
       console.error('Projects container not found');
@@ -459,7 +459,6 @@ class PortfolioApp {
   updateUI() {
     this.updateLanguage();
     this.updateThemeIcon();
-    this.loadContent();
   }
 
   // Handle window resize
@@ -483,9 +482,10 @@ class PortfolioApp {
   }
 }
 
-// Initialize app when DOM is loaded
+ // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   window.portfolioApp = new PortfolioApp();
+  window.portfolioApp.init();
 });
 
 // Handle page visibility change

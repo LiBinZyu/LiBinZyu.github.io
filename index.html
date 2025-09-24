@@ -20,7 +20,6 @@
     <!-- Three.js and Vanta.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-    <script src="js/av-min.js"></script>
 </head>
 <body class="theme-light">
     <!-- Vanta.js Birds Effect - Full Screen Background -->
@@ -31,7 +30,7 @@
         <div class="container">
             <div class="profile-section">
                 <div class="profile-image">
-                    <img src="assets/images/profile.png" alt="Profile Image" id="profile-img" onerror="this.src='https://via.placeholder.com/150x150/193FB9/FFFFFF?text=LBZ'; console.error('Failed to load profile image, using placeholder')" onload="console.log('Profile image loaded successfully')">
+                    <img src="assets/images/profile_life.png" alt="Profile Image" id="profile-img" onerror="this.src='https://via.placeholder.com/150x150/193FB9/FFFFFF?text=LBZ'; console.error('Failed to load profile image, using placeholder')" onload="console.log('Profile image loaded successfully')">
                 </div>
                 <div class="profile-info">
                     <h1 class="profile-name" data-en="Bingru Li" data-zh="李炳儒">李炳儒</h1>
@@ -74,26 +73,25 @@
         </div>
     </nav>
 
-    <!-- Main Content - Waterfall Layout -->
-    <main class="main-content">
+    <div class="main-content">
         <!-- Waterfall Container -->
         <div class="waterfall-container">
             <!-- Experiences Section -->
-            <section id="experiences" class="full-width-section">
+            <section id="experiences" class="content-section full-width-section">
                 <div class="experiences-timeline" id="experiences-content">
                     <!-- Content will be loaded from data file -->
                 </div>
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="full-width-section">
+            <section id="projects" class="content-section full-width-section">
                 <div class="projects-grid" id="projects-content">
                     <!-- Content will be loaded from data file -->
                 </div>
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="full-width-section">
+            <section id="contact" class="content-section full-width-section">
                 <div class="contact-content">
                     <div class="contact-info">
                         <div class="contact-item" data-copy="bingru.li24@student.xjtlu.edu.cn" data-type="email">
@@ -141,7 +139,7 @@
                 </div>
             </section>
         </div>
-    </main>
+    </div>
 
     <!-- Project Modal -->
     <div id="project-modal" class="project-modal">
