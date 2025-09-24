@@ -305,5 +305,19 @@
             initScrollSpy();
         });
     </script>
+  <script>
+    // 注册视频缓存 Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('DOMContentLoaded', function() {
+        navigator.serviceWorker.register('./sw-video-cache.js')
+          .then(reg => {
+            console.log('[ServiceWorker] 视频缓存已注册:', reg.scope);
+          })
+          .catch(err => {
+            console.warn('[ServiceWorker] 注册失败:', err);
+          });
+      });
+    }
+  </script>
 </body>
 </html>

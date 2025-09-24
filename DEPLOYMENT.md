@@ -1,263 +1,97 @@
-# 部署指南 / Deployment Guide
+# 性能与体验问题分析与优化建议
 
-## GitHub Pages 部署 / GitHub Pages Deployment
+## 现象
+- 视频加载卡顿，需多次刷新才能加载，切换语言会重新加载视频。
+- 视频文件本身很小（1-3MB），但体验很差。
+- 网络断联时体验极差。
 
-### 方法一：直接推送到主分支 / Method 1: Push to Main Branch
+## 问题分析
+1. **前端每次切换语言、切换 section、页面可见性变化时，都会重新渲染项目卡片，所有 `<video>` 标签重新生成，浏览器重新请求视频资源。**
+2. **视频直接 `<video src="...">`，没有懒加载、缓存、断点续传、断网兜底等机制。**
+3. **所有视频 preload="auto"、autoplay，页面一渲染就全量加载所有视频，极易卡顿。**
+4. **加载失败仅 alert，没有自动重试、静态占位、降级方案。**
+5. **图片有懒加载，视频没有。**
+6. **没有 Service Worker、Cache API、localStorage 缓存视频，也没有分片加载。**
 
-1. **克隆仓库** / Clone Repository
-   ```bash
-   git clone https://github.com/LiBinZyu/LiBinZyu.github.io.git
-   cd LiBinZyu.github.io
-   ```
+## 优化建议
+### 1. 视频懒加载
+- 只渲染首屏/当前可见的视频，其他视频用占位图，滚动到可见时再加载。
+- 可用 IntersectionObserver 监听 `<video>` 元素或其父容器。
 
-2. **编辑内容** / Edit Content
-   - 修改 `data/data.js` 中的个人信息
-   - 添加图片到 `assets/images/` 目录
-   - 更新简历文件到 `assets/documents/` 目录
+### 2. 视频缓存与断点续传
+- 利用 Service Worker 拦截视频请求，做缓存（Cache API）。
+- 或用 `<video>` 的 `preload="metadata"`，只加载元数据，用户点击播放时再加载内容。
 
-3. **提交并推送** / Commit and Push
-   ```bash
-   git add .
-   git commit -m "Update portfolio content"
-   git push origin main
-   ```
+### 3. 避免无谓的重新渲染
+- 切换语言时，仅更新文本内容，不要销毁重建整个项目卡片和 `<video>` 元素。
+- 可为 ProjectCard 增加 updateLanguage 方法，仅更新标题/描述等文本。
 
-4. **启用 GitHub Pages** / Enable GitHub Pages
-   - 进入仓库设置 (Settings)
-   - 滚动到 "Pages" 部分
-   - 选择 "Deploy from a branch"
-   - 选择 "main" 分支
-   - 点击 "Save"
+### 4. 网络断联兜底
+- 视频加载失败时，显示静态占位图或提示，支持点击重试。
+- 可实现自动重试机制。
 
-5. **访问网站** / Access Website
-   - 网站将在 `https://libinzyu.github.io` 可用
-   - 可能需要几分钟才能生效
+### 5. 降低首屏压力
+- 首屏只加载第一个可见视频，其他延迟加载。
+- 或首屏只显示封面，用户点击后再加载视频。
 
-### 方法二：使用 GitHub Actions / Method 2: Using GitHub Actions
+### 6. 其他建议
+- 视频文件建议放 CDN，提升加载速度。
+- 视频文件名避免中文，防止部分浏览器兼容性问题。
 
-1. **创建 GitHub Actions 工作流** / Create GitHub Actions Workflow
-   在 `.github/workflows/deploy.yml` 创建文件：
+## 推荐改动
+- ProjectCard 组件增加视频懒加载逻辑。
+- 切换语言时仅更新文本，不销毁重建 DOM。
+- 可选：引入 Service Worker 做视频缓存。
+- 视频加载失败时支持点击重试。
 
-   ```yaml
-   name: Deploy to GitHub Pages
-   
-   on:
-     push:
-       branches: [ main ]
-     pull_request:
-       branches: [ main ]
-   
-   jobs:
-     deploy:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         
-         - name: Setup Node.js
-           uses: actions/setup-node@v3
-           with:
-             node-version: '18'
-             cache: 'npm'
-         
-         - name: Install dependencies
-           run: npm ci
-         
-         - name: Build
-           run: npm run build
-         
-         - name: Deploy to GitHub Pages
-           uses: peaceiris/actions-gh-pages@v3
-           if: github.ref == 'refs/heads/main'
-           with:
-             github_token: ${{ secrets.GITHUB_TOKEN }}
-             publish_dir: ./
-   ```
+## 参考代码片段
 
-2. **推送代码** / Push Code
-   ```bash
-   git add .
-   git commit -m "Add GitHub Actions workflow"
-   git push origin main
-   ```
+### 视频懒加载（IntersectionObserver）
+```js
+// 在 ProjectCard.setupMediaLazyLoading 里处理 <video> 懒加载
+setupVideoLazyLoading() {
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          if (!video.src) {
+            video.src = video.dataset.src;
+          }
+          observer.unobserve(video);
+        }
+      });
+    }, { rootMargin: '200px' });
 
-## 其他部署选项 / Other Deployment Options
+    this.cardElement.querySelectorAll('video[data-src]').forEach(video => {
+      videoObserver.observe(video);
+    });
+  }
+}
+```
+- HTML 里 `<video data-src="xxx.mp4" ...>`，初始不写 src。
 
-### Netlify 部署 / Netlify Deployment
+### 切换语言仅更新文本
+```js
+// ProjectCard 增加 updateLanguage 方法，只更新文本内容
+updateLanguage() {
+  const currentLang = window.portfolioApp?.currentLanguage || 'zh';
+  this.cardElement.querySelector('.project-title').textContent = this.projectData.title[currentLang];
+  this.cardElement.querySelector('.project-description').textContent = this.projectData.description[currentLang];
+  // 其他文本同理
+}
+```
+- main.js 里切换语言时，遍历所有 ProjectCard 实例，调用 updateLanguage。
 
-1. **连接 GitHub 仓库** / Connect GitHub Repository
-   - 登录 [Netlify](https://netlify.com)
-   - 点击 "New site from Git"
-   - 选择你的 GitHub 仓库
+### 视频加载失败兜底
+```js
+video.addEventListener('error', () => {
+  // 显示占位图或重试按钮
+  video.style.display = 'none';
+  placeholder.style.display = 'block';
+});
+```
 
-2. **配置构建设置** / Configure Build Settings
-   - Build command: `npm run build` (可选)
-   - Publish directory: `.` (根目录)
-
-3. **部署** / Deploy
-   - 点击 "Deploy site"
-   - 网站将在几分钟内可用
-
-### Vercel 部署 / Vercel Deployment
-
-1. **安装 Vercel CLI** / Install Vercel CLI
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **部署** / Deploy
-   ```bash
-   vercel
-   ```
-
-3. **配置** / Configure
-   - 按照提示完成配置
-   - 网站将获得一个 `.vercel.app` 域名
-
-### 自定义域名 / Custom Domain
-
-1. **购买域名** / Purchase Domain
-   - 在域名注册商购买域名
-   - 推荐：Namecheap, GoDaddy, Cloudflare
-
-2. **配置 DNS** / Configure DNS
-   - 添加 CNAME 记录指向 GitHub Pages
-   - 或添加 A 记录指向服务器 IP
-
-3. **在 GitHub Pages 中设置** / Set in GitHub Pages
-   - 进入仓库设置
-   - 在 Pages 部分添加自定义域名
-   - 启用 HTTPS
-
-## 性能优化 / Performance Optimization
-
-### 图片优化 / Image Optimization
-
-1. **压缩图片** / Compress Images
-   ```bash
-   # 使用 ImageOptim (Mac)
-   # 或 TinyPNG 在线工具
-   ```
-
-2. **使用 WebP 格式** / Use WebP Format
-   ```html
-   <picture>
-     <source srcset="image.webp" type="image/webp">
-     <img src="image.jpg" alt="Description">
-   </picture>
-   ```
-
-### 代码优化 / Code Optimization
-
-1. **压缩 CSS/JS** / Minify CSS/JS
-   ```bash
-   npm run build
-   ```
-
-2. **启用 Gzip 压缩** / Enable Gzip Compression
-   - 大多数托管服务自动启用
-   - 或配置服务器启用
-
-### CDN 配置 / CDN Configuration
-
-1. **使用 Cloudflare** / Use Cloudflare
-   - 免费 CDN 服务
-   - 自动优化和缓存
-
-2. **配置缓存策略** / Configure Caching
-   - 静态资源长期缓存
-   - HTML 文件短期缓存
-
-## 监控和分析 / Monitoring and Analytics
-
-### Google Analytics
-
-1. **创建 GA4 属性** / Create GA4 Property
-   - 访问 [Google Analytics](https://analytics.google.com)
-   - 创建新属性
-
-2. **添加跟踪代码** / Add Tracking Code
-   在 `index.html` 的 `<head>` 中添加：
-   ```html
-   <!-- Google tag (gtag.js) -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-   <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
-     gtag('config', 'GA_MEASUREMENT_ID');
-   </script>
-   ```
-
-### 性能监控 / Performance Monitoring
-
-1. **Google PageSpeed Insights**
-   - 测试网站性能
-   - 获取优化建议
-
-2. **Lighthouse CI**
-   - 自动化性能测试
-   - 集成到 CI/CD 流程
-
-## 故障排除 / Troubleshooting
-
-### 常见问题 / Common Issues
-
-1. **网站无法访问** / Website Not Accessible
-   - 检查 GitHub Pages 设置
-   - 确认仓库是公开的
-   - 等待 DNS 传播
-
-2. **样式不生效** / Styles Not Working
-   - 检查文件路径
-   - 清除浏览器缓存
-   - 检查控制台错误
-
-3. **图片不显示** / Images Not Displaying
-   - 检查图片路径
-   - 确认图片文件存在
-   - 检查文件权限
-
-### 调试工具 / Debugging Tools
-
-1. **浏览器开发者工具** / Browser DevTools
-   - F12 打开开发者工具
-   - 检查 Console 和 Network 标签
-
-2. **在线工具** / Online Tools
-   - [W3C Markup Validator](https://validator.w3.org/)
-   - [CSS Validator](https://jigsaw.w3.org/css-validator/)
-   - [GTmetrix](https://gtmetrix.com/)
-
-## 维护和更新 / Maintenance and Updates
-
-### 定期更新 / Regular Updates
-
-1. **更新依赖** / Update Dependencies
-   ```bash
-   npm update
-   ```
-
-2. **更新内容** / Update Content
-   - 定期更新项目信息
-   - 添加新的工作经验
-   - 更新联系方式
-
-3. **备份数据** / Backup Data
-   - 定期备份仓库
-   - 保存重要文件副本
-
-### 安全考虑 / Security Considerations
-
-1. **敏感信息** / Sensitive Information
-   - 不要在代码中硬编码敏感信息
-   - 使用环境变量存储配置
-
-2. **依赖安全** / Dependency Security
-   ```bash
-   npm audit
-   npm audit fix
-   ```
-
-3. **HTTPS** / HTTPS
-   - 确保网站使用 HTTPS
-   - 配置安全头
+## 总结
+- 当前实现导致视频频繁重新加载，且无懒加载、缓存、兜底，体验差。
+- 推荐按上述建议优化，能极大提升加载速度和用户体验。
