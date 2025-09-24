@@ -414,7 +414,14 @@ class PortfolioApp {
   downloadCV() {
     const cvUrl = portfolioData.profile.cvUrl;
     if (cvUrl) {
-      window.open(cvUrl, '_blank');
+      // 兼容中文路径下载：用 a 标签 download 属性+encodeURI+模拟点击
+      const link = document.createElement('a');
+      link.href = encodeURI(cvUrl);
+      // 自动提取文件名
+      link.download = cvUrl.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } else {
       this.showNotification(
         this.currentLanguage === 'zh' ? '简历链接暂不可用' : 'CV link not available',
