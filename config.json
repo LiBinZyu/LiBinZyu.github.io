@@ -2,14 +2,14 @@
   "site": {
     "title": {
       "zh": "李炳儒 - 个人作品集",
-      "en": "Bingru Li - Personal Portfolio"
+      "en": "Bingru Li - Portfolio"
     },
     "description": {
       "zh": "李炳儒的个人作品集网站，展示项目经验和技能",
-      "en": "Personal portfolio website of software engineer Bingru Li, showcasing project experience and skills"
+      "en": "Personal portfolio website of technical artist Bingru Li, showcasing project experience and skills"
     },
     "keywords": {
-      "zh": "李炳儒,软件工程师,个人作品集,项目展示,前端开发,后端开发",
+      "zh": "李炳儒,软件工程师,技术美术,个人作品集,项目展示,前端开发,后端开发",
       "en": "Bingru Li,software engineer,personal portfolio,project showcase,frontend development,backend development"
     },
     "author": "Bingru Li",

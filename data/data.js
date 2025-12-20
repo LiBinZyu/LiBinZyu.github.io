@@ -17,7 +17,7 @@ const portfolioData = {
       en: "Based in Suzhou, China"
     },
     image: "assets/images/profile_life.png",
-    cvUrl: "assets/李炳儒-西交利物浦人机交互硕士-中文.pdf"
+    cvUrl: "assets/BingruLi_Resume_bilingual.pdf"
   },
 
   // Experiences Data
