@@ -9,12 +9,12 @@ const portfolioData = {
       en: "Bingru Li"
     },
     title: {
-      zh: "技术美术 & 人机交互研究生",
-      en: "Technical Artist & HCI Graduate Student"
+      zh: "技术美术 & 空间计算",
+      en: "Technical Artist & Spatial Computing Engineer"
     },
     location: {
-      zh: "现居中国苏州",
-      en: "Based in Suzhou, China"
+      zh: "现居中国上海",
+      en: "Based in Shanghai, China"
     },
     image: "assets/images/profile_life.png",
     cvUrl: "assets/BingruLi_Resume_bilingual.pdf"
@@ -26,18 +26,18 @@ const portfolioData = {
       id: "exp-1",
       title: {
         zh: "人机交互，全日制硕士研究生",
-        en: "Human-Computer Interaction, Full-time Master's Student"
+        en: "Master of Science in Human-Computer Interaction with distinction"
       },
       company: {
         zh: "西交利物浦大学",
-        en: "Xi'an Jiaotong-Liverpool University"
+        en: "University of Liverpool"
       },
       period: {
         zh: "2024年9月 - 2026年3月",
         en: "September 2024 - March 2026"
       },
       description: {
-        zh: "核心课程：数据可视化、机器学习、数据挖掘和分析、人工智能、人机交互",
+        zh: "成绩: Distinction. 核心课程：数据可视化、机器学习、数据挖掘和分析、人工智能、人机交互",
         en: "Core courses: Data Visualization, Machine Learning, Data Mining and Analysis, Artificial Intelligence, Human-Computer Interaction"
       },
       tags: ["Data Visualization", "Machine Learning", "AI", "HCI", "Research"]
@@ -46,7 +46,7 @@ const portfolioData = {
       id: "exp-2",
       title: {
         zh: "数字媒体技术，全日制统招本科",
-        en: "Digital Media Technology, Full-time Bachelor's Degree"
+        en: "Bachelor's Degree in Digital Media Technology"
       },
       company: {
         zh: "成都大学",
@@ -102,7 +102,7 @@ const portfolioData = {
       },
       tags: ["Effects", "Unity", "Unreal Engine", "Smart City", "Asset Pipeline", "Project Management"]
     },
-    
+
     {
       id: "exp-8",
       title: {
@@ -130,6 +130,28 @@ const portfolioData = {
     {
       id: "proj-1",
       title: {
+        zh: "KernalMind-Apex 机器人遥操及具身数据采集 XR 应用",
+        en: "KernalMind-Apex Robot Teleoperation and Data Collection XR App"
+      },
+      description: {
+        zh: "机械臂夹爪及灵巧手头显端应用开发(Meta Quest/ Pico + OpenXR 自定义包管理)+第一人称场景及交互数据采集",
+        en: "Development of gripper and dex-hand remote control (Meta Quest/Pico + OpenXR custom package management) + egocentric and spatial data collection"
+      },
+      images: [
+        "assets/images/teleop_teleop.jpeg",
+        "assets/images/teleop_dev.jpeg"
+      ],
+      videos: [],
+      tech: ["Unity", "OpenXR", "TeleOp", "Egocentric"],
+      links: {
+      },
+      stars: 0,
+      featured: true,
+      date: "2026-04-01"
+    },
+    {
+      id: "proj-2",
+      title: {
         zh: "VAI - Unity 语音控制插件",
         en: "VAI - Unity Voice AI Assistant"
       },
@@ -149,7 +171,7 @@ const portfolioData = {
       date: "2025-03-01"
     },
     {
-      id: "proj-2",
+      id: "proj-3",
       title: {
         zh: "CameraArrayTools - UE5 相机批渲染插件",
         en: "CameraArrayTools - UE5 Camera Batch Rendering Plugin"
@@ -161,14 +183,13 @@ const portfolioData = {
       videos: ["assets/videos/CameraArrayToolsVideo.mp4"],
       tech: ["Unreal Engine 5", "C++", "Python", "Movie Render Queue", "Path Tracing"],
       links: {
-        github: "https://github.com/LiBinZyu/CameraArrayTools"
       },
       stars: 0,
       featured: true,
       date: "2025-07-01"
     },
     {
-      id: "proj-3",
+      id: "proj-4",
       title: {
         zh: "混合现实的人体结构可视交互系统",
         en: "Mixed Reality Human Anatomy Visualization System"
@@ -186,7 +207,7 @@ const portfolioData = {
       date: "2024-11-01"
     },
     {
-      id: "proj-4",
+      id: "proj-5",
       title: {
         zh: "基于MR的即时心脏复苏引导系统",
         en: "MR-based Immediate CPR Guidance System"
@@ -208,7 +229,7 @@ const portfolioData = {
       date: "2024-10-01"
     },
     {
-      id: "proj-5",
+      id: "proj-6",
       title: {
         zh: "MR Creator - 混合现实编辑器软件",
         en: "MR Creator - Mixed Reality Editor Software"
@@ -229,7 +250,7 @@ const portfolioData = {
       date: "2023-12-01"
     },
     {
-      id: "proj-6",
+      id: "proj-7",
       title: {
         zh: "BYD 方程豹8 车机3D场景",
         en: "BYD Fangchengbao 8 Car System 3D Scene"
@@ -250,7 +271,7 @@ const portfolioData = {
       date: "2023-06-01"
     },
     {
-      id: "proj-7",
+      id: "proj-8",
       title: {
         zh: "AI数字医生 - 复旦大学附属中山医院",
         en: "AI Digital Doctor - Fudan University Zhongshan Hospital"
@@ -271,7 +292,7 @@ const portfolioData = {
       date: "2023-12-01"
     },
     {
-      id: "proj-8",
+      id: "proj-9",
       title: {
         zh: "智能体中台和商城",
         en: "AI Agent Platform and Marketplace"
@@ -293,7 +314,7 @@ const portfolioData = {
       date: "2024-08-01"
     },
     {
-      id: "proj-9",
+      id: "proj-10",
       title: {
         zh: "校园数字孪生平台开发",
         en: "Campus Digital Twin Platform Development"
@@ -313,7 +334,7 @@ const portfolioData = {
       date: "2024-09-01"
     },
     {
-      id: "proj-10",
+      id: "proj-11",
       title: {
         zh: "UE汽车交互体验",
         en: "UE Car Interaction Experience"
@@ -331,7 +352,7 @@ const portfolioData = {
       date: "2024-07-01"
     },
     {
-      id: "proj-11",
+      id: "proj-12",
       title: {
         zh: "数字孪生交互渲染混剪",
         en: "Digital Twin Interaction Rendering Reel"
@@ -349,7 +370,7 @@ const portfolioData = {
       date: "2024-06-01"
     },
     {
-      id: "proj-12",
+      id: "proj-13",
       title: {
         zh: "项目工时管理系统",
         en: "Project Time Management System"
@@ -371,7 +392,7 @@ const portfolioData = {
       date: "2024-06-01"
     },
     {
-      id: "proj-13",
+      id: "proj-14",
       title: {
         zh: "鬼刀手机游戏",
         en: "Ghost Blade Mobile Game"
@@ -404,18 +425,18 @@ const portfolioData = {
     wechat: "LiBinZyu"
   },
 
-  // Footer Information
-  footer: {
-    lastUpdated: "2024-12-20",
-    location: {
-      zh: "中国苏州",
-      en: "Suzhou, China"
-    }
-  },
+  // // Footer Information
+  // footer: {
+  //   lastUpdated: "2024-12-20",
+  //   location: {
+  //     zh: "中国苏州",
+  //     en: "Suzhou, China"
+  //   }
+  // },
 
   // Site Configuration
   config: {
-    defaultLanguage: "zh",
+    defaultLanguage: "en",
     defaultTheme: "light",
     enableAnalytics: true,
     enableStarTracking: true
@@ -437,7 +458,7 @@ const imageHosting = {
       network: "photo-1558494949-ef010cbdcc31"
     }
   },
-  
+
   // Alternative hosting services
   // 替代托管服务
   alternatives: {
@@ -446,12 +467,12 @@ const imageHosting = {
       baseUrl: "https://res.cloudinary.com/your-cloud-name/image/upload",
       transformations: "w_400,h_200,c_fill,q_auto,f_auto"
     },
-    
+
     // Imgur (free)
     imgur: {
       baseUrl: "https://i.imgur.com"
     },
-    
+
     // GitHub (for project images)
     github: {
       baseUrl: "https://raw.githubusercontent.com/LiBinZyu/LiBinZyu.github.io/main/assets/images"
@@ -467,13 +488,13 @@ const videoHosting = {
     baseUrl: "https://www.youtube.com/embed",
     thumbnailUrl: "https://img.youtube.com/vi/{videoId}/maxresdefault.jpg"
   },
-  
+
   // Vimeo (free tier available)
   vimeo: {
     baseUrl: "https://player.vimeo.com/video",
     thumbnailUrl: "https://vumbnail.com/{videoId}.jpg"
   },
-  
+
   // Cloudinary (for video hosting)
   cloudinary: {
     baseUrl: "https://res.cloudinary.com/your-cloud-name/video/upload",

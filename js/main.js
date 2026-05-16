@@ -20,14 +20,33 @@ class PortfolioApp {
     this.updateUI();
   }
 
-  // Load user preferences from localStorage
+  // Load user preferences from localStorage or browser settings
   loadUserPreferences() {
     const savedLanguage = localStorage.getItem('portfolio-language');
     const savedTheme = localStorage.getItem('portfolio-theme');
     const savedStars = localStorage.getItem('portfolio-stars');
     
-    if (savedLanguage) this.currentLanguage = savedLanguage;
-    if (savedTheme) this.currentTheme = savedTheme;
+    if (savedLanguage) {
+      this.currentLanguage = savedLanguage;
+    } else {
+      // Detect browser language for new users
+      const browserLang = navigator.language || navigator.userLanguage;
+      if (browserLang.startsWith('zh')) {
+        this.currentLanguage = 'zh';
+      } else {
+        // Fallback to site default from data.js
+        this.currentLanguage = typeof portfolioData !== 'undefined' ? portfolioData.config.defaultLanguage : 'en';
+      }
+    }
+    
+    if (savedTheme) {
+      this.currentTheme = savedTheme;
+    } else {
+      // Detect system theme preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this.currentTheme = prefersDark ? 'dark' : 'light';
+    }
+    
     if (savedStars) this.starredProjects = new Set(JSON.parse(savedStars));
     
     // Apply theme immediately
@@ -124,11 +143,13 @@ class PortfolioApp {
 
   // Update theme toggle icon
   updateThemeIcon() {
-    const icon = document.querySelector('#theme-toggle .theme-icon');
-    icon.src = this.currentTheme === 'light'
-      ? 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/sun-light.svg'
-      : 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/half-moon.svg';
-    icon.style.filter = 'invert(var(--icon-invert, 0))';
+    const icon = document.querySelector('#theme-toggle img');
+    if (icon) {
+      icon.src = this.currentTheme === 'light'
+        ? 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/sun-light.svg'
+        : 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/half-moon.svg';
+      icon.style.filter = 'invert(var(--icon-invert, 0))';
+    }
   }
 
   // Toggle between Chinese and English
@@ -163,9 +184,39 @@ class PortfolioApp {
 
   // Load all content
   loadContent() {
+    this.loadProfile();
     this.loadExperiences();
     this.loadProjects();
     this.updateThemeIcon();
+  }
+
+  // Load profile from data.js
+  loadProfile() {
+    if (typeof portfolioData === 'undefined' || !portfolioData.profile) return;
+    const profile = portfolioData.profile;
+
+    const imgElement = document.getElementById('profile-img');
+    if (imgElement && profile.image) {
+      imgElement.src = profile.image;
+    }
+
+    const nameElement = document.querySelector('.profile-name');
+    if (nameElement && profile.name) {
+      nameElement.setAttribute('data-zh', profile.name.zh);
+      nameElement.setAttribute('data-en', profile.name.en);
+    }
+
+    const titleElement = document.querySelector('.profile-title');
+    if (titleElement && profile.title) {
+      titleElement.setAttribute('data-zh', profile.title.zh);
+      titleElement.setAttribute('data-en', profile.title.en);
+    }
+
+    const locationElement = document.querySelector('.profile-location');
+    if (locationElement && profile.location) {
+      locationElement.setAttribute('data-zh', profile.location.zh);
+      locationElement.setAttribute('data-en', profile.location.en);
+    }
   }
 
   // Load experiences content
@@ -249,114 +300,6 @@ class PortfolioApp {
     });
   }
 
-  // Create project element
-  createProjectElement(project, index) {
-    const div = document.createElement('div');
-    div.className = 'project-card animate-slide-up';
-    div.style.animationDelay = `${index * 0.1}s`;
-
-    const title = project.title[this.currentLanguage];
-    const description = project.description[this.currentLanguage];
-    const isStarred = this.starredProjects.has(project.id);
-
-    div.innerHTML = `
-      <img src="${project.image}" alt="${title}" class="project-image" loading="lazy">
-      <div class="project-content">
-        <div class="project-header">
-          <h3 class="project-title">${title}</h3>
-          <div class="project-stats">
-            <div class="project-stars ${isStarred ? 'starred' : ''}" data-project-id="${project.id}">
-              <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/star.svg" alt="star" class="star-icon icon" style="vertical-align: middle;">
-              <span class="star-count">${project.stars}</span>
-            </div>
-          </div>
-        </div>
-        <p class="project-description">${description}</p>
-        <div class="project-tech">
-          ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-        </div>
-        <div class="project-links">
-          ${project.links.github ? `<a href="${project.links.github}" target="_blank" rel="noopener" class="project-link">
-            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/code.svg" alt="Code" class="btn-icon icon" style="vertical-align: middle;">
-            <span data-en="Code" data-zh="代码">代码</span>
-          </a>` : ''}
-          ${project.links.demo ? `<a href="${project.links.demo}" target="_blank" rel="noopener" class="project-link">
-            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/open-new-window.svg" alt="Demo" class="btn-icon icon" style="vertical-align: middle;">
-            <span data-en="Demo" data-zh="演示">演示</span>
-          </a>` : ''}
-        </div>
-      </div>
-    `;
-
-    // Add star click handler
-    const starElement = div.querySelector('.project-stars');
-    starElement.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.toggleProjectStar(project.id, starElement);
-    });
-
-    return div;
-  }
-
-  // Toggle project star
-  toggleProjectStar(projectId, starElement) {
-    const isStarred = this.starredProjects.has(projectId);
-    const starCount = starElement.querySelector('.star-count');
-    let currentCount = parseInt(starCount.textContent);
-
-    if (isStarred) {
-      this.starredProjects.delete(projectId);
-      starElement.classList.remove('starred');
-      currentCount--;
-    } else {
-      this.starredProjects.add(projectId);
-      starElement.classList.add('starred');
-      currentCount++;
-    }
-
-    starCount.textContent = currentCount;
-    this.saveUserPreferences();
-    this.trackStarAction(projectId, !isStarred);
-  }
-
-  // Track star actions for analytics
-  trackStarAction(projectId, isStarred) {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'project_star', {
-        'project_id': projectId,
-        'action': isStarred ? 'star' : 'unstar',
-        'timestamp': new Date().toISOString()
-      });
-    }
-
-    // Send to backend if available
-    this.sendStarData(projectId, isStarred);
-  }
-
-  // Send star data to backend
-  async sendStarData(projectId, isStarred) {
-    try {
-      const response = await fetch('/api/stars', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          projectId,
-          action: isStarred ? 'star' : 'unstar',
-          timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent,
-          referrer: document.referrer
-        })
-      });
-
-      if (!response.ok) {
-        console.warn('Failed to track star action');
-      }
-    } catch (error) {
-      console.warn('Error tracking star action:', error);
-    }
-  }
 
   // Load section-specific content
   loadSectionContent(sectionName) {
