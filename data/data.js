@@ -8,13 +8,9 @@ const portfolioData = {
       zh: "李炳儒",
       en: "Bingru Li"
     },
-    title: {
-      zh: "技术美术 & 空间计算",
-      en: "Technical Artist & Spatial Computing Engineer"
-    },
-    location: {
-      zh: "现居中国上海",
-      en: "Based in Shanghai, China"
+    bio: {
+      zh: "我是技术美术与空间计算工程师，致力于通过软硬件协同、智能体系统以及先进图形技术，探索和构建下一代人机交互系统。我的工作处于计算机图形学与人机交互的交汇处，致力于设计和实现面向未来先进技术的技术解决方案。",
+      en: "I am an engineer specializing in Technical Art and Spatial Computing. I am exploring and building next-generation human-computer interaction systems through hardware-software synergy, agentic system, and advanced graphics. My work sits at the intersection of computer graphics and human-computer interaction, focusing on designing and implementing technical solutions for advanced technology."
     },
     image: "assets/images/profile_life.png",
     cvUrl: "assets/BingruLi_Resume_bilingual.pdf"
@@ -24,6 +20,10 @@ const portfolioData = {
   experiences: [
     {
       id: "exp-1",
+      category: {
+        zh: "教育经历",
+        en: "EDUCATION"
+      },
       title: {
         zh: "人机交互，全日制硕士研究生",
         en: "Master of Science in Human-Computer Interaction with distinction"
@@ -37,13 +37,21 @@ const portfolioData = {
         en: "September 2024 - March 2026"
       },
       description: {
-        zh: "成绩: Distinction. 核心课程：数据可视化、机器学习、数据挖掘和分析、人工智能、人机交互",
+        zh: "成绩: Distinction. 核心课程：数据可视化、机器学习、数据挖掘 and 分析、人工智能、人机交互",
         en: "Core courses: Data Visualization, Machine Learning, Data Mining and Analysis, Artificial Intelligence, Human-Computer Interaction"
       },
-      tags: ["Data Visualization", "Machine Learning", "AI", "HCI", "Research"]
+      link: {
+        zh: "https://www.xjtlu.edu.cn",
+        en: "https://www.liverpool.ac.uk"
+      },
+      tags: ["Research", "XR", "Data Visualization", "Machine Learning", "AI", "HCI"]
     },
     {
       id: "exp-2",
+      category: {
+        zh: "教育经历",
+        en: "EDUCATION"
+      },
       title: {
         zh: "数字媒体技术，全日制统招本科",
         en: "Bachelor's Degree in Digital Media Technology"
@@ -60,10 +68,18 @@ const portfolioData = {
         zh: "成绩：86/100。核心课程：C语言、C++、数据结构与算法、计算机图形学、游戏开发基础、数字媒体技术基础、虚拟现实、3D建模技术、数字媒体艺术基础、平面设计、网页开发技术等",
         en: "GPA: 86/100. Core courses: C Language, C++, Data Structures and Algorithms, Computer Graphics, Game Development Fundamentals, Digital Media Technology, Virtual Reality, 3D Modeling, Digital Media Art, Graphic Design, Web Development"
       },
+      link: {
+        zh: "https://www.cdu.edu.cn",
+        en: "https://en.wikipedia.org/wiki/Chengdu_University"
+      },
       tags: ["C/C++", "Computer Graphics", "Game Development", "3D Modeling", "VR", "Web Development"]
     },
     {
       id: "exp-3",
+      category: {
+        zh: "工作经历",
+        en: "EXPERIENCE"
+      },
       title: {
         zh: "技术美术",
         en: "Technical Artist"
@@ -80,10 +96,18 @@ const portfolioData = {
         zh: "作为技术美术开发XR、移动端游戏优化、BYD方程豹8车机，个人编写4个专利，联合申请6个软著。基于自研引擎开发AR、车机等解决方案。",
         en: "As Technical Artist developed XR, mobile game optimization, BYD Fangchengbao 8 car system. Personally wrote 4 patents and jointly applied for 6 software copyrights. Developed AR and car system solutions based on proprietary engine."
       },
-      tags: ["XR", "AR", "Optimization", "Car", "Patents", "OpenGL"]
+      link: {
+        zh: "https://www.gritworld.com.cn",
+        en: "https://www.gritworld.com"
+      },
+      tags: ["XR", "AR", "Rendering", "Car", "Game Engine", "OpenGL", "Project Management"]
     },
     {
       id: "exp-4",
+      category: {
+        zh: "工作经历",
+        en: "EXPERIENCE"
+      },
       title: {
         zh: "技术美术",
         en: "Technical Artist"
@@ -100,28 +124,87 @@ const portfolioData = {
         zh: "3D特效和模型开发，使用自研引擎、Unity、Unreal Engine以及DCC工具进行项目开发。设计公司内部资产库规范，维护美术工作流程，保证资产质量。主导了上海地铁后台大屏、宝龙地产大屏、北京大兴机场等智慧城市项目，使用自研引擎进行特效渲染，开发地理信息蓝图工具，成功完成1600W项目开发。",
         en: "3D effects and model development using proprietary engine, Unity, Unreal Engine and DCC tools. Designed internal asset library standards, maintained art workflows, ensured asset quality. Led smart city projects including Shanghai Metro backend screen, Powerlong Real Estate screen, Beijing Daxing Airport, using proprietary engine for effect rendering and developing geographic information blueprint tools, successfully completed 16M project development."
       },
-      tags: ["Effects", "Unity", "Unreal Engine", "Smart City", "Asset Pipeline", "Project Management"]
+      link: {
+        zh: "https://cloud.tencent.com",
+        en: "https://intl.cloud.tencent.com"
+      },
+      tags: ["Effects", "Unity", "Unreal Engine", "Game Engine", "Asset Pipeline"]
     },
-
     {
-      id: "exp-8",
+      id: "exp-8-paper",
+      category: {
+        zh: "论文",
+        en: "PUBLICATIONS"
+      },
       title: {
-        zh: "证书·奖项·专利",
-        en: "Certificates·Awards·Patents"
       },
       company: {
-        zh: "专业认证与荣誉",
-        en: "Professional Certifications & Honors"
       },
       period: {
-        zh: "2016年 - 2023年",
-        en: "2016 - 2023"
+      },
+      link: {
       },
       description: {
-        zh: "• PMP 项目管理专业人士证书, 2023\n• Professional Scrum Master 证书, 2023\n• 2016，2017，2018 成都大学本科荣誉奖学金\n• 成都大学优秀毕业生\n• SK Sunny 中国杰出大学生志愿者\n• 一种用于虚拟现实应用的基于语义信息的地形绘制方法，2022\n• 房屋立体模型显示方法、装置、介质及电子设备，2022",
-        en: "• PMP Project Management Professional Certificate, 2023\n• Professional Scrum Master Certificate, 2023\n• 2016, 2017, 2018 Chengdu University Undergraduate Honor Scholarship\n• Chengdu University Outstanding Graduate\n• SK Sunny China Outstanding College Student Volunteer\n• A terrain rendering method based on semantic information for virtual reality applications, 2022\n• House 3D model display method, device, medium and electronic equipment, 2022"
+        zh: "<strong>Bingru Li</strong>, Yiming Luo, Jialin Wang, Nan Xiang, Yushan Pan, Hao Wang, Junjun Pan, and Zhijie Xu. 2025. <strong>Advancing Anatomy Outreach: A Systematic Comparative Study of Mixed Reality, Computer-assisted, and Conventional Methods</strong>. In <em>SIGGRAPH Asia 2025 Educator's Forum (SA '25)</em>. Association for Computing Machinery, New York, NY, USA, Article 2, 1–8. <a href='https://doi.org/10.1145/3757372.3771850' target='_blank' rel='noopener' class='exp-link' style='text-decoration: underline; margin-left: 5px;'>[DOI]</a>",
+        en: "<strong>Bingru Li</strong>, Yiming Luo, Jialin Wang, Nan Xiang, Yushan Pan, Hao Wang, Junjun Pan, and Zhijie Xu. 2025. <strong>Advancing Anatomy Outreach: A Systematic Comparative Study of Mixed Reality, Computer-assisted, and Conventional Methods</strong>. In <em>SIGGRAPH Asia 2025 Educator's Forum (SA '25)</em>. Association for Computing Machinery, New York, NY, USA, Article 2, 1–8. <a href='https://doi.org/10.1145/3757372.3771850' target='_blank' rel='noopener' class='exp-link' style='text-decoration: underline; margin-left: 5px;'>[DOI]</a>"
       },
-      tags: ["PMP", "Scrum Master", "Scholarship", "Outstanding Graduate", "Patents", "Volunteer"]
+      tags: []
+    },
+    {
+      id: "exp-8-paper-2",
+      category: {
+        zh: "论文",
+        en: "PUBLICATIONS"
+      },
+      title: {
+      },
+      company: {
+      },
+      period: {
+      },
+      link: {
+      },
+      description: {
+        zh: "<strong>Bingru Li</strong>, Jier Zhang, Yiming Luo, Jialin Wang, Zhao Wang, Yushan Pan, Nan Xiang, and Zhijie Xu. 2025. <strong>VAI-Med: Synergistic Voice and Gesture Multimodal Interaction for Medical Education</strong>. In <em>Computer Graphics International (CGI)</em>, Accepted.",
+        en: "<strong>Bingru Li</strong>, Jier Zhang, Yiming Luo, Jialin Wang, Zhao Wang, Yushan Pan, Nan Xiang, and Zhijie Xu. 2025. <strong>VAI-Med: Synergistic Voice and Gesture Multimodal Interaction for Medical Education</strong>. In <em>Computer Graphics International (CGI)</em>, Accepted."
+      },
+      tags: []
+    },
+    {
+      id: "exp-8-patents",
+      category: {
+        zh: "发明专利",
+        en: "PATENTS"
+      },
+      title: {
+      },
+      company: {
+      },
+      period: {
+      },
+      description: {
+        zh: "专利：气象数据处理方法、装置、存储介质及设备，2024\n专利：房屋立体模型显示方法、装置、介质及设备，2023\n专利：地形绘制方法、装置、存储介质及设备，2022",
+        en: "Patent: Meteorological Data Processing Method, Apparatus, Storage Medium, and Device, 2024\nPatent: 3D House Model Display Method, Apparatus, Medium, and Device, 2023\nPatent: Terrain Rendering Method, Apparatus, Storage Medium, and Device, 2022"
+      },
+      tags: []
+    },
+    {
+      id: "exp-8-certs",
+      category: {
+        zh: "证书",
+        en: "CERTIFICATIONS"
+      },
+      title: {
+      },
+      company: {
+      },
+      period: {
+      },
+      description: {
+        zh: "PMP 项目管理专业人士认证 (Project Management Professional), 2023\nProfessional Scrum Master (PSM I) 敏捷资质认证, 2023",
+        en: "PMP Project Management Professional Certificate, 2023\nProfessional Scrum Master (PSM I) Certificate, 2023"
+      },
+      tags: []
     }
   ],
 
@@ -129,6 +212,7 @@ const portfolioData = {
   projects: [
     {
       id: "proj-1",
+      category: "spatial-xr",
       title: {
         zh: "KernalMind-Apex 机器人遥操及具身数据采集 XR 应用",
         en: "KernalMind-Apex Robot Teleoperation and Data Collection XR App"
@@ -138,19 +222,20 @@ const portfolioData = {
         en: "Development of gripper and dex-hand remote control (Meta Quest/Pico + OpenXR custom package management) + egocentric and spatial data collection"
       },
       images: [
+        "assets/images/teleop_quest.jpg",
         "assets/images/teleop_teleop.jpeg",
         "assets/images/teleop_dev.jpeg"
       ],
       videos: [],
       tech: ["Unity", "OpenXR", "TeleOp", "Egocentric"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: true,
       date: "2026-04-01"
     },
     {
       id: "proj-2",
+      category: ["ai-software", "research"],
       title: {
         zh: "VAI - Unity 语音控制插件",
         en: "VAI - Unity Voice AI Assistant"
@@ -172,6 +257,7 @@ const portfolioData = {
     },
     {
       id: "proj-3",
+      category: "3d-tech-art",
       title: {
         zh: "CameraArrayTools - UE5 相机批渲染插件",
         en: "CameraArrayTools - UE5 Camera Batch Rendering Plugin"
@@ -182,14 +268,14 @@ const portfolioData = {
       },
       videos: ["assets/videos/CameraArrayToolsVideo.mp4"],
       tech: ["Unreal Engine 5", "C++", "Python", "Movie Render Queue", "Path Tracing"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: true,
       date: "2025-07-01"
     },
     {
       id: "proj-4",
+      category: ["spatial-xr", "research"],
       title: {
         zh: "混合现实的人体结构可视交互系统",
         en: "Mixed Reality Human Anatomy Visualization System"
@@ -201,6 +287,7 @@ const portfolioData = {
       videos: ["assets/videos/Anatomy_ISMAR2025.mp4"],
       tech: ["Unity", "Quest3", "Meta XR SDK", "Mixed Reality", "Medical Visualization"],
       links: {
+        paper: "https://dl.acm.org/doi/10.1145/3757372.3771850"
       },
       stars: 0,
       featured: true,
@@ -208,6 +295,7 @@ const portfolioData = {
     },
     {
       id: "proj-5",
+      category: ["spatial-xr", "research"],
       title: {
         zh: "基于MR的即时心脏复苏引导系统",
         en: "MR-based Immediate CPR Guidance System"
@@ -222,14 +310,14 @@ const portfolioData = {
       ],
       videos: [],
       tech: ["Unity", "Quest3", "Mixed Reality", "Medical Training", "Emergency Response"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: true,
       date: "2024-10-01"
     },
     {
       id: "proj-6",
+      category: "spatial-xr",
       title: {
         zh: "MR Creator - 混合现实编辑器软件",
         en: "MR Creator - Mixed Reality Editor Software"
@@ -243,20 +331,20 @@ const portfolioData = {
       ],
       videos: [],
       tech: ["Mixed Reality", "AR", "VPS", "SLAM", "UGC", "low-code"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: true,
       date: "2023-12-01"
     },
     {
       id: "proj-7",
+      category: "3d-tech-art",
       title: {
         zh: "BYD 方程豹8 车机3D场景",
         en: "BYD Fangchengbao 8 Car System 3D Scene"
       },
       description: {
-        zh: "使用自研引擎针对比亚迪新车型的中控、副驾驶、仪表盘三个屏幕进行开发。根据高清影视级设计稿提出优化方案，设计天气、灯光、氛围特效和转场特效，排查解决模型布线问题。沉淀针对车机的模型制作标准和美术工作流。",
+        zh: "使用自研引擎针对比亚迪新车型的中控、副驾驶、仪表盘三个屏幕进行开发。根据高清影视级设计稿提出优化方案，设计天气、灯光、氛围特效和转场特效，排查解决模型布线问题。沉淀针对车机的模型制作标准 and 美术工作流。",
         en: "Developed for BYD's new car model's central control, co-pilot, and dashboard screens using proprietary engine. Proposed optimization solutions based on high-definition film-level design drafts, designed weather, lighting, atmosphere effects and transition effects, troubleshooted and solved model wiring issues. Established model production standards and art workflows for car systems."
       },
       images: [
@@ -264,14 +352,14 @@ const portfolioData = {
       ],
       videos: [],
       tech: ["BYD", "3D Effects", "Car System", "Optimization", "Workflow"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: true,
       date: "2023-06-01"
     },
     {
       id: "proj-8",
+      category: "ai-software",
       title: {
         zh: "AI数字医生 - 复旦大学附属中山医院",
         en: "AI Digital Doctor - Fudan University Zhongshan Hospital"
@@ -285,14 +373,14 @@ const portfolioData = {
       ],
       videos: [],
       tech: ["Hospital", "3D Modeling", "Medical Technology", "Voice Service"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: false,
       date: "2023-12-01"
     },
     {
       id: "proj-9",
+      category: "ai-software",
       title: {
         zh: "智能体中台和商城",
         en: "AI Agent Platform and Marketplace"
@@ -307,14 +395,14 @@ const portfolioData = {
         "assets/images/avaca22.png"
       ],
       tech: ["Frontend Dev", "AI Platform", "Permission Management", "SSO", "UIUX"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: false,
       date: "2024-08-01"
     },
     {
       id: "proj-10",
+      category: "3d-tech-art",
       title: {
         zh: "校园数字孪生平台开发",
         en: "Campus Digital Twin Platform Development"
@@ -327,14 +415,14 @@ const portfolioData = {
         "assets/videos/SmartSchoolUE5.mp4"
       ],
       tech: ["Unreal Engine 5", "Digital Twin", "Campus", "Immersive Experience"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: false,
       date: "2024-09-01"
     },
     {
       id: "proj-11",
+      category: "3d-tech-art",
       title: {
         zh: "UE汽车交互体验",
         en: "UE Car Interaction Experience"
@@ -345,14 +433,14 @@ const portfolioData = {
       },
       videos: ["assets/videos/MercedesUEVideo.mp4"],
       tech: ["Unreal Engine", "Car Interaction", "Mercedes-Benz", "Hardware Integration"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: false,
       date: "2024-07-01"
     },
     {
       id: "proj-12",
+      category: "3d-tech-art",
       title: {
         zh: "数字孪生交互渲染混剪",
         en: "Digital Twin Interaction Rendering Reel"
@@ -363,14 +451,14 @@ const portfolioData = {
       },
       videos: ["assets/videos/Raydata.mp4"],
       tech: ["Tencent Cloud", "Raydata", "Digital Twin", "Technical Artist", "Realtime"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: true,
       date: "2024-06-01"
     },
     {
       id: "proj-13",
+      category: "ai-software",
       title: {
         zh: "项目工时管理系统",
         en: "Project Time Management System"
@@ -385,14 +473,14 @@ const portfolioData = {
       ],
       videos: [],
       tech: ["GritWorld", "Product Management", "Product Design"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: false,
       date: "2024-06-01"
     },
     {
       id: "proj-14",
+      category: "3d-tech-art",
       title: {
         zh: "鬼刀手机游戏",
         en: "Ghost Blade Mobile Game"
@@ -405,34 +493,138 @@ const portfolioData = {
         "assets/videos/ghostbladeVideo.mp4"
       ],
       images: [
-        "assets/images/ghostblade.jpg",
+        "assets/images/ghostblade.jpg"
       ],
       tech: ["GritWorld", "Game Development", "Mobile Game", "ARPG"],
-      links: {
-      },
+      links: {},
       stars: 0,
       featured: false,
       date: "2023-03-01"
     }
   ],
 
-  // Contact Information
-  contact: {
-    email: "bingru.li24@student.xjtlu.edu.cn",
-    phone: "+86 18080637660",
-    github: "https://github.com/LiBinZyu",
-    linkedin: "https://www.linkedin.com/in/robbingruli",
-    wechat: "LiBinZyu"
-  },
+  // Blogs Data
+  blogs: [
+    {
+      id: "blog-1",
+      title: {
+        zh: "XR 技术概览",
+        en: "XR Technology Overview"
+      },
+      description: {
+        zh: "了解 XR 技术的历史、分类以及应用场景。",
+        en: "Learn about the history, classification, and application scenarios of XR technology."
+      },
+      date: "2025-10-10",
+      tags: ["XR", "Spatial Computing", "Overview"],
+      link: {
+        zh: "https://libinzyu.github.io/unity-xr-guide/#/doc/xr-overview",
+        en: "https://libinzyu.github.io/unity-xr-guide/#/doc/xr-overview"
+      },
+      image: "assets/images/blog_xroverview.jpg"
+    },
+    {
+      id: "blog-2",
+      title: {
+        zh: "机器人遥操作",
+        en: "Robot Teleoperation"
+      },
+      description: {
+        zh: "机器人遥操作: 了解如何使用XR 技术远程控制机器人。",
+        en: "Learn how to control a robot remotely using XR technology."
+      },
+      date: "2026-04-20",
+      tags: ["Robotics", "Teleoperation", "XR"],
+      link: {
+        zh: "https://libinzyu.github.io/unity-xr-guide/#/doc/teleoperation_cn",
+        en: "https://libinzyu.github.io/unity-xr-guide/#/doc/teleoperation"
+      },
+      image: "assets/images/blog_robot_teleop.jpg"
+    },
+    {
+      id: "blog-3",
+      title: {
+        zh: "Unity 基础知识",
+        en: "Unity Basics"
+      },
+      description: {
+        zh: "Unity 引擎的基本操作和核心概念。",
+        en: "The basic operations and core concepts of the Unity engine."
+      },
+      date: "2025-10-15",
+      tags: ["Unity", "Game Engine", "Basics"],
+      link: {
+        zh: "https://libinzyu.github.io/unity-xr-guide/#/doc/unity-basics",
+        en: "https://libinzyu.github.io/unity-xr-guide/#/doc/unity-basics"
+      },
+      image: "assets/images/blog_unity_basics.jpg"
+    },
+    {
+      id: "blog-4",
+      title: {
+        zh: "OpenXR 与设计原则",
+        en: "Open XR and Design Principles"
+      },
+      description: {
+        zh: "回顾空间计算设计原则，包括可用的交互技术和开发包。",
+        en: "Get a review of spatial computing design principle including available interaction techniques and development kits."
+      },
+      date: "2025-10-20",
+      tags: ["OpenXR", "Design Principles", "HCI"],
+      link: {
+        zh: "https://libinzyu.github.io/unity-xr-guide/#/doc/openxr",
+        en: "https://libinzyu.github.io/unity-xr-guide/#/doc/openxr"
+      },
+      image: "assets/images/blog_openxr.jpg"
+    },
+    {
+      id: "blog-5",
+      title: {
+        zh: "安装 Meta SDK",
+        en: "Install Meta SDK"
+      },
+      description: {
+        zh: "了解如何在 Unity 中快速安装并使用 Meta XR SDK。",
+        en: "Learn how to install and use Meta XR SDK in Unity right away."
+      },
+      date: "2025-10-25",
+      tags: ["Meta SDK", "Unity", "Setup"],
+      link: {
+        zh: "https://libinzyu.github.io/unity-xr-guide/#/doc/helloworld",
+        en: "https://libinzyu.github.io/unity-xr-guide/#/doc/helloworld"
+      },
+      image: "assets/images/blog_meta_sdk.jpg"
+    }
+  ],
 
-  // // Footer Information
-  // footer: {
-  //   lastUpdated: "2024-12-20",
-  //   location: {
-  //     zh: "中国苏州",
-  //     en: "Suzhou, China"
-  //   }
-  // },
+  // Contact Information
+  contact: [
+    {
+      icon: "mail",
+      text: "rob.bingru.li@outlook.com",
+      copy: "rob.bingru.li@outlook.com"
+    },
+    {
+      icon: "phone",
+      text: "+86 18080637660",
+      copy: "+86 18080637660"
+    },
+    {
+      icon: "chat-bubble-empty",
+      text: "WeChat: LiBinZyu",
+      copy: "LiBinZyu"
+    },
+    {
+      icon: "github",
+      text: "GitHub",
+      link: "https://github.com/LiBinZyu"
+    },
+    {
+      icon: "linkedin",
+      text: "LinkedIn",
+      link: "https://www.linkedin.com/in/robbingruli"
+    }
+  ],
 
   // Site Configuration
   config: {
@@ -446,8 +638,6 @@ const portfolioData = {
 // Image hosting services configuration
 // 图片托管服务配置
 const imageHosting = {
-  // Using Unsplash for placeholder images
-  // 使用Unsplash作为占位图片
   unsplash: {
     baseUrl: "https://images.unsplash.com",
     categories: {
@@ -459,21 +649,14 @@ const imageHosting = {
     }
   },
 
-  // Alternative hosting services
-  // 替代托管服务
   alternatives: {
-    // Cloudinary (free tier available)
     cloudinary: {
       baseUrl: "https://res.cloudinary.com/your-cloud-name/image/upload",
       transformations: "w_400,h_200,c_fill,q_auto,f_auto"
     },
-
-    // Imgur (free)
     imgur: {
       baseUrl: "https://i.imgur.com"
     },
-
-    // GitHub (for project images)
     github: {
       baseUrl: "https://raw.githubusercontent.com/LiBinZyu/LiBinZyu.github.io/main/assets/images"
     }
@@ -483,19 +666,14 @@ const imageHosting = {
 // Video hosting services configuration
 // 视频托管服务配置
 const videoHosting = {
-  // YouTube (free, unlimited)
   youtube: {
     baseUrl: "https://www.youtube.com/embed",
     thumbnailUrl: "https://img.youtube.com/vi/{videoId}/maxresdefault.jpg"
   },
-
-  // Vimeo (free tier available)
   vimeo: {
     baseUrl: "https://player.vimeo.com/video",
     thumbnailUrl: "https://vumbnail.com/{videoId}.jpg"
   },
-
-  // Cloudinary (for video hosting)
   cloudinary: {
     baseUrl: "https://res.cloudinary.com/your-cloud-name/video/upload",
     transformations: "w_800,h_auto,q_auto,f_auto"
@@ -503,7 +681,6 @@ const videoHosting = {
 };
 
 // Export data for use in other files
-// 导出数据供其他文件使用
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     portfolioData,

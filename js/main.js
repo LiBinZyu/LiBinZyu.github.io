@@ -1,16 +1,12 @@
 // Main JavaScript file for Personal Portfolio
 // 个人作品集主要JavaScript文件
 
-// Import ProjectCard class (will be available after components.js loads)
-// 导入ProjectCard类（在components.js加载后可用）
-
 class PortfolioApp {
   constructor() {
     this.currentLanguage = 'zh';
     this.currentTheme = 'light';
-    this.currentSection = 'experiences';
+    this.currentSection = 'projects';
     this.starredProjects = new Set();
-    // 不在构造函数里自动调用 this.init()
   }
 
   init() {
@@ -25,7 +21,7 @@ class PortfolioApp {
     const savedLanguage = localStorage.getItem('portfolio-language');
     const savedTheme = localStorage.getItem('portfolio-theme');
     const savedStars = localStorage.getItem('portfolio-stars');
-    
+
     if (savedLanguage) {
       this.currentLanguage = savedLanguage;
     } else {
@@ -38,7 +34,7 @@ class PortfolioApp {
         this.currentLanguage = typeof portfolioData !== 'undefined' ? portfolioData.config.defaultLanguage : 'en';
       }
     }
-    
+
     if (savedTheme) {
       this.currentTheme = savedTheme;
     } else {
@@ -46,9 +42,9 @@ class PortfolioApp {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       this.currentTheme = prefersDark ? 'dark' : 'light';
     }
-    
+
     if (savedStars) this.starredProjects = new Set(JSON.parse(savedStars));
-    
+
     // Apply theme immediately
     document.body.className = `theme-${this.currentTheme}`;
   }
@@ -62,6 +58,20 @@ class PortfolioApp {
 
   // Setup event listeners
   setupEventListeners() {
+    // Scroll event for sticky navbar background styling
+    const handleScroll = () => {
+      const navMenu = document.querySelector('.nav-menu');
+      if (navMenu) {
+        if (window.scrollY > 10) {
+          navMenu.classList.add('scrolled');
+        } else {
+          navMenu.classList.remove('scrolled');
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
     // Navigation menu
     document.querySelectorAll('.nav-item').forEach(item => {
       item.addEventListener('click', (e) => {
@@ -85,11 +95,26 @@ class PortfolioApp {
       this.downloadCV();
     });
 
-    // Contact form
-    // 由 js/components.js 负责表单提交逻辑，这里不再监听
+    // Download profile button in contact section
+    const contactDownloadBtn = document.getElementById('contact-download-profile');
+    if (contactDownloadBtn) {
+      contactDownloadBtn.addEventListener('click', () => {
+        this.downloadCV();
+      });
+    }
+
+    // Projects category filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const category = e.currentTarget.dataset.category;
+        this.loadProjects(category);
+      });
+    });
 
     // Contact items copy functionality
-    document.querySelectorAll('.contact-item').forEach(item => {
+    document.querySelectorAll('.contact-item[data-copy]').forEach(item => {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         this.copyContactInfo(item);
@@ -128,7 +153,7 @@ class PortfolioApp {
     document.getElementById(sectionName).classList.add('active');
 
     this.currentSection = sectionName;
-    
+
     // Load section-specific content
     this.loadSectionContent(sectionName);
   }
@@ -148,7 +173,8 @@ class PortfolioApp {
       icon.src = this.currentTheme === 'light'
         ? 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/sun-light.svg'
         : 'https://cdn.jsdelivr.net/npm/iconoir@latest/icons/half-moon.svg';
-      icon.style.filter = 'invert(var(--icon-invert, 0))';
+      // Clear inline filter styling so it inherits from the CSS class filter
+      icon.style.filter = '';
     }
   }
 
@@ -162,11 +188,9 @@ class PortfolioApp {
   // Update all text content based on current language
   updateLanguage() {
     console.log('[PortfolioApp] updateLanguage called, currentLanguage:', this.currentLanguage);
-    // 更新HTML的lang属性
     document.documentElement.lang = this.currentLanguage === 'zh' ? 'zh-CN' : 'en-US';
     document.documentElement.setAttribute('data-lang', this.currentLanguage);
-    
-    // 更新所有有data属性的元素
+
     document.querySelectorAll('[data-zh][data-en]').forEach(element => {
       const text = element.dataset[this.currentLanguage];
       if (text) {
@@ -175,18 +199,24 @@ class PortfolioApp {
     });
 
     // Update page title
-    document.title = this.currentLanguage === 'zh' ? '李炳儒 - 个人作品集' : 'Bingru Li - Personal Portfolio';
-    
-    // 重新加载动态内容
+    document.title = this.currentLanguage === 'zh' ? '李炳儒' : 'Bingru Li';
+
+    // Reload dynamic content
+    this.loadProfile();
+    this.loadContact();
     this.loadExperiences();
-    this.loadProjects();
+    const activeCategory = document.querySelector('.filter-btn.active')?.dataset.category || 'all';
+    this.loadProjects(activeCategory);
+    this.loadBlogs();
   }
 
   // Load all content
   loadContent() {
     this.loadProfile();
+    this.loadContact();
     this.loadExperiences();
     this.loadProjects();
+    this.loadBlogs();
     this.updateThemeIcon();
   }
 
@@ -204,22 +234,83 @@ class PortfolioApp {
     if (nameElement && profile.name) {
       nameElement.setAttribute('data-zh', profile.name.zh);
       nameElement.setAttribute('data-en', profile.name.en);
+      nameElement.textContent = profile.name[this.currentLanguage];
     }
 
-    const titleElement = document.querySelector('.profile-title');
-    if (titleElement && profile.title) {
-      titleElement.setAttribute('data-zh', profile.title.zh);
-      titleElement.setAttribute('data-en', profile.title.en);
-    }
-
-    const locationElement = document.querySelector('.profile-location');
-    if (locationElement && profile.location) {
-      locationElement.setAttribute('data-zh', profile.location.zh);
-      locationElement.setAttribute('data-en', profile.location.en);
+    const bioContainer = document.querySelector('.profile-bio');
+    if (bioContainer && profile.bio) {
+      bioContainer.innerHTML = '';
+      const bioText = profile.bio[this.currentLanguage] || '';
+      bioText.split('\n').forEach(paragraph => {
+        if (paragraph.trim()) {
+          const p = document.createElement('p');
+          p.className = 'bio-paragraph';
+          p.textContent = paragraph.trim();
+          bioContainer.appendChild(p);
+        }
+      });
     }
   }
 
-  // Load experiences content
+  // Load contact from data.js
+  loadContact() {
+    const container = document.getElementById('contact-info-list');
+    if (!container || typeof portfolioData === 'undefined' || !portfolioData.contact) return;
+
+    // Save download button element
+    const downloadBtn = document.getElementById('contact-download-profile');
+    container.innerHTML = '';
+
+    portfolioData.contact.forEach(item => {
+      const itemEl = document.createElement('div');
+      itemEl.className = 'contact-item';
+
+      if (item.copy) {
+        itemEl.setAttribute('data-copy', item.copy);
+      }
+
+      // Add icon
+      const img = document.createElement('img');
+      img.src = `https://cdn.jsdelivr.net/npm/iconoir@latest/icons/${item.icon}.svg`;
+      img.alt = item.text;
+      img.className = 'contact-icon icon';
+      img.width = 18;
+      img.height = 18;
+      itemEl.appendChild(img);
+
+      // Add text or link
+      if (item.link) {
+        const link = document.createElement('a');
+        link.href = item.link;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = item.text;
+        link.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+        itemEl.appendChild(link);
+      } else {
+        const span = document.createElement('span');
+        span.textContent = item.text;
+        itemEl.appendChild(span);
+      }
+
+      // Copy listener
+      if (item.copy) {
+        itemEl.addEventListener('click', () => {
+          this.copyContactInfo(itemEl);
+        });
+      }
+
+      container.appendChild(itemEl);
+    });
+
+    if (downloadBtn) {
+      container.appendChild(downloadBtn);
+    }
+  }
+
+  // Load experiences content with category grouping and link support
   loadExperiences() {
     const container = document.getElementById('experiences-content');
     if (!container) return;
@@ -227,79 +318,217 @@ class PortfolioApp {
     const experiences = portfolioData.experiences;
     container.innerHTML = '';
 
-    experiences.forEach((exp, index) => {
-      const experienceElement = this.createExperienceElement(exp, index);
-      container.appendChild(experienceElement);
+    const grouped = {};
+    const categoriesOrder = [];
+
+    experiences.forEach(exp => {
+      const catKey = exp.category ? exp.category.en : 'EXPERIENCE';
+      const catName = exp.category ? exp.category[this.currentLanguage] : (this.currentLanguage === 'zh' ? '经历' : 'EXPERIENCE');
+
+      if (!grouped[catKey]) {
+        grouped[catKey] = {
+          name: catName,
+          items: []
+        };
+        categoriesOrder.push(catKey);
+      }
+      grouped[catKey].items.push(exp);
+    });
+
+    categoriesOrder.forEach((catKey, catIdx) => {
+      const group = grouped[catKey];
+      const blockEl = document.createElement('div');
+      blockEl.className = 'experience-block animate-slide-up';
+      blockEl.style.animationDelay = `${catIdx * 0.1}s`;
+
+      const itemsHtml = group.items.map(item => {
+        const title = (item.title && item.title[this.currentLanguage]) || '';
+        const company = (item.company && item.company[this.currentLanguage]) || '';
+        const period = (item.period && item.period[this.currentLanguage]) || '';
+
+        let descriptionHtml = '';
+        if (catKey !== 'EDUCATION' && catKey !== 'EXPERIENCE' && item.description) {
+          const descVal = item.description[this.currentLanguage];
+          if (descVal) {
+            const formattedDesc = descVal.split('\n').map(line => line.trim()).join('<br>');
+            descriptionHtml = `<p class="exp-desc-text">${formattedDesc}</p>`;
+          }
+        }
+
+        const tagsHtml = item.tags && Array.isArray(item.tags) && item.tags.length > 0
+          ? `<div class="exp-tags">${item.tags.filter(t => t).map(t => `<span class="exp-tag">${t}</span>`).join('')}</div>`
+          : '';
+
+        let linkUrl = '';
+        if (item.link) {
+          if (typeof item.link === 'object') {
+            linkUrl = item.link[this.currentLanguage] || item.link.en || item.link.zh;
+          } else {
+            linkUrl = item.link;
+          }
+        }
+
+        const companyHtml = linkUrl && company
+          ? `<a href="${linkUrl}" target="_blank" rel="noopener" class="exp-link">${company}</a>`
+          : company;
+
+        let titleCompanyHtml = '';
+        if (title && companyHtml) {
+          titleCompanyHtml = `
+            <div class="exp-title-company">
+              <span class="exp-title">${title}</span>
+              <span class="exp-sep">—</span>
+              <span class="exp-company">${companyHtml}</span>
+            </div>
+          `;
+        } else if (title) {
+          titleCompanyHtml = `
+            <div class="exp-title-company">
+              <span class="exp-title">${title}</span>
+            </div>
+          `;
+        } else if (companyHtml) {
+          titleCompanyHtml = `
+            <div class="exp-title-company">
+              <span class="exp-company">${companyHtml}</span>
+            </div>
+          `;
+        }
+
+        const periodHtml = period
+          ? `
+            <div class="exp-meta-right">
+              <span>${period}</span>
+            </div>
+          `
+          : '';
+
+        return `
+          <div class="exp-row">
+            <div class="exp-main">
+              ${titleCompanyHtml}
+              ${descriptionHtml}
+              ${tagsHtml}
+            </div>
+            ${periodHtml}
+          </div>
+        `;
+      }).join('');
+
+      blockEl.innerHTML = `
+        <div class="experience-category-col">${group.name.toUpperCase()}</div>
+        <div class="experience-rows-col">
+          ${itemsHtml}
+        </div>
+      `;
+
+      container.appendChild(blockEl);
     });
   }
 
-  // Create experience element
-  createExperienceElement(experience, index) {
-    const div = document.createElement('div');
-    div.className = 'experience-item animate-slide-up';
-    div.style.animationDelay = `${index * 0.1}s`;
-
-    const title = experience.title[this.currentLanguage];
-    const company = experience.company[this.currentLanguage];
-    const period = experience.period[this.currentLanguage];
-    const description = experience.description[this.currentLanguage];
-
-    div.innerHTML = `
-      <div class="experience-card">
-        <div class="experience-header">
-          <div>
-            <h3 class="experience-title">${title}</h3>
-            <p class="experience-company">${company}</p>
-          </div>
-          <span class="experience-period">${period}</span>
-        </div>
-        <p class="experience-description">${description}</p>
-        <div class="tech-tags">
-          ${experience.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
-        </div>
-      </div>
-    `;
-
-    return div;
-  }
-
-  // Load projects content
-  loadProjects() {
-    console.log('[PortfolioApp] loadProjects called, currentLanguage:', this.currentLanguage);
+  // Load projects content with category filtering
+  loadProjects(filterCategory = 'all') {
+    console.log('[PortfolioApp] loadProjects called, category:', filterCategory, 'language:', this.currentLanguage);
     const container = document.getElementById('projects-content');
-    if (!container) {
-      console.error('Projects container not found');
-      return;
-    }
+    if (!container) return;
 
     const projects = portfolioData.projects;
-    if (!projects || projects.length === 0) {
-      console.error('No projects data found');
-      return;
-    }
+    if (!projects || projects.length === 0) return;
 
     container.innerHTML = '';
 
-    // Check if ProjectCard class is available
     if (typeof ProjectCard === 'undefined') {
       console.error('ProjectCard class not available');
       return;
     }
 
-    // Sort projects by date (newest first)
-    const sortedProjects = projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const filteredProjects = filterCategory === 'all'
+      ? projects
+      : projects.filter(proj => {
+        if (Array.isArray(proj.category)) {
+          return proj.category.includes(filterCategory);
+        }
+        return proj.category === filterCategory;
+      });
+
+    const sortedProjects = filteredProjects.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     sortedProjects.forEach((project, index) => {
       try {
-        // Use the new ProjectCard class
         new ProjectCard(project, container);
       } catch (error) {
         console.error('Error creating project card:', error);
-        console.error('Project data:', project);
       }
     });
   }
 
+  // Load blogs content dynamically
+  loadBlogs() {
+    const container = document.getElementById('blogs-content');
+    if (!container) return;
+
+    const blogs = portfolioData.blogs;
+    if (!blogs || blogs.length === 0) {
+      container.innerHTML = '<p>No blogs found.</p>';
+      return;
+    }
+
+    container.innerHTML = '';
+
+    // Sort blogs by date (newest first)
+    const sortedBlogs = blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    sortedBlogs.forEach((blog, index) => {
+      const blogEl = document.createElement('div');
+      blogEl.className = 'blog-item animate-slide-up';
+      blogEl.style.animationDelay = `${index * 0.1}s`;
+
+      const title = blog.title[this.currentLanguage];
+      const description = blog.description[this.currentLanguage];
+      const date = this.formatDate(blog.date);
+
+      let linkUrl = '';
+      if (blog.link) {
+        if (typeof blog.link === 'object') {
+          linkUrl = blog.link[this.currentLanguage] || blog.link.en || blog.link.zh;
+        } else {
+          linkUrl = blog.link;
+        }
+      }
+
+      blogEl.innerHTML = `
+        <a href="${linkUrl}" target="_blank" rel="noopener" class="blog-card-link">
+          <div class="blog-card">
+            <div class="blog-image-col">
+              <img src="${blog.image}" alt="${title}" loading="lazy">
+            </div>
+            <div class="blog-content-col">
+              <span class="blog-date">${date}</span>
+              <h3 class="blog-title">${title}</h3>
+              <p class="blog-desc">${description}</p>
+            </div>
+          </div>
+        </a>
+      `;
+
+      container.appendChild(blogEl);
+    });
+  }
+
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    if (this.currentLanguage === 'zh') {
+      return date.toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: 'long'
+      });
+    } else {
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long'
+      });
+    }
+  }
 
   // Load section-specific content
   loadSectionContent(sectionName) {
@@ -308,10 +537,13 @@ class PortfolioApp {
         this.loadExperiences();
         break;
       case 'projects':
-        this.loadProjects();
+        const activeCategory = document.querySelector('.filter-btn.active')?.dataset.category || 'all';
+        this.loadProjects(activeCategory);
+        break;
+      case 'blog':
+        this.loadBlogs();
         break;
       case 'contact':
-        // Contact form is already loaded
         break;
     }
   }
@@ -321,34 +553,19 @@ class PortfolioApp {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
-    
-    // Add styles
-    Object.assign(notification.style, {
-      position: 'fixed',
-      top: '20px',
-      right: '20px',
-      padding: '12px 20px',
-      borderRadius: '8px',
-      color: 'white',
-      fontWeight: '500',
-      zIndex: '10000',
-      transform: 'translateX(100%)',
-      transition: 'transform 0.3s ease',
-      backgroundColor: type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6'
-    });
 
     document.body.appendChild(notification);
 
-    // Animate in
-    setTimeout(() => {
-      notification.style.transform = 'translateX(0)';
-    }, 100);
+    // Trigger reflow to enable transition
+    notification.offsetHeight;
+    notification.classList.add('active');
 
-    // Remove after 3 seconds
     setTimeout(() => {
-      notification.style.transform = 'translateX(100%)';
+      notification.classList.remove('active');
       setTimeout(() => {
-        document.body.removeChild(notification);
+        if (notification.parentNode) {
+          document.body.removeChild(notification);
+        }
       }, 300);
     }, 3000);
   }
@@ -357,10 +574,8 @@ class PortfolioApp {
   downloadCV() {
     const cvUrl = portfolioData.profile.cvUrl;
     if (cvUrl) {
-      // 兼容中文路径下载：用 a 标签 download 属性+encodeURI+模拟点击
       const link = document.createElement('a');
       link.href = encodeURI(cvUrl);
-      // 自动提取文件名
       link.download = cvUrl.split('/').pop();
       document.body.appendChild(link);
       link.click();
@@ -373,29 +588,24 @@ class PortfolioApp {
     }
   }
 
-  // Copy contact info to clipboard
+  // Copy contact info to clipboard with subtle feedback
   async copyContactInfo(item) {
     const textToCopy = item.dataset.copy;
-    const type = item.dataset.type;
-    
+
     try {
       await navigator.clipboard.writeText(textToCopy);
-      
-      // Show success notification
+
       const message = this.currentLanguage === 'zh' ? '已复制到剪贴板' : 'Copied to clipboard';
       this.showNotification(message, 'success');
-      
-      // Add visual feedback
-      item.style.transform = 'scale(0.95)';
-      item.style.background = 'var(--accent-blue)';
-      item.style.color = 'white';
-      
+
+      item.style.transform = 'scale(0.98)';
+      item.style.background = 'var(--accent-blue-light)';
+
       setTimeout(() => {
         item.style.transform = '';
         item.style.background = '';
-        item.style.color = '';
       }, 200);
-      
+
     } catch (err) {
       console.error('Failed to copy: ', err);
       this.showNotification(
@@ -413,12 +623,10 @@ class PortfolioApp {
 
   // Handle window resize
   handleResize() {
-    // Update any responsive elements if needed
     const isMobile = window.innerWidth < 768;
     document.body.classList.toggle('mobile', isMobile);
   }
 
-  // Utility: Debounce function
   debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -432,21 +640,17 @@ class PortfolioApp {
   }
 }
 
- // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   window.portfolioApp = new PortfolioApp();
   window.portfolioApp.init();
 });
 
-// Handle page visibility change
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible' && window.portfolioApp) {
-    // Refresh data when page becomes visible
     window.portfolioApp.loadContent();
   }
 });
 
-// Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PortfolioApp;
 }
