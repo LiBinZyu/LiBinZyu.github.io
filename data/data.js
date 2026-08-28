@@ -214,17 +214,17 @@ const portfolioData = {
       id: "proj-1",
       category: "spatial-xr",
       title: {
-        zh: "KernalMind-Apex 机器人遥操及具身数据采集 XR 应用",
-        en: "KernalMind-Apex Robot Teleoperation and Data Collection XR App"
+        zh: "商业机器人遥操及具身数据采集 XR 应用",
+        en: "Robot Teleoperation and Data Collection XR App"
       },
       description: {
-        zh: "机械臂夹爪及灵巧手头显端应用开发(Meta Quest/ Pico + OpenXR 自定义包管理)+第一人称场景及交互数据采集",
-        en: "Development of gripper and dex-hand remote control (Meta Quest/Pico + OpenXR custom package management) + egocentric and spatial data collection"
+        zh: "全身遥控机器人运动, 使用 Unity+OpenXR 实现功能开发, 开发包管理器管理不同厂商SDK 差异, 第一人称场景及交互数据采集",
+        en: "Full-body teleoperation of robot movement, using Unity+OpenXR to implement functional development, developing a package manager to manage SDK differences between different manufacturers, collecting egocentric scenes and interaction data"
       },
       images: [
+        "assets/images/teleop_cover.jpg",
         "assets/images/teleop_quest.jpg",
-        "assets/images/teleop_teleop.jpeg",
-        "assets/images/teleop_dev.jpeg"
+        "assets/images/teleop_teleop.jpeg"
       ],
       videos: [],
       tech: ["Unity", "OpenXR", "TeleOp", "Egocentric"],
