@@ -71,9 +71,12 @@ class ProjectCard {
     const { title, description, images, videos, tech, links, date } = this.projectData;
     const currentLang = window.portfolioApp?.currentLanguage || 'zh';
 
+    const BLANK_PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E";
+    const NO_IMAGE_PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='100%25' height='100%25' fill='%231f2430'/%3E%3Ctext x='50%25' y='50%25' fill='%23777' font-family='sans-serif' font-size='15' text-anchor='middle' dominant-baseline='middle'%3ENo Preview%3C/text%3E%3C/svg%3E";
+
     const allMedia = [...(images || []), ...(videos || [])];
     if (allMedia.length === 0) {
-      allMedia.push('https://via.placeholder.com/400x200?text=No+Image');
+      allMedia.push(NO_IMAGE_PLACEHOLDER);
     }
 
     const mediaItems = allMedia.map((media, index) => {
@@ -84,7 +87,7 @@ class ProjectCard {
       if (isVideo) {
         return `
           <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="video" style="position:relative;">
-            <video src="${media}" muted playsinline loop preload="auto" autoplay style="background:#222;">
+            <video data-src="${media}" muted playsinline loop preload="none" style="background:#151821;">
               <p>Your browser does not support video playback</p>
             </video>
             <div class="video-corner-tag">
@@ -95,7 +98,7 @@ class ProjectCard {
       } else {
         return `
           <div class="project-image-item ${index === 0 ? 'active' : ''}" data-type="image">
-            <img data-src="${media}" src="https://via.placeholder.com/10x10?text=..." alt="${title[currentLang]}" class="lazy" loading="lazy">
+            <img src="${media}" alt="${title[currentLang]}" loading="lazy">
           </div>
         `;
       }
@@ -141,39 +144,88 @@ class ProjectCard {
     `;
   }
 
-  setupMediaLazyLoading() {
-    if ('IntersectionObserver' in window) {
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            if (img.dataset.src) {
+  loadItemMedia(item) {
+    if (!item) return;
+
+    // Load image
+    const img = item.querySelector('img[data-src]');
+    if (img && img.dataset.src) {
+      if (img.src !== img.dataset.src) {
+        img.src = img.dataset.src;
+        img.onload = () => {
+          img.classList.remove('lazy');
+          img.classList.add('loaded');
+        };
+        img.onerror = () => {
+          setTimeout(() => {
+            if (!img.classList.contains('loaded')) {
               img.src = img.dataset.src;
-              img.classList.remove('lazy');
-              img.classList.add('loaded');
-              observer.unobserve(img);
+            }
+          }, 2000);
+        };
+      }
+    }
+
+    // Load video
+    const video = item.querySelector('video[data-src]');
+    if (video && video.dataset.src) {
+      if (!video.src || video.src === '' || video.src === window.location.href) {
+        video.src = video.dataset.src;
+        video.load();
+      }
+    }
+  }
+
+  loadAllMediaNow() {
+    this.cardElement.querySelectorAll('.project-image-item').forEach(item => {
+      this.loadItemMedia(item);
+    });
+  }
+
+  setupMediaLazyLoading() {
+    if (!('IntersectionObserver' in window)) {
+      this.loadAllMediaNow();
+      return;
+    }
+
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const isVisible = entry.isIntersecting;
+        const activeItem = this.cardElement.querySelector('.project-image-item.active');
+
+        if (isVisible) {
+          // Preload active media item
+          if (activeItem) {
+            this.loadItemMedia(activeItem);
+
+            if (activeItem.dataset.type === 'video') {
+              const video = activeItem.querySelector('video');
+              if (video) {
+                video.play().catch(() => {});
+              }
             }
           }
-        });
-      }, { rootMargin: '100px' });
-
-      this.cardElement.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
+        } else {
+          // Pause video when out of viewport to save CPU and bandwidth
+          const videos = this.cardElement.querySelectorAll('video');
+          videos.forEach(v => {
+            if (!v.paused) {
+              v.pause();
+            }
+          });
+        }
       });
-    }
+    }, {
+      rootMargin: '150px 0px',
+      threshold: [0, 0.15]
+    });
+
+    cardObserver.observe(this.cardElement);
   }
 
   setupEventListeners() {
     this.setupImageCarousel();
     this.setupMediaLazyLoading();
-
-    // Autoplay first video if active
-    const firstVideo = this.cardElement.querySelector('.project-image-item.active[data-type="video"] video');
-    if (firstVideo) {
-      firstVideo.play().catch((err) => {
-        console.warn('[ProjectCard] Video autoplay warning:', err);
-      });
-    }
   }
 
   setupImageCarousel() {
@@ -187,7 +239,21 @@ class ProjectCard {
 
     const showItem = (index) => {
       items.forEach((item, i) => {
-        item.classList.toggle('active', i === index);
+        const isActive = (i === index);
+        item.classList.toggle('active', isActive);
+
+        if (isActive) {
+          this.loadItemMedia(item);
+          if (item.dataset.type === 'video') {
+            const v = item.querySelector('video');
+            if (v) v.play().catch(() => {});
+          }
+        } else {
+          if (item.dataset.type === 'video') {
+            const v = item.querySelector('video');
+            if (v && !v.paused) v.pause();
+          }
+        }
       });
       indicators.forEach((indicator, i) => {
         indicator.classList.toggle('active', i === index);
@@ -200,7 +266,7 @@ class ProjectCard {
     };
 
     const startCarousel = () => {
-      carouselInterval = setInterval(nextItem, 3000);
+      carouselInterval = setInterval(nextItem, 3500);
     };
 
     const stopCarousel = () => {

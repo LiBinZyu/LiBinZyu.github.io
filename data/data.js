@@ -268,7 +268,9 @@ const portfolioData = {
       },
       videos: ["assets/videos/CameraArrayToolsVideo.mp4"],
       tech: ["Unreal Engine 5", "C++", "Python", "Movie Render Queue", "Path Tracing"],
-      links: {},
+      links: {
+        github: "https://github.com/LiBinZyu/CameraArrayTools"
+      },
       stars: 0,
       featured: true,
       date: "2025-07-01"
@@ -500,6 +502,53 @@ const portfolioData = {
       stars: 0,
       featured: false,
       date: "2023-03-01"
+    },
+    {
+      id: "proj-15",
+      category: "3d-tech-art",
+      title: {
+        zh: "3DGS 油画风格化 Blender 插件",
+        en: "3DGS Oil Painting Stylizer - Blender Add-on"
+      },
+      description: {
+        zh: "本插件基于 Blender 开发并在社区中广泛使用，可将 3D 高斯泼溅 (3DGS) 模型转化为油画风格的 3D 资产并导出为 Mesh 网格模型。核心利用自定义几何节点（Geometry Nodes）与 LUT 颜色烘焙技术，将点云重构为带有笔触质感的轻量模型。所有计算均经过性能优化，最终输出带有烘焙纹理的标准网格几何体，无缝兼容各类 3D 软件与游戏引擎（FBX, OBJ, GLB）。",
+        en: "A Blender add-on used within the developer community to transform 3D Gaussian Splatting (3DGS) models into stylized oil painting 3D assets, exportable as mesh models. It uses a custom Geometry Nodes setup and LUT-based color baking to create lightweight, exportable meshes that mimic brush strokes. All calculations are optimized for performance. The final output is standard mesh geometry with baked textures, compatible with other 3D software and game engines (FBX, OBJ, GLB)."
+      },
+      images: [
+        "assets/images/3dgs-to-mesh_1.jpg",
+        "assets/images/3dgs-to-mesh_2.jpg"
+      ],
+      videos: [],
+      tech: ["Blender", "3DGS", "Geometry Nodes", "Python", "Texture Baking", "NPR", "Game Assets"],
+      links: {
+        github: "https://github.com/LiBinZyu/blender-3dgs-oil-paint"
+      },
+      stars: 0,
+      featured: true,
+      date: "2026-03-01"
+    },
+    {
+      id: "proj-16",
+      category: ["spatial-xr", "research"],
+      title: {
+        zh: "Unified Teleop XR - 通用遥操作系统",
+        en: "Unified Teleop XR"
+      },
+      description: {
+        zh: "Unified Teleop XR 是一个轻量级 Unity 工具包，旨在解决 XR 设备作为遥控设备的通用性与易用性，直接将 XR 输入数据发布为 DDS/ROS 2 Topic 数据流。内置补偿硬件追踪丢失、异常跌落与人体运动限制的安全模式算法，并支持在 GPU Compute Shader 中重建空间视频点云与网格，广泛应用于机器人遥操作、机械臂控制、HRI 研究与具身数据采集。",
+        en: "Unified Teleop XR is a lightweight Unity toolkit designed to address the universality, usability, and safety of XR devices as teleoperation controllers. It publishes XR pose, velocity, and interaction data directly as DDS/ROS 2 topic streams via OpenXR and CycloneDDS. Features safety modes with compensation algorithms for hardware tracking loss and abnormal motion, alongside GPU-based spatial video reconstruction, empowering robot teleoperation, HRI research, and embodied data collection."
+      },
+      images: [
+        "assets/images/UTXR.jpg"
+      ],
+      videos: [],
+      tech: ["Unity", "OpenXR", "ROS 2", "CycloneDDS", "Robotics", "Teleoperation", "Spatial Video", "Safety Control"],
+      links: {
+        github: "https://github.com/LiBinZyu/unified-teleop-xr"
+      },
+      stars: 0,
+      featured: true,
+      date: "2026-10-01"
     }
   ],
 
