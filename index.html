@@ -17,6 +17,22 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
 
+    <!-- Polyfill: Ensure native event methods work when called unbound by third-party scripts (e.g. Vanta.js in WebKit/Safari) -->
+    <script>
+        if (typeof window !== 'undefined') {
+            if (window.addEventListener && !window.addEventListener.__safari_bound) {
+                const _origAdd = window.addEventListener;
+                window.addEventListener = function () { return _origAdd.apply(window, arguments); };
+                window.addEventListener.__safari_bound = true;
+            }
+            if (window.removeEventListener && !window.removeEventListener.__safari_bound) {
+                const _origRemove = window.removeEventListener;
+                window.removeEventListener = function () { return _origRemove.apply(window, arguments); };
+                window.removeEventListener.__safari_bound = true;
+            }
+        }
+    </script>
+
     <!-- Three.js and Vanta.js (Deferred) -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
@@ -173,11 +189,12 @@
     <!-- Vanta.js Birds Effect -->
     <script>
         let vantaEffect = null;
+        let vantaInitTimer = null;
 
-        // Original Blue-Purple Vanta Birds Dynamic Color Schemes
+        // Rich Blue-Purple Dynamic Color Schemes calibrated for native 3D WebGL lighting
         const lightThemeColors = {
-            color1: 0x8d9aeb,
-            color2: 0x465bff,
+            color1: 0x3d52d5,
+            color2: 0x6b28c8,
             speedLimit: 5.00
         };
 
@@ -197,11 +214,41 @@
                 return;
             }
 
-            const isDarkTheme = document.body.classList.contains('theme-dark') || document.documentElement.classList.contains('theme-dark');
+            // Debounce rapid calls to prevent WebGL context contention in mobile Safari
+            if (vantaInitTimer) {
+                clearTimeout(vantaInitTimer);
+            }
+
+            vantaInitTimer = setTimeout(() => {
+                _executeVantaInit();
+            }, 30);
+        }
+
+        function _executeVantaInit() {
+            const isDarkTheme = document.documentElement.classList.contains('theme-dark') || 
+                                document.body.classList.contains('theme-dark') ||
+                                document.documentElement.getAttribute('data-theme') === 'dark';
             const colors = isDarkTheme ? darkThemeColors : lightThemeColors;
 
+            // Safe cleanup of existing instance
             if (vantaEffect) {
-                try { vantaEffect.destroy(); } catch (err) {}
+                try {
+                    if (vantaEffect.req) {
+                        window.cancelAnimationFrame(vantaEffect.req);
+                    }
+                    if (typeof vantaEffect.destroy === 'function') {
+                        vantaEffect.destroy();
+                    }
+                } catch (err) {
+                    console.warn('Vanta cleanup:', err);
+                }
+                vantaEffect = null;
+            }
+
+            // Clean container to prevent orphaned canvases
+            const container = document.getElementById('vanta-birds');
+            if (container) {
+                container.innerHTML = '';
             }
 
             try {
@@ -225,15 +272,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             initVantaEffect();
         });
-
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', function () {
-                setTimeout(() => {
-                    initVantaEffect();
-                }, 100);
-            });
-        }
 
         // Scroll Spy and Smooth Scroll
         function initScrollSpy() {
