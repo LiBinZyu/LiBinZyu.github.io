@@ -905,7 +905,7 @@
   border-radius: var(--radius-tile);
   overflow: hidden;
   margin-bottom: 20px;
-  background: var(--bg-secondary);
+  background: transparent;
   display: none;
 }
 

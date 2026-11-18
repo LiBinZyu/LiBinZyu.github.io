@@ -133,7 +133,7 @@ class ProjectCard {
             <span data-en="Paper" data-zh="Paper">Paper</span>
           </a>` : ''}
           ${links.demo ? `<a href="${links.demo}" target="_blank" rel="noopener" class="project-link">
-            <span class="material-icons">open_in_new</span>
+            <img src="https://cdn.jsdelivr.net/npm/iconoir@latest/icons/open-in-browser.svg" alt="Demo" class="project-link-icon icon">
             <span data-en="Demo" data-zh="演示">演示</span>
           </a>` : ''}
         </div>
