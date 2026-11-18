@@ -541,7 +541,9 @@ const portfolioData = {
       images: [
         "assets/images/UTXR.jpg"
       ],
-      videos: [],
+      videos: [
+        "assets/videos/UTXR-show.mp4"
+      ],
       tech: ["Unity", "OpenXR", "ROS 2", "CycloneDDS", "Robotics", "Teleoperation", "Spatial Video", "Safety Control"],
       links: {
         github: "https://github.com/LiBinZyu/unified-teleop-xr"

@@ -1,224 +1,318 @@
-/* CSS Variables for Theme Support */
+/* ==========================================================================
+   Apple visionOS Spatial Design System
+   Translucent Spatial Glass · Specular Rim Highlights · Continuous Squircles (26px)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Theme Variables — VisionOS Spatial Glass Tokens
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   Global Layout, Radii & Typography Tokens (100% IDENTICAL ACROSS ALL THEMES)
+   -------------------------------------------------------------------------- */
 :root {
-  /* Light Theme Colors */
-  --bg-primary: #F7FAFC;
-  --bg-primary-rgb: 247, 250, 252;
-  --bg-secondary: #f7f9ff;
-  --bg-card: rgba(255, 255, 255, 0.6);
-  --bg-card-hover: rgba(255, 255, 255, 0.95);
-  --text-primary: #11142D;
-  --text-secondary: #616B7E;
-  --text-muted: #9B9CAE;
-  --border-color: rgba(17, 20, 45, 0.1);
-  --accent-blue: #193FB9;
-  --accent-blue-light: rgba(25, 63, 185, 0.1);
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
+  /* Typography Stack — Pure Apple Minimal */
+  --font-latin: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", sans-serif;
+  --font-chinese: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+
+  /* Universal Font Scale — Strictly identical in light and dark mode */
+  --fs-hero: 1.85rem;
+  --fs-title: 1.45rem;
+  --fs-subtitle: 1.12rem;
+  --fs-body: 0.95rem;
+  --fs-caption: 0.78rem;
+
+  /* Spacing Scale */
+  --spacing-2xs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.875rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.25rem;
+  --spacing-xl: 3.5rem;
+  --spacing-2xl: 5.5rem;
+
+  /* visionOS Radii Hierarchy */
+  --radius-window: 40px;
+  --radius-card: 26px;
+  --radius-tile: 18px;
+  --radius-pill: 999px;
+
+  /* Motion (Crisp pixel translation, ZERO scale blur) */
+  --transition-fast: 0.16s ease;
+  --transition-normal: 0.28s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Daylight Theme (Apple visionOS Luminous Crystal Glass)
+   -------------------------------------------------------------------------- */
+:root,
+html.theme-light,
+body.theme-light,
+[data-theme="light"] {
+  --bg-primary: radial-gradient(130% 120% at 50% 0%, #FFFFFF 0%, #F5F5F8 55%, #E9E9EE 100%);
+  --bg-primary-solid: #F5F5F8;
+  --bg-primary-rgb: 245, 245, 248;
+  --bg-secondary: #E5E7EB;
+  --bg-secondary-rgb: 229, 231, 235;
+
+  /* visionOS Natural Daylight Glass Material: Luminous Specular Translucent Glass */
+  --bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.12) 100%);
+  --bg-card-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.22) 100%);
+  --bg-glass: rgba(255, 255, 255, 0.32);
+  --glass-shadow: inset 0 1.5px 1px 0 #FFFFFF, inset 0 0 0 1px rgba(255, 255, 255, 0.50), 0 12px 34px -6px rgba(0, 0, 0, 0.04), 0 2px 8px -1px rgba(0, 0, 0, 0.02);
+  --glass-shadow-hover: inset 0 2px 1.5px 0 #FFFFFF, inset 0 0 0 1px rgba(255, 255, 255, 0.70), 0 18px 46px -6px rgba(0, 0, 0, 0.06), 0 4px 12px -1px rgba(0, 0, 0, 0.03);
+
+  /* Unified Apple Liquid Glass Button System (Light Mode: Translucent Gray, ZERO Pure White / Black) */
+  --btn-glass-bg: rgba(0, 0, 0, 0.035);
+  --btn-glass-hover: rgba(0, 0, 0, 0.065);
+  --btn-glass-active: rgba(0, 0, 0, 0.12);
+  --btn-glass-shadow: none;
+  --btn-glass-shadow-hover: inset 0 1px 1px 0 rgba(255, 255, 255, 0.60), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --btn-glass-shadow-active: inset 0 1px 1px 0 rgba(255, 255, 255, 0.70), inset 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  /* Active / Selected Control Tokens (Translucent Gray Capsule: ZERO Pure Black / White!) */
+  --ctrl-active-bg: rgba(0, 0, 0, 0.11);
+  --ctrl-active-color: #1D1D1F;
+  --ctrl-active-icon-filter: none;
+  --ctrl-active-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.70), inset 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  /* visionOS Liquid Glass Tooltip (Positioned Below) */
+  --tooltip-bg: rgba(29, 29, 31, 0.88);
+  --tooltip-color: #FFFFFF;
+
+  --bg-hover: rgba(0, 0, 0, 0.04);
+  --bg-active: rgba(0, 0, 0, 0.08);
+  --pill-bg: rgba(0, 0, 0, 0.045);
+  --pill-hover: rgba(0, 0, 0, 0.085);
+  --divider-color: rgba(0, 0, 0, 0.065);
+
+  --text-primary: #1D1D1F;
+  --text-secondary: #515154;
+  --text-muted: #86868B;
+
+  --accent: #1D1D1F;
+  --accent-light: rgba(0, 0, 0, 0.05);
+  --border-color: transparent;
+
   --icon-filter: none;
-
-  /* Typography */
-  --font-chinese: "Noto Sans SC", sans-serif;
-  --font-english: "Inter", sans-serif;
-
-  /* Spacing */
-  --spacing-xs: 0.1rem;
-  --spacing-sm: 0.25rem;
-  --spacing-md: 0.5rem;
-  --spacing-lg: 0.75rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  --spacing-3xl: 5rem;
-
-  /* Unified Font Sizes */
-  --fs-title: 1.5rem;   /* For all titles (h1, h2, h3, card titles, section headings) */
-  --fs-body: 0.95rem;   /* For all main text paragraphs, bio, lists, descriptions */
-  --fs-button: 0.9rem;  /* For all buttons, navigation items, interactive links */
-  --fs-caption: 0.8rem; /* For all metadata, dates, tags, helper captions */
-
-  /* Border Radius */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 8px;
-  --radius-2xl: 12px;
-
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
 }
 
-/* Dark Theme */
-.theme-dark {
-  --bg-primary: #0F1419;
-  --bg-primary-rgb: 15, 20, 25;
-  --bg-secondary: #131416;
-  --bg-card: rgba(32, 33, 37, 0.8);
-  --bg-card-hover: rgba(26, 31, 46, 0.95);
-  --text-primary: #E2E8F0;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --border-color: rgba(226, 232, 240, 0.1);
-  --accent-blue: #60A5FA;
-  --accent-blue-light: rgba(96, 165, 250, 0.1);
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --icon-filter: invert(1);
+/* --------------------------------------------------------------------------
+   Nighttime Theme (Apple visionOS Deep Spatial Obsidian Glass)
+   -------------------------------------------------------------------------- */
+html.theme-dark,
+body.theme-dark,
+[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-primary-solid: #000000;
+  --bg-primary-rgb: 0, 0, 0;
+  --bg-secondary: #141418;
+  --bg-secondary-rgb: 20, 20, 24;
+
+  /* visionOS Dark Spatial Glass Material with Specular Rim */
+  --bg-card: linear-gradient(135deg, rgba(40, 40, 48, 0.32) 0%, rgba(24, 24, 30, 0.16) 100%);
+  --bg-card-hover: linear-gradient(135deg, rgba(55, 55, 66, 0.45) 0%, rgba(32, 32, 40, 0.28) 100%);
+  --bg-glass: rgba(26, 26, 32, 0.30);
+  --glass-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 16px 44px rgba(0, 0, 0, 0.5);
+  --glass-shadow-hover: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 24px 56px rgba(0, 0, 0, 0.65);
+
+  /* Unified Apple Liquid Glass Button System (Dark Mode: Translucent Gray, ZERO Pure White / Black) */
+  --btn-glass-bg: rgba(255, 255, 255, 0.04);
+  --btn-glass-hover: rgba(255, 255, 255, 0.09);
+  --btn-glass-active: rgba(255, 255, 255, 0.18);
+  --btn-glass-shadow: none;
+  --btn-glass-shadow-hover: inset 0 1px 1px 0 rgba(255, 255, 255, 0.20), 0 2px 8px rgba(0, 0, 0, 0.25);
+  --btn-glass-shadow-active: inset 0 1px 1px 0 rgba(255, 255, 255, 0.30), inset 0 0 0 1px rgba(255, 255, 255, 0.10), 0 2px 10px rgba(0, 0, 0, 0.35);
+
+  /* Active / Selected Control Tokens (Translucent Light Gray Capsule: ZERO Pure White / Black!) */
+  --ctrl-active-bg: rgba(255, 255, 255, 0.18);
+  --ctrl-active-color: #F5F5F7;
+  --ctrl-active-icon-filter: brightness(0) invert(1);
+  --ctrl-active-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.30), inset 0 0 0 1px rgba(255, 255, 255, 0.10), 0 2px 10px rgba(0, 0, 0, 0.35);
+
+  /* visionOS Liquid Glass Tooltip (Positioned Below) */
+  --tooltip-bg: rgba(45, 45, 52, 0.90);
+  --tooltip-color: #F5F5F7;
+
+  --bg-hover: rgba(255, 255, 255, 0.08);
+  --bg-active: rgba(255, 255, 255, 0.15);
+  --pill-bg: rgba(255, 255, 255, 0.09);
+  --pill-hover: rgba(255, 255, 255, 0.16);
+  --divider-color: rgba(255, 255, 255, 0.08);
+
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1A6;
+  --text-muted: #6E6E73;
+
+  --accent: #F5F5F7;
+  --accent-light: rgba(255, 255, 255, 0.08);
+  --border-color: transparent;
+
+  --icon-filter: brightness(0) invert(1);
 }
 
-/* Base Styles */
-* {
+/* --------------------------------------------------------------------------
+   Universal Resets & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+button, input, select, textarea {
+  font-family: inherit;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 html {
+  background: var(--bg-primary);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  transition: background var(--transition-normal), color var(--transition-normal);
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  font-family: var(--font-chinese);
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  font-family: var(--font-latin);
+  background: transparent;
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
-  transition: background var(--transition-normal), color var(--transition-normal);
-}
-
-/* Global link reset — no browser-default blue */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  color: var(--text-secondary);
-}
-
-/* 全局字体规则 - 中文使用 Noto Sans SC */
-[data-lang="zh"] *:not(.material-icons),
-[lang="zh"] *:not(.material-icons),
-.chinese-text:not(.material-icons) {
-  font-family: var(--font-chinese) !important;
-}
-
-/* 全局字体规则 - 英文使用 Bitter */
-[data-lang="en"] *:not(.material-icons),
-[lang="en"] *:not(.material-icons),
-.english-text:not(.material-icons) {
-  font-family: var(--font-english) !important;
-}
-
-/* 默认字体设置 */
-body {
-  font-family: var(--font-chinese);
-}
-
-/* Material Icons 样式 */
-.material-icons {
-  font-family: 'Material Icons' !important;
-  font-weight: normal;
-  font-style: normal;
-  font-size: var(--fs-body);
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-  vertical-align: middle;
-}
-
-.container {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
-}
-
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-english);
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: var(--spacing-md);
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-size: var(--fs-title);
-}
-
-p {
-  margin-bottom: var(--spacing-md);
-  color: var(--text-secondary);
-}
-
-/* Header */
-.header {
-  padding: var(--spacing-2xl) var(--spacing-xl) var(--spacing-sm) var(--spacing-xl);
-  background: transparent;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* Vanta.js Birds Effect Container - Full Screen */
+/* Vanta.js Birds Effect Container - Full Screen Spatial Canvas with Adaptive Blend Modes */
 .vanta-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
 }
 
+html.theme-light .vanta-container,
+body.theme-light .vanta-container,
+[data-theme="light"] .vanta-container {
+  mix-blend-mode: multiply;
+}
+
+html.theme-dark .vanta-container,
+body.theme-dark .vanta-container,
+[data-theme="dark"] .vanta-container {
+  mix-blend-mode: screen;
+}
+
+/* Page Content Layers Float Cleanly Above the Dynamic Background */
+.header,
+.nav-menu,
+.main-content,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+[data-lang="zh"] body,
+[data-lang="zh"] *,
+[lang="zh-CN"] * {
+  font-family: var(--font-chinese);
+}
+
+[data-lang="en"] body,
+[data-lang="en"] *,
+[lang="en-US"] * {
+  font-family: var(--font-latin);
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+/* Layout Containers — Expanded to 1080px for 3 Columns */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* ==========================================================================
+   Header & Profile (Matching Original Layout: Bio First, Avatar + Name Below)
+   ========================================================================== */
+.header {
+  padding: 108px 0 60px 0;
+  background: transparent;
+}
 
 .profile-section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 32px;
-  position: relative;
-  z-index: 2;
-  margin-top: 80px;
-  margin-bottom: 60px;
-  max-width: 860px;
+  gap: 36px;
+  max-width: 880px;
+}
+
+.profile-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 6px 0;
+}
+
+.bio-paragraph {
+  font-size: var(--fs-title);
+  line-height: 1.72;
+  color: var(--text-primary);
+  font-weight: 300;
+  letter-spacing: -0.012em;
+  margin: 0;
 }
 
 .profile-meta {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .profile-image {
   flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: none !important;
 }
 
 .profile-image img {
-  width: 56px;
-  height: 56px;
-  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
+  display: block;
   transition: transform var(--transition-normal);
-  border: 1px solid var(--border-color);
+  border: none !important;
 }
 
 .profile-image img:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 .profile-name {
@@ -229,161 +323,205 @@ p {
   letter-spacing: -0.01em;
 }
 
-.profile-bio {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.bio-paragraph {
-  font-size: var(--fs-title);
-  line-height: 1.6;
-  color: var(--text-primary);
-  font-weight: 300;
-  letter-spacing: -0.01em;
-}
-
-/* Profile actions removed - download button moved to nav */
-
-/* Navigation */
+/* ==========================================================================
+   Apple Floating Capsule Navigation (visionOS Toolbar Style)
+   ========================================================================== */
 .nav-menu {
-  background: transparent;
   position: sticky;
-  top: 0;
+  top: 18px;
   z-index: 100;
-  height: 54px;
-  display: flex;
-  align-items: center;
-}
-
-.nav-menu::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: -48px;
-  /* Extend further below the navbar for deeper feathering */
-  z-index: -1;
-  pointer-events: none;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  transition: all 0.3s ease;
-}
-
-.nav-menu.scrolled::before {
-  background: linear-gradient(to bottom,
-      rgba(var(--bg-primary-rgb), 0.95) 0%,
-      rgba(var(--bg-primary-rgb), 0.5) 50%,
-      rgba(var(--bg-primary-rgb), 0) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-}
-
-.nav-menu .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: var(--spacing-lg);
-  width: 100%;
-  height: 100%;
-}
-
-.nav-items {
-  display: flex;
-  gap: var(--spacing-lg);
-  flex: 1;
-  justify-content: stretch;
-  flex-wrap: nowrap;
-  height: 40px;
-  margin-top: 10px;
-}
-
-.nav-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-sm);
-  background: rgba(255, 255, 255, 0.18);
-  border: none;
-  color: var(--text-primary);
-  font-size: var(--fs-button);
-  font-weight: 500;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  border-radius: var(--radius-2xl);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: background 0.2s, color 0.2s, min-width 0.3s;
-  min-width: 95px;
-  flex: 0 0 auto;
-  line-height: normal;
+  padding: 0 16px;
+  margin-bottom: 28px;
+  pointer-events: none;
+}
+
+.nav-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(44px) saturate(190%);
+  -webkit-backdrop-filter: blur(44px) saturate(190%);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--glass-shadow);
+  pointer-events: auto;
+  border: none !important;
+  outline: none !important;
+  transition: background-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.nav-items {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-item {
+  width: 36px;
   height: 36px;
-  padding: 0 var(--spacing-lg);
-  border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-muted);
+  opacity: 0.60;
+  cursor: pointer;
+  border: none !important;
+  outline: none !important;
+  transition: all var(--transition-fast);
+  position: relative;
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+  background: var(--btn-glass-hover);
+  box-shadow: var(--btn-glass-shadow-hover);
+  color: var(--text-primary);
+}
+
+.nav-item:active {
+  transform: translateY(1px);
 }
 
 .nav-item.active {
-  min-width: 145px;
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 2px 8px rgba(25, 63, 185, 0.08);
+  opacity: 1;
+  background: var(--ctrl-active-bg);
+  box-shadow: var(--ctrl-active-shadow);
+  color: var(--ctrl-active-color);
+}
+
+.nav-item.active .icon {
+  filter: var(--ctrl-active-icon-filter);
+}
+
+.nav-item .icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--divider-color);
+  margin: 0 4px;
+  flex-shrink: 0;
 }
 
 .nav-controls {
-  display: flex;
-  gap: var(--spacing-sm);
-  flex-shrink: 0;
+  display: inline-flex;
   align-items: center;
+  gap: 2px;
 }
 
-.nav-download-btn {
-  font-size: var(--fs-button);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  display: flex;
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-}
-
-/* Main Content */
-.main-content {
-  flex-shrink: 0;
-  margin: var(--spacing-xl) var(--spacing-lg);
-  border-radius: var(--radius-md);
-  min-height: 50vh;
+  justify-content: center;
+  border-radius: var(--radius-pill);
   background: transparent;
+  color: var(--text-muted);
+  opacity: 0.60;
+  cursor: pointer;
+  border: none !important;
+  outline: none !important;
+  transition: all var(--transition-fast);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: var(--spacing-sm);
 }
 
-/* Waterfall Layout */
+.nav-btn:hover {
+  opacity: 1;
+  background: var(--btn-glass-hover);
+  box-shadow: var(--btn-glass-shadow-hover);
+  color: var(--text-primary);
+}
+
+.nav-btn:active {
+  transform: translateY(1px);
+}
+
+.nav-btn .icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.icon {
+  vertical-align: middle;
+  filter: var(--icon-filter);
+  transition: opacity var(--transition-fast);
+}
+
+/* ==========================================================================
+   Apple Vision Style Tooltip (Positioned BELOW the UI, Translucent Glass Pill)
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  [data-tooltip] {
+    position: relative;
+  }
+
+  [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(100% + 8px);
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--tooltip-color);
+    background: var(--tooltip-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: var(--radius-pill);
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), 0 4px 14px rgba(0, 0, 0, 0.20);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    z-index: 1000;
+  }
+
+  [data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Main Content Structure */
+.main-content {
+  position: relative;
+  min-height: 60vh;
+}
+
 .waterfall-container {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
 }
 
-
-/* Full Width Sections */
+/* Full Width Section Spatial Padding */
 .full-width-section {
-  border-radius: 0;
-  padding: 120px 0; /* Generous vertical spacing for breathing room */
+  padding: 72px 0;
+  position: relative;
+}
+
+.full-width-section:first-of-type {
+  padding-top: 36px;
 }
 
 .full-width-section .experiences-timeline,
-.full-width-section .projects-grid,
+.full-width-section .projects-container,
 .full-width-section .blog-list,
 .full-width-section .contact-content {
   max-width: 1080px;
@@ -391,114 +529,135 @@ p {
   padding: 0 var(--spacing-lg);
 }
 
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-sm);
-  border: none;
-  border-radius: var(--radius-lg);
-  font-family: var(--font-chinese);
-  font-size: var(--fs-button);
-  font-weight: 400;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left var(--transition-normal);
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-  color: white;
-  box-shadow: var(--shadow-sm);
-  padding: var(--spacing-sm) var(--spacing-md);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-secondary {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  background: var(--accent-blue-light);
-  border-color: var(--accent-blue);
-  color: var(--accent-blue);
-}
-
-/* Footer */
-.footer {
-  background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding: var(--spacing-md) 0;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-content {
+/* ==========================================================================
+   Projects Toolbar: Filters + visionOS View Switcher (Table vs Grid)
+   ========================================================================== */
+.projects-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
+  gap: 12px;
+  margin-bottom: 32px;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--spacing-lg);
 }
 
-.footer-text {
+.category-filter-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 16px;
+  background: var(--btn-glass-bg);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  color: var(--text-secondary);
+  opacity: 0.65;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  opacity: 1;
+  background: var(--btn-glass-hover);
+  box-shadow: var(--btn-glass-shadow-hover);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.filter-btn.active {
+  opacity: 1;
+  background: var(--ctrl-active-bg);
+  box-shadow: var(--ctrl-active-shadow);
+  color: var(--ctrl-active-color);
+  font-weight: 600;
+  transform: none;
+}
+
+/* visionOS View Switcher Capsule */
+.view-switch-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--btn-glass-bg);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border-radius: var(--radius-pill);
+  box-shadow: none;
+}
+
+.view-switch-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: transparent;
   color: var(--text-muted);
-  font-size: var(--fs-caption);
+  opacity: 0.55;
+  cursor: pointer;
+  border: none !important;
+  outline: none !important;
+  transition: all var(--transition-fast);
+}
+
+.view-switch-btn:hover {
+  opacity: 1;
+  background: var(--btn-glass-hover);
+  box-shadow: var(--btn-glass-shadow-hover);
+  color: var(--text-primary);
+}
+
+.view-switch-btn.active {
+  opacity: 1;
+  background: var(--ctrl-active-bg);
+  box-shadow: var(--ctrl-active-shadow);
+  color: var(--ctrl-active-color);
+}
+
+.view-switch-btn.active .icon {
+  filter: var(--ctrl-active-icon-filter);
+}
+
+/* Footer Spacer */
+.footer {
+  padding: 40px 0;
+  background: transparent;
+  position: relative;
 }
 
 /* Loading Overlay */
 .loading-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background: rgba(var(--bg-primary-rgb), 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-normal);
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
 }
 
 .loading-overlay.active {
@@ -506,194 +665,73 @@ p {
   visibility: visible;
 }
 
-.loading-spinner {
-  background: var(--bg-card);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border-color);
-  border-top: 3px solid var(--accent-blue);
+.loading-spinner .spinner {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  border: 2px solid rgba(128, 128, 128, 0.2);
+  border-top-color: var(--text-primary);
+  animation: apple-spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+@keyframes apple-spin {
+  to { transform: rotate(360deg); }
 }
 
+/* Responsive Adaptations (Identical Across Light and Dark Themes) */
 @media (max-width: 768px) {
-  :root {
-    --fs-title: 1.3rem;
-    --fs-body: 0.9rem;
-    --fs-button: 0.85rem;
-    --fs-caption: 0.75rem;
+  :root,
+  html.theme-light,
+  html.theme-dark,
+  body.theme-light,
+  body.theme-dark {
+    --fs-hero: 1.55rem;
+    --fs-title: 1.25rem;
   }
 
   .container {
-    padding: 0 var(--spacing-md);
+    padding: 0 16px;
   }
 
-
-
-  .nav-menu .container {
-    flex-direction: row;
-    gap: var(--spacing-sm);
-    flex-wrap: nowrap;
-    min-height: 40px;
+  .header {
+    padding: 64px 0 32px 0;
   }
 
-  .nav-items {
-    flex-wrap: nowrap;
-    justify-content: stretch;
-    flex: 1;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .profile-section {
+    gap: 28px;
   }
 
-  .nav-item {
-    padding: 0 var(--spacing-sm);
-    flex: 1;
-    max-width: none;
-    min-width: 0;
-    height: 32px;
+  .nav-menu {
+    top: 12px;
+    padding: 0 10px;
   }
 
-  .nav-item span {
-    display: none;
+  .nav-capsule {
+    padding: 3px;
+    gap: 2px;
   }
 
-  .nav-item.active {
-    flex: 2;
-    min-width: 0;
-  }
-
-  .nav-item.active span {
-    display: inline;
-  }
-
-  .nav-controls {
-    flex-shrink: 0;
-  }
-
-  .nav-download-btn {
-    padding: var(--spacing-xs);
-    height: 36px;
-  }
-
-  .nav-download-btn span:last-child {
-    display: none;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  /* Waterfall responsive */
-  .waterfall-container {
-    gap: var(--spacing-md);
+  .nav-item, .nav-btn {
+    width: 34px;
+    height: 34px;
   }
 
   .full-width-section {
-    padding: 80px 0;
+    padding: 50px 0;
   }
 
   .full-width-section .experiences-timeline,
-  .full-width-section .projects-grid,
+  .full-width-section .projects-container,
   .full-width-section .blog-list,
   .full-width-section .contact-content {
-    padding: 0 var(--spacing-md);
+    padding: 0 16px;
+  }
+
+  .projects-toolbar {
+    padding: 0 16px;
   }
 }
 
-@media (max-width: 480px) {
-  :root {
-    --fs-title: 1.2rem;
-    --fs-body: 0.85rem;
-    --fs-button: 0.8rem;
-    --fs-caption: 0.7rem;
-  }
-
-
-  /* 保证小屏下 nav-item 文字不隐藏 */
-  .nav-item .icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  .nav-item.active {
-    flex: 2;
-  }
-
-  .btn {
-    padding: var(--spacing-xs) var(--spacing-md);
-  }
-
-  .nav-download-btn {
-    padding: var(--spacing-xs);
-    height: 32px;
-  }
-
-  /* Waterfall mobile */
-  .waterfall-container {
-    gap: var(--spacing-xl);
-  }
-
-  .full-width-section {
-    padding: 60px 0;
-  }
-
-  .full-width-section .experiences-timeline,
-  .full-width-section .projects-grid,
-  .full-width-section .blog-list,
-  .full-width-section .contact-content {
-    padding: 0 var(--spacing-sm);
-  }
-}
-
-/* Utility Classes */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-.hidden { display: none; }
-.visible { display: block; }
-.fade-in { animation: fadeIn var(--transition-normal); }
-
-/* Focus styles for accessibility */
-button:focus,
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
-}
-
-/* Selection styles */
-::selection {
-  background: var(--accent-blue-light);
-  color: var(--text-primary);
-}
-
-/* Interactive click feedback */
-.btn:active,
-.filter-btn:active,
-.contact-item:active,
-.nav-item:active {
-  transform: scale(0.97) !important;
-  filter: brightness(0.95);
-  transition: transform 0.1s ease;
-}
-.btn-primary:active { background: var(--text-primary) !important; }
-.btn-secondary:active { background: var(--border-color) !important; }
+/* Focus and Selection */
+button:focus-visible { outline: 2px solid var(--text-muted); outline-offset: 2px; }
+::selection { background: rgba(128, 128, 128, 0.2); color: var(--text-primary); }
