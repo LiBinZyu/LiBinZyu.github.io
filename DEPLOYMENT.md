@@ -1,14 +1,8 @@
-# Deployment Guide | 部署指南
+# GitHub Pages 部署
 
-This website is hosted on GitHub Pages.
+修改 `data/data.js`、`config.json` 或 `scripts/build.js` 后执行 `npm run build` 和 `npm run check`，并将生成文件与源码一起提交。
 
-## Deploying to GitHub Pages
+在仓库的 Settings → Pages 中，选择 **Deploy from a branch**，分支选 **main**，目录选 **/ (root)**。GitHub Pages 从该分支发布静态文件。
 
-1. **Commit & Push**: Push your changes to the `main` branch of your repository (`LiBinZyu.github.io`).
-2. **Configure Pages**:
-   - Go to repository settings on GitHub.
-   - Navigate to the **Pages** section on the left sidebar.
-   - Under **Build and deployment**, set the source to **Deploy from a branch**.
-   - Select the `main` branch and `/ (root)` folder.
-   - Click **Save**.
-3. **Access Site**: The website will be live at `https://libinzyu.github.io/`.
+- [中文首页](https://libinzyu.github.io/)
+- [English portfolio](https://libinzyu.github.io/en/)
